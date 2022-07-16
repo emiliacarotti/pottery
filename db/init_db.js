@@ -1,5 +1,5 @@
 const client  = require("./client");
-const { createUser } = require('.');    
+const { user } = require('.');    
 // -----------------GIVEN CODE
 // async function buildTables() {
 //   try {
@@ -16,10 +16,9 @@ async function dropTables() {
     await client.query(`
         DROP TABLE IF EXISTS history;
         DROP TABLE IF EXISTS cart;
-        DROP TABLE IF EXISTS description;
-        DROP TABLE IF EXISTS creatures;
-        DROP TABLE IF EXISTS address;
+        DROP TABLE IF EXISTS creature;
         DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS address;
       `);
 
     console.log("Tables dropped successfully!");
@@ -34,11 +33,7 @@ async function createTables() {
       console.log("Starting to build tables...");
 
       await client.query(`
-          CREATE TABLE users (
-            userid SERIAL PRIMARY KEY,
-            username VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
-          );
+
           CREATE TABLE address (
             addressid SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
@@ -51,19 +46,20 @@ async function createTables() {
             payment VARCHAR(255) NOT NULL,
             currency VARCHAR(255) NOT NULL
           );
-          CREATE TABLE description (
-            descriptionid SERIAL PRIMARY KEY,
-            environment VARCHAR(255) NOT NULL,
-            size VARCHAR(255) NOT NULL,
-            food VARCHAR(255) NOT NULL,
-            temper VARCHAR(255) NOT NULL
+          CREATE TABLE users (
+            userid SERIAL PRIMARY KEY,
+            username VARCHAR(255) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL
           );
           CREATE TABLE creature (
             creatureid SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            descriptionid INTEGER REFERENCES description(descriptionid) NOT NULL,
-            price VARCHAR(255) NOT NULL,s
-            stock VARCHAR(255) NOT NULL
+            price VARCHAR(255) NOT NULL,
+            stock VARCHAR(255) NOT NULL,
+            environment VARCHAR(255) NOT NULL,
+            size VARCHAR(255) NOT NULL,
+            food VARCHAR(255) NOT NULL,
+            temper VARCHAR(255) NOT NULL
           );
           CREATE TABLE cart (
             cartid SERIAL PRIMARY KEY,
@@ -84,7 +80,7 @@ async function createTables() {
 
           console.log("Tables created successfully!");
   } catch (error) {
-          console.error("Error creating tables!");
+          console.error("Error creating tables!"+error);
   }
 }      
 /*   -------------------------------GIVEN CODE?
@@ -108,13 +104,13 @@ async function createInitialUsers() {
       { username: "squanchie", password: "jerryisdumb" },
       { username: "docbrown", password: "backtothefuture" },
     ]
-    const users = await Promise.all(usersToCreate.map(createUser))
+    const users = await Promise.all(usersToCreate.map(user.createUser))
 
     console.log("Users created:")
     console.log(users)
     console.log("Finished creating inital users!")
   } catch (error) {
-    console.error("Error creating initial users!")
+    console.error("Error creating initial users!"+error)
   }
 }
 
