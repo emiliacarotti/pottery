@@ -1,4 +1,4 @@
-const client = require("./client");
+const { client } = require("./client");
 const { createUser } = require('.');    
 
 async function buildTables() {
@@ -95,7 +95,7 @@ async function populateInitialData() {
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
   } catch (error) {
-    throw error;
+    console.error("Error of throws!");
   }
 }
 */
@@ -115,7 +115,6 @@ async function createInitialUsers() {
     console.log("Finished creating users!")
   } catch (error) {
     console.error("Error creating users!")
-    throw error
   }
 }
 
@@ -128,7 +127,6 @@ async function rebuildDB() {
 
   } catch (error) {
     console.log("Error during rebuildDB")
-    throw error
   }
 }
 
@@ -141,6 +139,7 @@ buildTables()
 
   module.exports = {
     rebuildDB,
+    buildTables,
     dropTables,
     createTables,
   }
