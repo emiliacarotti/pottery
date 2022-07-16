@@ -1,4 +1,5 @@
 const express = require("express");
+var app = express()
 const creaturesRouter = express.Router();
 
 const { requireUser } = require("./utils");
