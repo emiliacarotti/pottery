@@ -46,3 +46,8 @@ const handle = server.listen(PORT, async () => {
 
 // export server and handle for routes/*.test.js
 module.exports = { server, handle };
+server.get((req, res, next) => {
+  res.send(`
+      <h1>Hello World root index</h1>
+  `);
+});

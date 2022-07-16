@@ -1,13 +1,13 @@
-const { client } = require("./client");
+const client  = require("./client");
 const { createUser } = require('.');    
-
-async function buildTables() {
-  try {
-    client.connect();
-  } catch (error) {
-    console.error("Error buildTables!");
-  }
-}
+// -----------------GIVEN CODE
+// async function buildTables() {
+//   try {
+//     client.connect();
+//   } catch (error) {
+//     console.error("Error buildTables!");
+//   }
+// }
  // drop tables in correct order
 async function dropTables() {
       try {    
@@ -62,7 +62,7 @@ async function createTables() {
             creatureid SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             descriptionid INTEGER REFERENCES description(descriptionid) NOT NULL,
-            price VARCHAR(255) NOT NULL,
+            price VARCHAR(255) NOT NULL,s
             stock VARCHAR(255) NOT NULL
           );
           CREATE TABLE cart (
@@ -112,34 +112,34 @@ async function createInitialUsers() {
 
     console.log("Users created:")
     console.log(users)
-    console.log("Finished creating users!")
+    console.log("Finished creating inital users!")
   } catch (error) {
-    console.error("Error creating users!")
+    console.error("Error creating initial users!")
   }
 }
 
 
 async function rebuildDB() {
   try {
+    client.connect()
+
     await dropTables()
     await createTables()
-    await createInitialUsers()
 
   } catch (error) {
     console.log("Error during rebuildDB")
   }
 }
 
-/*   -------------------------------GIVEN CODE?
-buildTables()
-  .then(populateInitialData)
+
+  rebuildDB()
+  .then(createInitialUsers)
   .catch(console.error)
   .finally(() => client.end());
-*/
+
 
   module.exports = {
     rebuildDB,
-    buildTables,
     dropTables,
     createTables,
   }
