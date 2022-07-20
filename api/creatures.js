@@ -1,46 +1,69 @@
 const express = require("express");
 var app = express()
+
 const creaturesRouter = express.Router();
 
 const { requireUser } = require("./utils");
+
 const {
-  createCreature,
   getAllCreatures,
-  updateCreature,
-  getCreaturebyCategory,
+  createCreature,
+  // updateCreature,
+  // getCreaturebyCategory,
 } = require("../db");
 
-app.get('/', (req, res) => {
-  res.send('GET request to the homepage worked')
-})
-
-
+// get all creatures
 creaturesRouter.get("/", async (req, res, next) => {
-  // try {
-  //   const allCreatures = await getAllCreatures();
+  try {
+    const allCreatures = await getAllCreatures();
 
-  //   const creatures = allCreatures.filter((creature) => {
-  //     // the post is active, doesn't matter who it belongs to
-  //     if (post.active) {
-  //       return true;
-  //     }
-
-  //     // the post is not active, but it belogs to the current user
-  //     if (req.user && post.author.id === req.user.id) {
-  //       return true;
-  //     }
-
-  //     // none of the above are true
-  //     return false;
-  //   });
-
-  //   res.send({
-  //     creatures,
-  //   });
-  // } catch ({ name, message }) {
-  //   next({ name, message });
-  // }
+    if (allCreatures) {
+      res.send({
+        allCreatures
+      })
+    }else{
+      res.send({
+        message: "Error getting creatures."
+      })
+    };
+  } catch (error) {
+    next(error);
+  }
 });
 
 
+// create a creature
+creaturesRouter.post('/', async (req, res, next) => {
+  try {
+    if(req.user.admin){ //user is an admin, idk if this is right
+
+      const { creatorid, name, descriptionid, price, stock } = req.body;
+      if (!creatorid || !name || !descriptionid || !price || !stock) { //if data is missing
+        next({
+          name: "MissingDataError",
+          message: "Please provide all info for this creature."
+        });
+
+      }
+      else {
+        // creatue creature
+        const newCreature = await createCreature({ creatorid, name, descriptionid, price, stock });
+        res.send({newCreature});
+
+      }
+    }
+    else{ //user is not an admin 
+      next({
+        name: 'NoUserError',
+        message: 'You must be an admin.'
+      });
+
+    }
+    
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = creaturesRouter;
+
