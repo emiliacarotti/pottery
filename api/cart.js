@@ -1,5 +1,5 @@
-// const express = require('express');
-// const cartRouter = express.Router();
+const express = require('express');
+const cartRouter = express.Router();
 
 // const { requireUser } = require('./utils');
 
@@ -19,4 +19,4 @@
 // });
 // */
 
-// module.exports = cartRouter;
+module.exports = cartRouter;

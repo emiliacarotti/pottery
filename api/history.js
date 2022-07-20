@@ -1,5 +1,5 @@
-// const express = require('express');
-// const historyRouter = express.Router();
+const express = require('express');
+const historyRouter = express.Router();
 
 // const { requireUser } = require('./utils');
 
@@ -17,4 +17,4 @@
 //     }
 // });
 
-// module.exports = historyRouter;
+module.exports = historyRouter;

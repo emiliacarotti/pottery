@@ -1,6 +1,4 @@
 const express = require("express");
-var app = express()
-
 const creaturesRouter = express.Router();
 
 const { requireUser } = require("./utils");
@@ -37,8 +35,8 @@ creaturesRouter.post('/', async (req, res, next) => {
   try {
     if(req.user.admin){ //user is an admin, idk if this is right
 
-      const { creatorid, name, descriptionid, price, stock } = req.body;
-      if (!creatorid || !name || !descriptionid || !price || !stock) { //if data is missing
+      const { creatureid, name, price, stock, environment, size, food, temper } = req.body;
+      if (!creatureid || !name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing
         next({
           name: "MissingDataError",
           message: "Please provide all info for this creature."
@@ -47,7 +45,7 @@ creaturesRouter.post('/', async (req, res, next) => {
       }
       else {
         // creatue creature
-        const newCreature = await createCreature({ creatorid, name, descriptionid, price, stock });
+        const newCreature = await createCreature({ creatureid, name, price, stock, environment, size, food, temper });
         res.send({newCreature});
 
       }

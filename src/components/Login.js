@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import reactdomclient from "react-dom/client"
 import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
@@ -33,8 +33,7 @@ export default function Login({username, setUsername, setToken, setLoggedIn}){
             console.log("Unable to log in! " + err)
         }
     }
-    return (
-        <div>
+    return (<div>
         <>
             <h4> Log In </h4>
             <form onSubmit={(event)=>{
@@ -53,6 +52,5 @@ export default function Login({username, setUsername, setToken, setLoggedIn}){
             </form>
             <Link className="newAcct" to="../Register">No account? Create one here!</Link>
         </>
-        </div>
-    )
+        </div>)
 }
