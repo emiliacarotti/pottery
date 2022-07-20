@@ -4,5 +4,10 @@ const models = require('./models');
 
 module.exports = {
   client,
-  ...models,
+  users,
+  history,
+  creatures,
+  cart,
+  utils,
+  ...models
 };

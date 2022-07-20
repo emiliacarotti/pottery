@@ -1,13 +1,6 @@
 const client  = require("./client");
 const { user } = require('.');    
-// -----------------GIVEN CODE
-// async function buildTables() {
-//   try {
-//     client.connect();
-//   } catch (error) {
-//     console.error("Error buildTables!");
-//   }
-// }
+
  // drop tables in correct order
 async function dropTables() {
       try {    
@@ -115,6 +108,74 @@ async function createInitialUsers() {
 }
 
 
+async function createInitialAddress() {
+  try {
+    console.log("Creating address...");
+
+    await creatAddress({ 
+      firstname: 'moby', 
+      Lastname: 'bukhari',
+      street: '123 main street',
+      city: 'washington',
+      state:"DC",
+      zip:"20009",
+      payment:"paypal" 
+    });
+
+    console.log("Finished creating address!");
+  } catch (error) {
+    console.error("Error creating address!");
+    throw error;
+  }
+}
+
+
+async function createInitialCreatures() {
+  try {
+    console.log("Creating creatures...")
+
+    const CreaturesToCreate = [
+      {
+        name: "626 Stitch",
+        price: "$5000 USD",
+        stock: "1",
+        environment: "land",
+        size: "M",
+        food: "omnivore",
+        temper: "stubborn"
+      },
+      {
+        name: "150 Butter Robot",
+        price: "$750 USD",
+        stock: "10",
+        environment: "land",
+        size: "S",
+        food: "electricity",
+        temper: "compliant"
+      },
+      {
+        name: "123 Mogwai",
+        price: "$1000 USD",
+        stock: "999",
+        environment: "land",
+        size: "S",
+        food: "Omnivore",
+        temper: "Varies"
+      },
+    ]
+    const creatures = await Promise.all(creaturesToCreate.map(createCreatures))
+
+    console.log("creatures created:")
+    console.log(creatures)
+
+    console.log("Finished creating creatures!")
+  } catch (error) {
+    console.error("Error creating creatures!")
+    throw error
+  }
+}
+
+
 async function rebuildDB() {
   try {
     client.connect()
@@ -129,7 +190,7 @@ async function rebuildDB() {
 
 
   rebuildDB()
-  .then(createInitialUsers)
+  .then(createInitialUsers, createInitialCreatures, createInitialAddress)
   .catch(console.error)
   .finally(() => client.end());
 

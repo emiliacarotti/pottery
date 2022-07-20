@@ -3,7 +3,6 @@ var app = express()
 const creaturesRouter = express.Router();
 
 const { requireUser } = require("./utils");
-
 const {
   createCreature,
   getAllCreatures,
@@ -42,3 +41,6 @@ creaturesRouter.get("/", async (req, res, next) => {
   //   next({ name, message });
   // }
 });
+
+
+module.exports = creaturesRouter;

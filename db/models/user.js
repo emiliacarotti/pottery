@@ -4,10 +4,9 @@ const client = require('../client');
 
 // DB USER FUNCTIONS
 async function getAllUsers() {
-  /* this adapter should fetch a list of users from your db */
     try {
         const { rows } = await client.query(`
-        SELECT id, username
+        SELECT userid, username
         FROM users;
       `);
 
@@ -33,10 +32,10 @@ async function createUser({ username, password }) {
     }
   }
 
-
+  
 
    module.exports = {
-    // add your database adapter fns here
+    // add database adapter functions here
     getAllUsers,
     createUser
   };
