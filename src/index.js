@@ -25,6 +25,7 @@ import{
   MyProfile,
   Navbar,
   Register
+
 } from "./components"
 
 function MadDog() {
@@ -107,10 +108,29 @@ function MadDog() {
 
           
           
+
+    //     </Routes>
+    //   </>
+    // );
+    return(
+      <>
+      <Navbar />
+      <br></br>
+      <br></br>
+      <div className='Homepage'>
+      <center>My monsters bring all the boys to the yard! .... or whatever the name is</center>
+      </div>
+      
+      
+      <Footer />
+      </>
+        
+    )
         </Routes>
       </>
     );
     
+
   }
 
 
