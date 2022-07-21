@@ -12,12 +12,20 @@ import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate } from "react
 import './style/index.css';
 
 import{
-  Navbar,
-  Login,
-  Register,
-  Home,
+  About,
+  Cart,
+  Checkout,
+  Deal,
   Error,
-  Footer
+  Filters,
+  Footer,
+  Header,
+  Home,
+  Login,
+  MyProfile,
+  Navbar,
+  Register
+
 } from "./components"
 
 function MadDog() {
@@ -45,8 +53,6 @@ function MadDog() {
       setUsername("");
       navigate("/")
     }
-  
-    console.log("hello");
     return (
       <>
         <Navbar loggedIn={loggedIn} Logout={Logout} />
@@ -78,8 +84,29 @@ function MadDog() {
             path="/"
             element={<Home profile={profile} setProfile={setProfile} />}
           ></Route>
+
+
           
+          <Route path="About" element={<About />}></Route>
+          <Route path="Cart" element={<Cart />}></Route>
+          <Route path="Checkout" element={<Checkout />}></Route>
+          <Route path="Deal" element={<Deal />}></Route>
           <Route path="*" element={<Error />}></Route>
+          <Route path="Filters" element={<Filters />}></Route>
+          <Route path="Footer" element={<Footer />}></Route>
+          <Route path="Header" element={<Header />}></Route>
+
+          <Route 
+            path="MyProfile" 
+            element={<MyProfile  
+              username={username}
+              setUsername={setUsername}
+              token={token}
+              setToken={setToken}
+              setLoggedIn={setLoggedIn}/>}>
+            </Route>
+
+          
           
 
     //     </Routes>
