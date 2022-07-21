@@ -25,7 +25,6 @@ import{
   MyProfile,
   Navbar,
   Register
-
 } from "./components"
 
 function MadDog() {
@@ -56,6 +55,11 @@ function MadDog() {
     return (
       <>
         <Navbar loggedIn={loggedIn} Logout={Logout} />
+        <br></br>
+        <br></br>
+        <div className='Homepage'>
+        <center>My monsters bring all the boys to the yard! .... or whatever the name is</center>
+        </div>
         <Routes>
           
           <Route
@@ -108,29 +112,10 @@ function MadDog() {
 
           
           
-
-    //     </Routes>
-    //   </>
-    // );
-    return(
-      <>
-      <Navbar />
-      <br></br>
-      <br></br>
-      <div className='Homepage'>
-      <center>My monsters bring all the boys to the yard! .... or whatever the name is</center>
-      </div>
-      
-      
-      <Footer />
-      </>
-        
-    )
         </Routes>
       </>
     );
     
-
   }
 
 
@@ -143,3 +128,8 @@ function MadDog() {
   );
 
 //ReactDOM.render(<MadDog />, document.getElementById('root'));
+
+
+
+
+  
