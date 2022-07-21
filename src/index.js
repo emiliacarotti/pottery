@@ -16,7 +16,8 @@ import{
   Login,
   Register,
   Home,
-  Error
+  Error,
+  Footer
 } from "./components"
 
 function MadDog() {
@@ -80,10 +81,29 @@ function MadDog() {
           
           <Route path="*" element={<Error />}></Route>
           
+
+    //     </Routes>
+    //   </>
+    // );
+    return(
+      <>
+      <Navbar />
+      <br></br>
+      <br></br>
+      <div className='Homepage'>
+      <center>My monsters bring all the boys to the yard! .... or whatever the name is</center>
+      </div>
+      
+      
+      <Footer />
+      </>
+        
+    )
         </Routes>
       </>
     );
     
+
   }
 
 
