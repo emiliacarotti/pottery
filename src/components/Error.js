@@ -3,7 +3,8 @@ import reactdomclient from "react-dom/client"
 import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
 function Error(){
-    return (<div><center><iframe width="768" height="576" src="https://giphy.com/gifs/pennywise-it-movie-scary-clown-xT9IgvEOwRzUcZDRiU"></iframe> "Oh.... Hello Georgie!"</center></div>
+    return (<div className="Error-gif"><center><iframe src="https://giphy.com/embed/xT9IgvEOwRzUcZDRiU" width="598" height="408" frameBorder="0"  allowFullScreen></iframe><div></div>Oh.... Hello, Georgie! You shouldn't be here. </center></div>
+            
     )
     
    

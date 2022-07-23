@@ -42,25 +42,31 @@ export default function CreateProfile({setToken, setLoggedIn}){
     }
 
    
-    return (
-      <div>
+    return ( <div className="center">
+      
         <>
-            <h1> Create a new account!</h1>
+            <h2> Create a new account!</h2>
             <form onSubmit={(event)=>{
                 event.preventDefault()
                 CreateNewProfile(event)
             }}>
-                <label>Username: </label>
-                <input type="text" value={username} onChange={(event)=>{setUsername(event.target.value)}}></input>
-                <label>Password: </label>
-                <input type="text" value={password} onChange={(event)=>{setPassword(event.target.value)}}></input>
-                <button type="submit">Sign Up</button>
+                <div className="txt_field">
+                    <input type="text" required value={username} onChange={(event)=>{setUsername(event.target.value)}}></input>
+                    <label>Username: </label>
+                </div>
+                <div className="txt_field">
+                    <input type="password" required value={password} onChange={(event)=>{setPassword(event.target.value)}}></input>
+                    <label>Password: </label>
+                </div>
+                <button className="input" type="submit">Sign Up</button>
                 <br></br>
                 <div id="createErrorMessage" className="errors"></div>
                 <br></br>
-            </form>
-            <Link className="newAcct" to="../Login">Already have an account? Sign in!</Link>
+            <div className="signup_link">
+                Already have an account?<a href="../Login"> Sign in!</a>
+            </div>
+        </form>
+        
         </>
-        </div>
-    )
+    </div>)
 }

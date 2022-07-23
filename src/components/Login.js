@@ -33,24 +33,30 @@ export default function Login({username, setUsername, setToken, setLoggedIn}){
             console.log("Unable to log in! " + err)
         }
     }
-    return (<div>
+    return (<div className="center">
         <>
-            <h4> Log In </h4>
+            <h2> Log In </h2>
             <form onSubmit={(event)=>{
                 event.preventDefault()
                 LoginUser()
                 
             }}>
-                <label>Username: </label>
-                <input type="text" value={username} onChange={(event)=>{setUsername(event.target.value)}}></input>
-                <label>Password: </label>
-                <input type="text" value={password} onChange={(event)=>{setPassword(event.target.value)}}></input>
-                <button type="submit">Log In</button>
+                <div className="txt_field">
+                    <input type="text" required value={username} onChange={(event)=>{setUsername(event.target.value)}}></input>
+                    <label>Username: </label>
+                </div>
+                <div className="txt_field">
+                    <input type="password" required value={password} onChange={(event)=>{setPassword(event.target.value)}}></input>
+                    <label>Password: </label>
+                </div>
+                <button className="input" type="submit">Log In</button>
                 <br></br>
                 <div id="createErrorMessage" className="errors"></div>
                 <br></br>
-            </form>
-            <Link className="newAcct" to="../Register">No account? Create one here!</Link>
+            <div className="signup_link">
+                No account?<a href="../Register"> Signup!</a>
+            </div>
+        </form>
         </>
-        </div>)
+    </div>)
 }
