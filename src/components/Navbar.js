@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import logo from "../images/scientist.png";
+import logo from "../images/critter.png";
 export default function Navbar({loggedIn, Logout}){
     return (
-        <div className="nav">
-            <a href="/"><img className="logo" src={logo} width= "85px"/>
+        <div className="navbar">
+            <a href="/"><img className="logo" src={logo} width= "250px"/>
             </a>
             
         
@@ -13,11 +13,11 @@ export default function Navbar({loggedIn, Logout}){
   	<label for="menu-icon"></label>
   	<nav class="nav"> 		
   		<ul class="pt-5">
-        <li><a><Link to="/"> Home </Link></a></li>
-        <li><a><Link to="Login"> Login </Link></a></li>
-        <li><a><Link to="Deal"> Beast of the Month </Link></a></li>
-        <li><a><Link to="About"> About Us </Link></a></li>
-        <li><a><Link to="Cart"> My Cart </Link></a></li>
+        <li><a href="/"> Home </a></li>
+        <li><a href="Login"> Login </a></li>
+        <li><a href="Deal"> Beast of the Month </a></li>
+        <li><a href="About"> About Us </a></li>
+        <li><a href="Cart"> My Cart </a></li>
   		</ul>
   	</nav>
         </div>

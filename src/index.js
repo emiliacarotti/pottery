@@ -57,8 +57,8 @@ function MadDog() {
         <Navbar loggedIn={loggedIn} Logout={Logout} />
         <br></br>
         <br></br>
-        <div className='Homepage'>
-        <center>My monsters bring all the boys to the yard! .... or whatever the name is</center>
+        <div className='Header'>
+        <center>Beast Bazzaar </center>
         </div>
         <Routes>
           
@@ -113,6 +113,7 @@ function MadDog() {
           
           
         </Routes>
+        <Footer />
       </>
     );
     
