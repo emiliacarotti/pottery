@@ -7,7 +7,7 @@
 /* ======================= navbar ========================*/
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css);
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
 
 body{
 	font-family: 'Montserrat', sans-serif;
@@ -363,42 +363,56 @@ form .txt_field {
 }
 /* =================== end of Login page ====================*/
 
+/* ======================= About page =======================*/
+
+.about-1 {
+  margin: 30px;
+  padding: 5px;
+}
+.about-1 h2{
+  text-align: center;
+  font-weight: bold;
+}
+.about-1 p{
+  text-align: center;
+  padding: 3px;
+}
+.about-item {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 9px rgba(0,0,0 .6);
+  text-align: center;
+  /* border:#353746 solid 1px; */
+  /* width: 48%; */
+  /* margin-left: 15px; */
+  /* flex: 1; */
+}
+.about-item i {
+  font-size: 40px;
+  margin-bottom: 0;
+  padding-top: 15px;;
+}
+.about-item h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.about-item hr {
+  width: 245px; 
+  height: 5px;
+  margin: 0 auto; 
+  border: none;  
+  background-color:#353746;
+}
+.about-item p{
+  margin-top: 10px;
+}
+
+/* =================== end of About page ====================*/
+
 /* ======================= MOTD page =======================*/
 
-.item {
-  display: flex;
-  flex-direction: column;
-  flex: 50%;
-  align-items: center;
-  border:#1f2029 solid 2px;
-  
-}
-.item-name, .fact-line, .item-description {
-  background-color: rgb(117, 115, 112);
-  color: black;
-}
-.item-name {
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px;
-  font-style: italic;
-  color:black
-}
-.fact-name {
-  color:black;
-  font-weight: bold;
-  font-style: italic;
-}
-.add-item {
-  border-radius: 10%;
-  background: rgb(0, 0, 0);
-  color: white;
-  padding: 10px
-}
-
 /* =================== end of MOTD page ====================*/
-
 
 /* ======================= error page =======================*/
 
