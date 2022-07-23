@@ -15,6 +15,7 @@ import{
   About,
   Cart,
   Checkout,
+  Create,
   Deal,
   Error,
   Filters,
@@ -94,6 +95,7 @@ function MadDog() {
           <Route path="About" element={<About />}></Route>
           <Route path="Cart" element={<Cart />}></Route>
           <Route path="Checkout" element={<Checkout />}></Route>
+          <Route path="Create" element={<Create />}></Route>
           <Route path="Deal" element={<Deal />}></Route>
           <Route path="*" element={<Error />}></Route>
           <Route path="Filters" element={<Filters />}></Route>

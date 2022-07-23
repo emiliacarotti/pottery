@@ -11,14 +11,23 @@ export default function Navbar({loggedIn, Logout}){
 
   	<input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
   	<label for="menu-icon"></label>
-  	<nav class="nav"> 		
-  		<ul class="pt-5">
-        <li><a href="/"> Home </a></li>
-        <li><a href="Login"> Login </a></li>
-        <li><a href="Deal"> Beast of the Month </a></li>
-        <li><a href="About"> About Us </a></li>
-        <li><a href="Cart"> My Cart </a></li>
-  		</ul>
+
+  	<nav class="nav"> 	
+        <>
+            <ul class="pt-5">
+            <li><a><Link to="/"> Home </Link></a></li>
+            {
+            <li><a><Link to="Create"> Create New Item </Link> </a></li>//this needs to be a boolean, available to Admins ONLY
+            }
+            {
+            !loggedIn?<li><a><Link to="Login"> Login </Link> </a></li> : <li><a> <button onClick={Logout}> Logout</button> </a></li>
+            }
+            <li><a><Link to="Deal"> Beast of the Month </Link></a></li>
+            <li><a><Link to="About"> About Us </Link></a></li>
+            <li><a><Link to="Cart"> My Cart </Link></a></li>
+            </ul>
+        </>	
+
   	</nav>
         </div>
     )
