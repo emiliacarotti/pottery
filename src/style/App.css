@@ -260,11 +260,14 @@ h1{
 	z-index: 11;
 	transition: all 250ms linear;
 }
+
+
 .Header {
   font-size: 70px;
   font-family: Rock Salt;
 }
 /* =================== end of navbar ====================*/
+
 
 /* ======================= Login page =======================*/
 
@@ -395,6 +398,7 @@ form .txt_field {
 }
 
 /* =================== end of MOTD page ====================*/
+
 
 /* ======================= error page =======================*/
 
