@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // This is the Web Server
 const express = require('express');
 const server = express();
@@ -14,12 +16,20 @@ server.use(morgan('dev'));
 // handle application/json requests
 server.use(express.json());
 
+
+server.get("/",(req, res, next) => {
+  res.send(`
+      <h1>Hello World root index</h1>
+  `);
+});
+
 // here's our static files
 const path = require('path');
 server.use(express.static(path.join(__dirname, 'build')));
 
 // here's our API
-server.use('/api', require('./api'));
+const apiRouter = require('./api')
+server.use('/api', apiRouter);
 
 // by default serve up the react app if we don't recognize the route
 server.use((req, res, next) => {
@@ -27,7 +37,7 @@ server.use((req, res, next) => {
 });
 
 // bring in the DB connection
-const { client } = require('./db');
+const client  = require('./db/client');
 
 // connect to the server
 const PORT = process.env.PORT || 4000;
@@ -46,8 +56,3 @@ const handle = server.listen(PORT, async () => {
 
 // export server and handle for routes/*.test.js
 module.exports = { server, handle };
-server.get((req, res, next) => {
-  res.send(`
-      <h1>Hello World root index</h1>
-  `);
-});

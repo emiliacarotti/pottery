@@ -146,3 +146,21 @@ You'll be able to view your fullstack application by running `heroku open`. Bask
 
 
 Scrum Master - Leroy Green
+
+//https://young-plains-58443.herokuapp.com/
+
+
+//
+curl http://localhost:4000/api/users -H "Content-Type: application/json" -X POST -d '{"username": "moby", "password": "mobymoby"}' 
+//TERMINAL OUTPUT {"username": "moby", "password": "mobymoby"}
+
+//curl http://localhost:4000/api/users -H "Content-Type: application/json" -X POST -d '{"username": "moby", "password": "mobymoby"}'
+
+{
+    "user": {
+        "userid": 1,
+        "username": "moby",
+        "password": "mobymoby"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoibW9ieSIsImlhdCI6MTY1ODU5NjIzNCwiZXhwIjoxNjU5MjAxMDM0fQ.U3T1ZVpf0sWu2C-ihpzu-Ptx6LI1oLmj3GHPVyuJ3Mg",
+    "message": "you're logged in!"

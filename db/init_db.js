@@ -1,9 +1,16 @@
+//SEED DATA
+
+
 const client  = require("./client");
-const { user } = require('.');    
+const { user,
+        address,
+        creature    
+} = require('./');    
 
  // drop tables in correct order
 async function dropTables() {
       try {    
+        client.connect();
     console.log("Drop tables...");
    
     await client.query(`
@@ -29,7 +36,6 @@ async function createTables() {
 
           CREATE TABLE address (
             addressid SERIAL PRIMARY KEY,
-            username VARCHAR(255) UNIQUE NOT NULL,
             firstname VARCHAR(255) NOT NULL,
             lastname VARCHAR(255) NOT NULL,
             street VARCHAR(255) NOT NULL,
@@ -76,26 +82,15 @@ async function createTables() {
           console.error("Error creating tables!"+error);
   }
 }      
-/*   -------------------------------GIVEN CODE?
-}
-async function populateInitialData() {
-  try {
-    // create useful starting data by leveraging your
-    // Model.method() adapters to seed your db, for example:
-    // const user1 = await User.createUser({ ...user info goes here... })
-  } catch (error) {
-    console.error("Error of throws!");
-  }
-}
-*/
 
+//working
 async function createInitialUsers() {
   console.log("Starting to create users...")
   try {
     const usersToCreate = [
       { username: "moby", password: "mobymoby" },
       { username: "squanchie", password: "jerryisdumb" },
-      { username: "docbrown", password: "backtothefuture" },
+      { username: "docbrown", password: "backtothefuture" }
     ]
     const users = await Promise.all(usersToCreate.map(user.createUser))
 
@@ -109,32 +104,55 @@ async function createInitialUsers() {
 
 
 async function createInitialAddress() {
+  console.log("Creating address...");
   try {
-    console.log("Creating address...");
-
-    await creatAddress({ 
+    const addressToCreate = [
+      { 
       firstname: 'moby', 
-      Lastname: 'bukhari',
+      lastname: 'bukhari',
       street: '123 main street',
       city: 'washington',
       state:"DC",
       zip:"20009",
-      payment:"paypal" 
-    });
+      payment:"paypal",
+      currency: "USD" 
+      },
+      { 
+      firstname: 'rick', 
+      lastname: 'sanchez',
+      street: '6910 birdman ave',
+      city: 'ann arbor',
+      state:"MI",
+      zip:"48013",
+      payment:"stripe",
+      currency: "USD" 
+      },
+      { 
+      firstname: 'Emmet', 
+      lastname: 'Brown',
+      street: '1640',
+      city: 'Hillside',
+      state:"CA",
+      zip:"90210",
+      payment:"stripe",
+      currency: "USD" 
+      }
+    ]
+const addresses = await Promise.all(addressToCreate.map(address.createAddresses))
 
-    console.log("Finished creating address!");
-  } catch (error) {
-    console.error("Error creating address!");
-    throw error;
-  }
+console.log("address created:")
+console.log(addresses)
+console.log("Finished creating address!");
+} catch (error) {
+  console.error("Error creating address!");
+  throw error;
+}
 }
 
-
 async function createInitialCreatures() {
+  console.log("Creating creatures...")
   try {
-    console.log("Creating creatures...")
-
-    const CreaturesToCreate = [
+    const creaturesToCreate = [
       {
         name: "626 Stitch",
         price: "$5000 USD",
@@ -163,7 +181,7 @@ async function createInitialCreatures() {
         temper: "Varies"
       },
     ]
-    const creatures = await Promise.all(creaturesToCreate.map(createCreatures))
+    const creatures = await Promise.all(creaturesToCreate.map(creature.createCreature))
 
     console.log("creatures created:")
     console.log(creatures)
@@ -175,24 +193,26 @@ async function createInitialCreatures() {
   }
 }
 
-
+//REBUILD
 async function rebuildDB() {
   try {
-    client.connect()
-
     await dropTables()
     await createTables()
+    await createInitialUsers()
+    await createInitialAddress()
+    await createInitialCreatures()
 
   } catch (error) {
     console.log("Error during rebuildDB")
+    throw error
   }
 }
 
-
-  rebuildDB()
-  .then(createInitialUsers, createInitialCreatures, createInitialAddress)
+rebuildDB()
+//client.connect()
   .catch(console.error)
   .finally(() => client.end());
+
 
 
   module.exports = {

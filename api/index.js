@@ -46,30 +46,27 @@ apiRouter.get('/', (req, res, next) => {
     message: 'API is under construction!',
   });
 });
-// ---------PROVIDED CODE?
-apiRouter.get('/health', (req, res, next) => {
-  res.send({
-    healthy: true,
-  });
-});
 
-// place your routers here
 //SUBROUTERS
 // ROUTER: /api/users
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
 
-// ROUTER: /api/creatures
-const creaturesRouter = require('./creatures');
-apiRouter.use('/creatures', creaturesRouter);
+// // ROUTER: /api/address
+// const addressesRouter = require('./addresses');
+// apiRouter.use('/addresses', addressesRouter);
 
-// ROUTER: /api/cart
-const cartRouter = require('./cart');
-apiRouter.use('/cart', cartRouter);
+// // ROUTER: /api/creatures
+// const creaturesRouter = require('./creatures');
+// apiRouter.use('/creatures', creaturesRouter);
 
-// ROUTER: /api/history
-const historyRouter = require('./history');
-apiRouter.use('/history', historyRouter);
+// // ROUTER: /api/cart
+// const cartRouter = require('./cart');
+// apiRouter.use('/cart', cartRouter);
+
+// // ROUTER: /api/history
+// const historyRouter = require('./history');
+// apiRouter.use('/history', historyRouter);
 
 //ROUTER: ERROR
 apiRouter.use((error, req, res, next) => {

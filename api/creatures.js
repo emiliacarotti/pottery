@@ -1,6 +1,5 @@
 const express = require("express");
 const creaturesRouter = express.Router();
-
 const { requireUser } = require("./utils");
 
 const {
@@ -8,7 +7,14 @@ const {
   createCreature,
   // updateCreature,
   // getCreaturebyCategory,
-} = require("../db");
+} = require("../db/creature");
+
+
+creaturesRouter.use((req, res, next) => {
+  console.log(req.body);
+  
+  next();
+  });
 
 // get all creatures
 creaturesRouter.get("/", async (req, res, next) => {
@@ -35,8 +41,8 @@ creaturesRouter.post('/', async (req, res, next) => {
   try {
     if(req.user.admin){ //user is an admin, idk if this is right
 
-      const { creatureid, name, price, stock, environment, size, food, temper } = req.body;
-      if (!creatureid || !name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing
+      const { name, price, stock, environment, size, food, temper } = req.body;
+      if (!name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing
         next({
           name: "MissingDataError",
           message: "Please provide all info for this creature."
@@ -45,7 +51,7 @@ creaturesRouter.post('/', async (req, res, next) => {
       }
       else {
         // creatue creature
-        const newCreature = await createCreature({ creatureid, name, price, stock, environment, size, food, temper });
+        const newCreature = await createCreature({ name, price, stock, environment, size, food, temper });
         res.send({newCreature});
 
       }
