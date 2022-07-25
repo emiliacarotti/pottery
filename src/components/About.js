@@ -5,7 +5,8 @@ import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "reac
 function About(){
     return  <section id="about">
                 <div class="about-1">
-                    <h2>About Us</h2>
+                    <h1>About Us</h1>
+                    <hr/>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis cras sed felis eget velit aliquet sagittis id.</p>
                 </div>
                 <div id="about-2">
@@ -25,7 +26,7 @@ function About(){
                                         <i class="fa fa-globe"></i>
                                         <h3>Where We Are</h3>
                                         <hr/>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis cras sed felis eget velit aliquet sagittis id.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis cras sed felis eget velit aliquet sagittis id. Venenatis cras sed felis eget velit aliquet sagittis id. Venenatis cras sed felis eget velit aliquet sagittis id.</p>
                                     </div>
                                 </div>
                             </div>
