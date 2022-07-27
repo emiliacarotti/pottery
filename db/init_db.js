@@ -233,6 +233,9 @@ async function createInitialOrderHistory() {
     console.error("Error creating order history!")
     throw error
 
+  }
+}
+
 
 async function createCartItems() {
   console.log("Starting to create fake cart...")
