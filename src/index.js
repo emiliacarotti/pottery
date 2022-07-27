@@ -26,7 +26,8 @@ import{
   Login,
   MyProfile,
   Navbar,
-  Register
+  Register,
+  SingleItem
 } from "./components"
 
 function MadDog() {
@@ -57,12 +58,14 @@ function MadDog() {
     }
     return (
       <>
+      
         <Navbar loggedIn={loggedIn} Logout={Logout} />
         <br></br>
         <br></br>
         <div className='Header'>
         <center>Beast Bazzaar </center>
         </div>
+        <header/>
         <Routes>
           
           <Route
@@ -104,6 +107,7 @@ function MadDog() {
           <Route path="Filters" element={<Filters />}></Route>
           <Route path="Footer" element={<Footer />}></Route>
           <Route path="Header" element={<Header />}></Route>
+          <Route path="SingleItem" element={<SingleItem />}></Route>
 
           <Route 
             path="MyProfile" 
@@ -118,6 +122,7 @@ function MadDog() {
           
           
         </Routes>
+        <body/>
         <Footer />
       </>
     );
