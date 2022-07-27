@@ -4,8 +4,8 @@ const client = require('./client');
 async function getAllCreatures() {
   try {
       const { rows } = await client.query(`
-      SELECT creatureid, name, price, stock, environment, size, food, temper)
-      FROM creatures;
+      SELECT creatureid, name, price, stock, environment, size, food, temper
+      FROM creature;
     `);
     console.log(rows)
       return rows;

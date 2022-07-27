@@ -9,7 +9,7 @@ export default function CreateProfile({setToken, setLoggedIn}){
     const navigate = useNavigate();
     async function CreateNewProfile(event){
         try{
-            const response = await fetch('/*ENTER A ROUTE HERE, DUMMY*/', {
+            const response = await fetch('http://localhost:4000/api/users/register', {
                 method: "POST",
                 headers: {
                   'Content-Type': 'application/json'

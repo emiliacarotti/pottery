@@ -17,6 +17,7 @@ import{
   Checkout,
   Create,
   Deal,
+  EditDelete,
   Error,
   Filters,
   Footer,
@@ -33,6 +34,7 @@ function MadDog() {
     const [token, setToken] = useState("");
     const [profile, setProfile] = useState([]);
     const [username, setUsername] = useState("");
+    const [isAdmin, setIsAdmin] = useState(""); //  NEEDS MORE DONE
     const navigate = useNavigate();
   
     useEffect(() => {
@@ -99,6 +101,7 @@ function MadDog() {
           <Route path="Checkout" element={<Checkout />}></Route>
           <Route path="Create" element={<Create />}></Route>
           <Route path="Deal" element={<Deal />}></Route>
+          <Route path="EditDelete" element={<EditDelete />}></Route>
           <Route path="*" element={<Error />}></Route>
           <Route path="Filters" element={<Filters />}></Route>
           <Route path="Footer" element={<Footer />}></Route>

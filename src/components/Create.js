@@ -3,15 +3,9 @@ import reactdomclient from "react-dom/client"
 import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
 
-export default function Creature({
-    creature,
-    setcreature,
-    loggedIn,
-    token,
-    username,
-    isAdmin,
-    
-  }) {
+export default function CreateCreature(){
+  const navigate = useNavigate()
+
     const [creatureid, setcreatureid] = useState("");
     const [name, setname] = useState("");
     const [price, setprice] = useState("");
@@ -23,26 +17,8 @@ export default function Creature({
     const [image, setimage] = useState("");
 
 
-    // useEffect GET AND SET CREATURES
-  useEffect(() => {
-    async function getCreature() {
-      const url = "";  //URL NEEDS TO BE COMPLETED
-      try {
-        const response = await fetch(`/*ENTER A ROUTE HERE, DUMMY*/`);
-        let data = await response.json();
-        data = data.reverse();
-        setcreature(data);
-      } catch (err) {
-        console.log("error in Creature");
-      }
-    }
-    getCreature();
-  }, [creature]);
-
-
-
     // async function CREATE A NEW CREATURE
-  async function newCreature() {
+  async function newCreature(creature) {
     try {
       const response = await fetch(`/*ENTER A ROUTE HERE, DUMMY*/`,
         {
@@ -52,23 +28,23 @@ export default function Creature({
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
           body: JSON.stringify({
-            creatureid: creatureid,
-            name: name,
-            price: price,
-            stock: stock,
-            environment: environment,
-            size: size,
-            food: food,
-            temper:temper,
-            image: image,
+            creatureid: creature.target[0].value,
+            name: creature.target[1].value,
+            price: creature.target[2].value,
+            stock: creature.target[3].value,
+            environment: creature.target[4].value,
+            size: creature.target[5].value,
+            food: creature.target[6].value,
+            temper: creature.target[7].value,
+            image: creature.target[8].value,
           }),
         }
       );
 
       let result = await response.json();
       if (result) {
-        console.log(result);
-        setcreature(creature);
+        alert("Your creature has been successfully created!")
+        navigate("/")
       } else {
         document.getElementById("createErrorMessage").innerHTML =
           result.error.message;
@@ -109,7 +85,7 @@ export default function Creature({
               type="text"
               value={name}
               onChange={(event) => {
-                setname(event.target.value);
+                setname(event.target[1].value);
               }}
             ></input>
 
@@ -120,7 +96,7 @@ export default function Creature({
               type="text"
               value={creatureid}
               onChange={(event) => {
-                setcreatureid(event.target.value);
+                setcreatureid(event.target[0].value);
               }}
             ></input>
 
@@ -132,7 +108,7 @@ export default function Creature({
               type="text"
               value={price}
               onChange={(event) => {
-                setprice(event.target.value);
+                setprice(event.target[2].value);
               }}
             ></input>
 
@@ -144,7 +120,7 @@ export default function Creature({
               type="text"
               value={stock}
               onChange={(event) => {
-                setstock(event.target.value);
+                setstock(event.target[3].value);
               }}
             ></input>
 
@@ -163,7 +139,7 @@ export default function Creature({
               type="submit"
               value={environment}
               onChange={(event) => {
-                setenvironment(event.target.value);
+                setenvironment(event.target[4].value);
               }}
             ></input>
 </select>
@@ -181,7 +157,7 @@ export default function Creature({
               type="submit"
               value={size}
               onChange={(event) => {
-                setsize(event.target.value);
+                setsize(event.target[5].value);
               }}
             ></input>
 </select>
@@ -198,7 +174,7 @@ export default function Creature({
               type="submit"
               value={food}
               onChange={(event) => {
-                setfood(event.target.value);
+                setfood(event.target[6].value);
               }}
             ></input>
 </select>
@@ -214,7 +190,7 @@ export default function Creature({
               type="submit"
               value={temper}
               onChange={(event) => {
-                settemper(event.target.value);
+                settemper(event.target[7].value);
               }}
             ></input>
 </select>
@@ -225,7 +201,7 @@ export default function Creature({
               type="file"
               value={image}
               onChange={(event) => {
-                setimage(event.target.value);
+                setimage(event.target[8].value);
               }}
             ></input>
 
