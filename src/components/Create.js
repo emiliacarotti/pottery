@@ -94,7 +94,7 @@ export default function Creature({
 
     return (<div className="center1">
     <>
-    <center><i class="fa fa-spaghetti-monster-flying"></i></center>
+    <center><h2><i class="fa fa-spaghetti-monster-flying"></i></h2></center>
     <br></br>{
         <form
           onSubmit={(event) => {
