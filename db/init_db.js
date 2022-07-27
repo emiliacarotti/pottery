@@ -193,6 +193,28 @@ async function createInitialCreatures() {
   }
 }
 
+async function createCartItems() {
+  console.log("Starting to create fake cart...")
+  try {
+    const cartToCreate = [
+      {
+        cartid: "1",
+        userid: "25",
+        creatureid: "1",
+        count: "land",
+        payment: "M"
+      },
+    ]
+    const users = await Promise.all(usersToCreate.map(user.createUser))
+
+    console.log("Cart created:")
+    console.log(users)
+    console.log("Finished creating inital users!")
+  } catch (error) {
+    console.error("Error creating initial users!"+error)
+  }
+}
+
 //REBUILD
 async function rebuildDB() {
   try {

@@ -2,6 +2,9 @@ const express = require("express");
 const creaturesRouter = express.Router();
 const { requireUser } = require("./utils");
 
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = process.env;
+
 const {
   getAllCreatures,
   createCreature,
@@ -20,7 +23,7 @@ creaturesRouter.use((req, res, next) => {
 creaturesRouter.get("/", async (req, res, next) => {
   try {
     const allCreatures = await getAllCreatures();
-
+    console.log("all creatures got")
     if (allCreatures) {
       res.send({
         allCreatures

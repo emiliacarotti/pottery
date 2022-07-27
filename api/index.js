@@ -56,9 +56,9 @@ apiRouter.use('/users', usersRouter);
 // const addressesRouter = require('./addresses');
 // apiRouter.use('/addresses', addressesRouter);
 
-// // ROUTER: /api/creatures
-// const creaturesRouter = require('./creatures');
-// apiRouter.use('/creatures', creaturesRouter);
+// ROUTER: /api/creatures
+const creaturesRouter = require('./creatures');
+apiRouter.use('/creatures', creaturesRouter);
 
 // // ROUTER: /api/cart
 // const cartRouter = require('./cart');
