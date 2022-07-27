@@ -236,7 +236,6 @@ rebuildDB()
   .finally(() => client.end());
 
 
-
   module.exports = {
     rebuildDB,
     dropTables,
