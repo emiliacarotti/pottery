@@ -58,12 +58,14 @@ function MadDog() {
     }
     return (
       <>
+      
         <Navbar loggedIn={loggedIn} Logout={Logout} />
         <br></br>
         <br></br>
         <div className='Header'>
         <center>Beast Bazzaar </center>
         </div>
+        <header/>
         <Routes>
           
           <Route
@@ -120,6 +122,7 @@ function MadDog() {
           
           
         </Routes>
+        <body/>
         <Footer />
       </>
     );
