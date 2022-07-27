@@ -154,7 +154,7 @@ async function createInitialCreatures() {
   try {
     const creaturesToCreate = [
       {
-        name: "626 Stitch",
+        name: "Stitch",
         price: "$5000 USD",
         stock: "1",
         environment: "land",
@@ -163,7 +163,7 @@ async function createInitialCreatures() {
         temper: "stubborn"
       },
       {
-        name: "150 Butter Robot",
+        name: "Butter Robot",
         price: "$750 USD",
         stock: "10",
         environment: "land",
@@ -172,7 +172,7 @@ async function createInitialCreatures() {
         temper: "compliant"
       },
       {
-        name: "123 Mogwai",
+        name: "Mogwai",
         price: "$1000 USD",
         stock: "999",
         environment: "land",
@@ -193,6 +193,47 @@ async function createInitialCreatures() {
   }
 }
 
+
+async function createInitialOrderHistory() {
+  console.log("Loading Order History...")
+  try {
+    const orderHistoryToCreate = [
+      {
+        historyid: "1",
+        creatureid: "1",
+        price: "$5000",
+        count: "1",
+        status: "not delievered, creature escaped packaging",
+        date: "07/01/2022",
+      },
+      {
+        historyid: "2",
+        creatureid: "2",
+        price: "$750",
+        count: "1",
+        status: "delivered",
+        date: "07/02/2022",
+      },
+      {
+        historyid: "3",
+        creatureid: "3",
+        price: "$1000",
+        count: "1",
+        status: "delivered",
+        date: "07/03/2022",
+      },
+    ]
+    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createOrderHistory))
+
+    console.log("Order History created:")
+    console.log(orderHistory)
+
+    console.log("Finished creating order history!")
+  } catch (error) {
+    console.error("Error creating order history!")
+    throw error
+
+
 async function createCartItems() {
   console.log("Starting to create fake cart...")
   try {
@@ -212,6 +253,7 @@ async function createCartItems() {
     console.log("Finished creating inital users!")
   } catch (error) {
     console.error("Error creating initial users!"+error)
+
   }
 }
 
@@ -223,6 +265,7 @@ async function rebuildDB() {
     await createInitialUsers()
     await createInitialAddress()
     await createInitialCreatures()
+    await createInitialOrderHistory()
 
   } catch (error) {
     console.log("Error during rebuildDB")
