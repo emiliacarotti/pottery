@@ -9,6 +9,7 @@ export { default as Filters } from './Filters';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as Home } from './Home';
+export { default as EditDelete } from './EditDelete';
 export { default as Login } from './Login';
 export { default as MyProfile } from './MyProfile';
 export { default as Navbar } from './Navbar';
