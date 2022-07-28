@@ -47,9 +47,10 @@ export default function CreateProfile({setToken, setLoggedIn}){
     }
 
    
-    return ( <div className="center">
-      
+    return (<div className="center">
+    
         <>
+        
             <h2> Create a new account!</h2>
             <form onSubmit={(event)=>{
                 event.preventDefault()

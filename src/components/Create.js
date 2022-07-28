@@ -61,7 +61,9 @@ export default function CreateCreature(){
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+
           Authorization: `Bearer ${token}`,  //IS TOKEN WORKING PROPERLY???
+
         },
       });
     } catch (err) {}
