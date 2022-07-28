@@ -9,6 +9,9 @@ export default function CreateProfile({setToken, setLoggedIn}){
     const navigate = useNavigate();
     async function CreateNewProfile(event){
         try{
+            if(event.target[1].value.length < 8){
+              throw "password must be at least 8 characters"  
+            }
             const response = await fetch('http://localhost:4000/api/users/register', {
                 method: "POST",
                 headers: {
@@ -16,13 +19,14 @@ export default function CreateProfile({setToken, setLoggedIn}){
                 },
                 body: JSON.stringify({
                     username: event.target[0].value,
-                    password: event.target[1].value
+                    password: event.target[1].value,
+                    isAdmin: 0
                 })
               })
               let result = await response.json()
               console.log(result)
 
-              if(result.user){
+              if(result.userid){
                 setToken(result.token)
                 setLoggedIn(true)
                 localStorage.setItem("token", result.token)
@@ -37,6 +41,7 @@ export default function CreateProfile({setToken, setLoggedIn}){
                 }
               }
         }catch(err){
+            document.getElementById("createErrorMessage").innerHTML = "Registration Failed!! " + err
             console.log("Registration Failed!! " + err)
         }
     }

@@ -35,7 +35,7 @@ function MadDog() {
     const [token, setToken] = useState("");
     const [profile, setProfile] = useState([]);
     const [username, setUsername] = useState("");
-    const [isAdmin, setIsAdmin] = useState(""); //  NEEDS MORE DONE
+    const [isAdmin, setIsAdmin] = useState(false); 
     const navigate = useNavigate();
   
     useEffect(() => {
@@ -77,6 +77,7 @@ function MadDog() {
                 token={token}
                 setToken={setToken}
                 setLoggedIn={setLoggedIn}
+                setIsAdmin={setIsAdmin}
               />
             }
           ></Route>

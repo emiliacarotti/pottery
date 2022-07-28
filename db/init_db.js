@@ -4,7 +4,9 @@
 const client  = require("./client");
 const { user,
         address,
-        creature    
+        creature,
+        history
+        //cart    
 } = require('./');    
 
  // drop tables in correct order
@@ -48,7 +50,8 @@ async function createTables() {
           CREATE TABLE users (
             userid SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
+            password VARCHAR(255) NOT NULL,
+            isAdmin INTEGER DEFAULT 0
           );
           CREATE TABLE creature (
             creatureid SERIAL PRIMARY KEY,
@@ -70,8 +73,8 @@ async function createTables() {
           CREATE TABLE history (
             historyid SERIAL PRIMARY KEY,
             creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
-            price VARCHAR(255) NOT NULL,
-            count VARCHAR(255) NOT NULL,
+            price INTEGER NOT NULL,
+            count INTEGER NOT NULL,
             status VARCHAR(255) NOT NULL,
             date VARCHAR(255) NOT NULL
           );
@@ -88,9 +91,10 @@ async function createInitialUsers() {
   console.log("Starting to create users...")
   try {
     const usersToCreate = [
-      { username: "moby", password: "mobymoby" },
-      { username: "squanchie", password: "jerryisdumb" },
-      { username: "docbrown", password: "backtothefuture" }
+      { username: "admin", password: "admin", isAdmin: 1 },
+      { username: "moby", password: "mobymoby", isAdmin: 0 },
+      { username: "squanchie", password: "jerryisdumb", isAdmin: 0 },
+      { username: "docbrown", password: "backtothefuture", isAdmin: 0 }
     ]
     const users = await Promise.all(usersToCreate.map(user.createUser))
 
@@ -154,7 +158,7 @@ async function createInitialCreatures() {
   try {
     const creaturesToCreate = [
       {
-        name: "626 Stitch",
+        name: "Stitch",
         price: "$5000 USD",
         stock: "1",
         environment: "land",
@@ -163,7 +167,7 @@ async function createInitialCreatures() {
         temper: "stubborn"
       },
       {
-        name: "150 Butter Robot",
+        name: "Butter Robot",
         price: "$750 USD",
         stock: "10",
         environment: "land",
@@ -172,7 +176,7 @@ async function createInitialCreatures() {
         temper: "compliant"
       },
       {
-        name: "123 Mogwai",
+        name: "Mogwai",
         price: "$1000 USD",
         stock: "999",
         environment: "land",
@@ -193,6 +197,49 @@ async function createInitialCreatures() {
   }
 }
 
+async function createInitialOrderHistory() {
+  console.log("Loading Order History...")
+  try {
+    const orderHistoryToCreate = [
+      {
+        historyid: "1",
+        creatureid: "1",
+        price: "5000",
+        count: "1",
+        status: "not delievered, creature escaped packaging",
+        date: "07/01/2022",
+      },
+      {
+        historyid: "2",
+        creatureid: "2",
+        price: "750",
+        count: "1",
+        status: "delivered",
+        date: "07/02/2022",
+      },
+      {
+        historyid: "3",
+        creatureid: "3",
+        price: "1000",
+        count: "1",
+        status: "delivered",
+        date: "07/03/2022",
+      },
+    ]
+    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createOrderHistory))
+    
+    console.log("Order History created:")
+    console.log(orderHistory)
+
+    console.log("Finished creating order history!")
+  } catch (error) {
+    console.error("Error creating order history!")
+    throw error
+
+  }
+}
+
+
 async function createCartItems() {
   console.log("Starting to create fake cart...")
   try {
@@ -212,6 +259,7 @@ async function createCartItems() {
     console.log("Finished creating inital users!")
   } catch (error) {
     console.error("Error creating initial users!"+error)
+
   }
 }
 
@@ -223,6 +271,7 @@ async function rebuildDB() {
     await createInitialUsers()
     await createInitialAddress()
     await createInitialCreatures()
+    await createInitialOrderHistory()
 
   } catch (error) {
     console.log("Error during rebuildDB")
@@ -234,7 +283,6 @@ rebuildDB()
 //client.connect()
   .catch(console.error)
   .finally(() => client.end());
-
 
 
   module.exports = {

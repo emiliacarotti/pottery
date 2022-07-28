@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import reactdomclient from "react-dom/client"
-import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
+import { token, BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
 
 export default function CreateCreature(){
@@ -55,13 +55,15 @@ export default function CreateCreature(){
   }
 
   // async function DELETE A CREATURE
-  async function deleteCreature(creatureid) {
+  async function deleteCreature(creatureid, token) {
     try {
       const response = await fetch(`/*ENTER A ROUTE HERE, DUMMY*/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${token}`,
+
+          Authorization: `Bearer ${token}`,  //IS TOKEN WORKING PROPERLY???
+
         },
       });
     } catch (err) {}

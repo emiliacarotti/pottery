@@ -28,7 +28,6 @@ async function createCreature({name, price, stock, environment, size, food, temp
     }
 }
 
-
 module.exports = {
     // add database adapter functions here
     getAllCreatures,

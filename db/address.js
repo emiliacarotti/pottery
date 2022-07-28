@@ -12,6 +12,7 @@ async function getAddresses() {
       console.error("Error getting addresses!"+error);
     }
 }
+
 async function createAddresses({firstname, lastname, street, city, state, zip, payment, currency}) {
   try {
       const { rows } = await client.query(`

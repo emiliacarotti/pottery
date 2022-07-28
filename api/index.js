@@ -53,8 +53,8 @@ const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
 
 // // ROUTER: /api/address
-// const addressesRouter = require('./addresses');
-// apiRouter.use('/addresses', addressesRouter);
+const addressesRouter = require('./addresses');
+apiRouter.use('/addresses', addressesRouter);
 
 // ROUTER: /api/creatures
 const creaturesRouter = require('./creatures');
@@ -64,9 +64,9 @@ apiRouter.use('/creatures', creaturesRouter);
 // const cartRouter = require('./cart');
 // apiRouter.use('/cart', cartRouter);
 
-// // ROUTER: /api/history
-// const historyRouter = require('./history');
-// apiRouter.use('/history', historyRouter);
+// ROUTER: /api/history
+const historyRouter = require('./history');
+apiRouter.use('/history', historyRouter);
 
 //ROUTER: ERROR
 apiRouter.use((error, req, res, next) => {
@@ -82,7 +82,6 @@ apiRouter.get('*', (req, res)=> {
         message: "Error, page not found!"
       });
 });
-
 
 
 module.exports = apiRouter;

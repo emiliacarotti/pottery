@@ -73,4 +73,3 @@ creaturesRouter.post('/', async (req, res, next) => {
 })
 
 module.exports = creaturesRouter;
-
