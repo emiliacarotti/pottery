@@ -32,8 +32,22 @@ console.error("Error creating user history!");
 }
 
 
+async function createOrderHistory({creatureid, price, count, status, date}) {
+  try {
+      const { rows } = await client.query(`
+      INSERT INTO history(creatureid, price, count, status, date)
+      VALUES($1,$2,$3,$4,$5)
+      RETURNING *;
+    `, [creatureid, price, count, status, date]);
+    console.log(rows)
+      return rows;
+  } catch (error) {
+    console.error("Error creating address!"+error);
+  }
+}
+
 module.exports = {
     // add database adapter functions here
     getUserHistory,
-    createUserHistory
+    createOrderHistory
   };

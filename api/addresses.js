@@ -25,7 +25,7 @@ addressesRouter.get("/",async (req, res, next) => {
     }
 });
 //CREATE ADDRESS    
-usersRouter.get("/",async (req, res, next) => {
+addressesRouter.get("/",async (req, res, next) => {
     try{
     const addresscreate = await createAddresses(addressid);
     res.send(addresscreate);

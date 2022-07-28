@@ -5,7 +5,8 @@ const client  = require("./client");
 const { user,
         address,
         creature,
-        history    
+        history
+        //cart    
 } = require('./');    
 
  // drop tables in correct order
@@ -196,7 +197,6 @@ async function createInitialCreatures() {
   }
 }
 
-
 async function createInitialOrderHistory() {
   console.log("Loading Order History...")
   try {
@@ -226,8 +226,8 @@ async function createInitialOrderHistory() {
         date: "07/03/2022",
       },
     ]
-    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createUserHistory))
-
+    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createOrderHistory))
+    
     console.log("Order History created:")
     console.log(orderHistory)
 
