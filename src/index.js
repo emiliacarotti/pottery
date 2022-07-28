@@ -65,7 +65,7 @@ function MadDog() {
         <div className='Header'>
         <center>Beast Bazzaar </center>
         </div>
-        <header/>
+        
         <Routes>
           
           <Route
@@ -122,7 +122,10 @@ function MadDog() {
           
           
         </Routes>
+        
+        
         <body/>
+
         <Footer />
       </>
     );
