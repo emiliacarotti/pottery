@@ -15,8 +15,25 @@ async function getUserHistory() {
       console.error("Error getting user!");
     }
 }
+//CreateOrderHistory 
+async function createUserHistory({ historyid, creatureid, price, count, status, date }) {
+  console.log("create user history", historyid, creatureid, price, count, status, date )
+  try {
+    const { rows: [user] } = await client.query(`
+      INSERT INTO history(historyid, creatureid, price, count, status, date) 
+      VALUES($1, $2, $3, $4, $5, $6) 
+      ON CONFLICT (historyid) DO NOTHING 
+      RETURNING *;
+    `, [historyid, creatureid, price, count, status, date ]);
+    return user;
+} catch (error) {
+console.error("Error creating user history!");
+}
+}
+
 
 module.exports = {
     // add database adapter functions here
-    getUserHistory
+    getUserHistory,
+    createUserHistory
   };

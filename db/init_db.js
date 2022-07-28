@@ -4,7 +4,8 @@
 const client  = require("./client");
 const { user,
         address,
-        creature    
+        creature,
+        history    
 } = require('./');    
 
  // drop tables in correct order
@@ -48,7 +49,8 @@ async function createTables() {
           CREATE TABLE users (
             userid SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
+            password VARCHAR(255) NOT NULL,
+            isAdmin INTEGER DEFAULT 0
           );
           CREATE TABLE creature (
             creatureid SERIAL PRIMARY KEY,
@@ -70,8 +72,8 @@ async function createTables() {
           CREATE TABLE history (
             historyid SERIAL PRIMARY KEY,
             creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
-            price VARCHAR(255) NOT NULL,
-            count VARCHAR(255) NOT NULL,
+            price INTEGER NOT NULL,
+            count INTEGER NOT NULL,
             status VARCHAR(255) NOT NULL,
             date VARCHAR(255) NOT NULL
           );
@@ -88,9 +90,10 @@ async function createInitialUsers() {
   console.log("Starting to create users...")
   try {
     const usersToCreate = [
-      { username: "moby", password: "mobymoby" },
-      { username: "squanchie", password: "jerryisdumb" },
-      { username: "docbrown", password: "backtothefuture" }
+      { username: "admin", password: "admin", isAdmin: 1 },
+      { username: "moby", password: "mobymoby", isAdmin: 0 },
+      { username: "squanchie", password: "jerryisdumb", isAdmin: 0 },
+      { username: "docbrown", password: "backtothefuture", isAdmin: 0 }
     ]
     const users = await Promise.all(usersToCreate.map(user.createUser))
 
@@ -201,7 +204,7 @@ async function createInitialOrderHistory() {
       {
         historyid: "1",
         creatureid: "1",
-        price: "$5000",
+        price: "5000",
         count: "1",
         status: "not delievered, creature escaped packaging",
         date: "07/01/2022",
@@ -209,7 +212,7 @@ async function createInitialOrderHistory() {
       {
         historyid: "2",
         creatureid: "2",
-        price: "$750",
+        price: "750",
         count: "1",
         status: "delivered",
         date: "07/02/2022",
@@ -217,13 +220,13 @@ async function createInitialOrderHistory() {
       {
         historyid: "3",
         creatureid: "3",
-        price: "$1000",
+        price: "1000",
         count: "1",
         status: "delivered",
         date: "07/03/2022",
       },
     ]
-    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createOrderHistory))
+    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createUserHistory))
 
     console.log("Order History created:")
     console.log(orderHistory)
