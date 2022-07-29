@@ -41,7 +41,9 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
                 <br></br><br></br><br></br>
                 <div key={creature.creatureid}>
                     <img src={imgURL + creature.creatureid + ".png"} width="100" height="100"></img>
-                    <div>{creature.name}</div>
+                    {
+                    isAdmin?<li><a href="./EditDelete"> {creature.name} </a></li> : <li><a href="./SingleItem"> {creature.name} </a></li>
+                    }
                     <div>{creature.price}</div> 
                 </div>
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import logo from "../images/critter.png";
-export default function Navbar({loggedIn, Logout}){
+export default function Navbar({loggedIn, Logout, isAdmin, setIsAdmin}){
     return (
         <div className="navbar">
             <a href="/"><img className="logo" src={logo} width= "230px"/>
@@ -17,7 +17,7 @@ export default function Navbar({loggedIn, Logout}){
                 <ul class="pt-5">
                 <li><a href="/"> Home </a></li>
                 {
-                <li><a href="./Create"> Create New Item </a></li>//this needs to be a boolean, available to Admins ONLY
+                isAdmin?<li><a href="./Create"> Create New Creature Listing </a></li> : null
                 }
                 {
                 !loggedIn?<li><a href="./Login"> Login </a></li> : <li><a> <button onClick={Logout}> Logout</button> </a></li>

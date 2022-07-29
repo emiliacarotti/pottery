@@ -61,7 +61,12 @@ function MadDog() {
     return (
       <>
       
-        <Navbar loggedIn={loggedIn} Logout={Logout} />
+        <Navbar 
+          loggedIn={loggedIn} 
+          Logout={Logout} 
+          isAdmin={isAdmin}
+          setIsAdmin={setIsAdmin}
+        />
         <br></br>
         <br></br>
         <div className='Header'>
