@@ -4,7 +4,7 @@ import logo from "../images/critter.png";
 export default function Navbar({loggedIn, Logout}){
     return (
         <div className="navbar">
-            <a href="/"><img className="logo" src={logo} width= "250px"/>
+            <a href="/"><img className="logo" src={logo} width= "230px"/>
             </a>
             
         

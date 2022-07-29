@@ -251,11 +251,15 @@ body{
 
 
 .Header {
+  box-sizing: border-box;
+  padding-top: 35px;
   font-size: 70px;
-  position: absolute; top: 0; left:0;right:0;
+  position: fixed; top: 0; left:0;right:0;
   color: white;
   font-family: Rock Salt;
   background-image: url(https://duyviswienerbrazil.com/wp-content/uploads/2015/11/Background-header-services.jpg);
+  height: 170px;
+  z-index: 2;
 }
 /* =================== end of navbar ====================*/
 
@@ -271,6 +275,8 @@ body{
   border-radius: 10px;
   border: 1px solid silver;
   padding: 20px;
+  margin-top: 15px;
+  z-index: 1;
 }
 .center h2{
   text-align: center;
@@ -359,7 +365,7 @@ form .txt_field {
 .about-1 {
   margin: 0px;
   padding: 5px;
-  padding-top: 15px;
+  padding-top: 85px;
 }
 .about-1 h3{
   text-align: center;
@@ -492,13 +498,17 @@ hr {
   border-radius: 10px;
   border: 1px solid silver;
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 120px;
   padding-bottom: 20px;
+
+  
 }
 .center1 h2 {
   text-align: center;
   border-bottom: 1px solid silver;
-  font-size: 40px;
+  font-size: 25px;
+  margin-top: 0px;
+
 }
 .center1 form {
   padding: 0 40px;
@@ -533,10 +543,9 @@ hr {
   padding: 0;
   box-sizing: border-box;
   font-weight: 400;
-  /* background-color: #cbcbc2; */
   background-color: white;
   color: #1f2029;
-  position: fixed; bottom:0;left:0;right:0;
+  position: relative; bottom:0;left:0;right:0;
 }
 .footer {
   padding: 20px 0;

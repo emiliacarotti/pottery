@@ -16,14 +16,15 @@ async function getUserCart() {
       console.error("Error getting cart!");
     }
 }
-
-async function createCart() {
+//CREATE 
+async function createCart({cartid, userid, creatureid, count, payment}) {
+  console.log("create CART",cartid, userid, creatureid, count, payment)
   try {
-      const { rows } = await client.query(`
-      SELECT cartid, userid, creatureid, count, payment
-      FROM cart;
-      WHERE cartid=${cartid}
-    `);
+  const { rows } = await client.query(`
+      INSERT INTO cart(userid, creatureid, count, payment)
+      VALUES($1, $2, $3, $4)
+      RETURNING *;
+    `, [userid, creatureid, count, payment ]);
     console.log(rows)
       return rows;
   } catch (error) {
