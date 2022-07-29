@@ -60,9 +60,9 @@ apiRouter.use('/addresses', addressesRouter);
 const creaturesRouter = require('./creatures');
 apiRouter.use('/creatures', creaturesRouter);
 
-// // ROUTER: /api/cart
-// const cartRouter = require('./cart');
-// apiRouter.use('/cart', cartRouter);
+// ROUTER: /api/cart
+const cartRouter = require('./cart');
+apiRouter.use('/cart', cartRouter);
 
 // ROUTER: /api/history
 const historyRouter = require('./history');

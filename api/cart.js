@@ -1,6 +1,5 @@
 const express = require('express');
 const cartRouter = express.Router();
-
 const { requireUser } = require('./utils');
 
 const { 
@@ -8,23 +7,28 @@ const {
     createCart
   } = require('../db/cart');
 
+  cartRouter.use((req, res, next) => {
+    console.log(req.body);
+    
+    next();
+    });
 
 // GET /api/cart
-cartRouter.get("/", requireUser, async (req, res, next)=>{
+cartRouter.get("/", async (req, res, next)=>{
     try {
-        const userCart = await getUserCart(uesrname);
+        const userCart = await getUserCart();
         res.send(userCart);
-    } catch ({name, message}) {
-        next ({name, message});
+    }catch(error){
+        console.error(error)
     }
 });
 
-cartRouter.get("/", requireUser, async (req, res, next)=>{
+cartRouter.get("/", async (req, res, next)=>{
     try {
-        const createCart = await createCart(cartid);
-        res.send(createCart);
-    } catch ({name, message}) {
-        next ({name, message});
+        const createACart = await createCart(cartid);
+        res.send(createACart);
+    }catch(error){
+        console.error(error)
     }
 });
 module.exports = cartRouter;

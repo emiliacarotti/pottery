@@ -5,8 +5,8 @@ const client  = require("./client");
 const { user,
         address,
         creature,
-        history
-        //cart    
+        history,
+        cart    
 } = require('./');    
 
  // drop tables in correct order
@@ -67,7 +67,7 @@ async function createTables() {
             cartid SERIAL PRIMARY KEY,
             userid INTEGER REFERENCES users(userid) NOT NULL,
             creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
-            count VARCHAR(255) NOT NULL,
+            count INTEGER,
             payment VARCHAR(255) NOT NULL
           );
           CREATE TABLE history (
@@ -205,7 +205,7 @@ async function createInitialOrderHistory() {
         historyid: "1",
         creatureid: "1",
         price: "5000",
-        count: "1",
+        count: 1,
         status: "not delievered, creature escaped packaging",
         date: "07/01/2022",
       },
@@ -213,7 +213,7 @@ async function createInitialOrderHistory() {
         historyid: "2",
         creatureid: "2",
         price: "750",
-        count: "1",
+        count: 1,
         status: "delivered",
         date: "07/02/2022",
       },
@@ -221,7 +221,7 @@ async function createInitialOrderHistory() {
         historyid: "3",
         creatureid: "3",
         price: "1000",
-        count: "1",
+        count: 2,
         status: "delivered",
         date: "07/03/2022",
       },
@@ -240,25 +240,39 @@ async function createInitialOrderHistory() {
 }
 
 
-async function createCartItems() {
-  console.log("Starting to create fake cart...")
+async function createInitialCart() {
+  console.log("Starting to create cart...")
   try {
     const cartToCreate = [
       {
         cartid: "1",
-        userid: "25",
-        creatureid: "1",
-        count: "land",
-        payment: "M"
+        userid: 1,
+        creatureid: 3,
+        count: 5,
+        payment: "USD"
       },
+      {
+        cartid: "2",
+        userid: 2,
+        creatureid: 2,
+        count: 20,
+        payment: "USD"
+      },
+      {
+        cartid: "3",
+        userid: 3,
+        creatureid: 1,
+        count: 1,
+        payment: "USD"
+      }
     ]
-    const users = await Promise.all(usersToCreate.map(user.createUser))
+    const cartItems = await Promise.all(cartToCreate.map(cart.createCart))
 
     console.log("Cart created:")
-    console.log(users)
-    console.log("Finished creating inital users!")
+    console.log(cartItems)
+    console.log("Finished creating inital cart!")
   } catch (error) {
-    console.error("Error creating initial users!"+error)
+    console.error("Error creating initial cart!"+error)
 
   }
 }
@@ -272,6 +286,7 @@ async function rebuildDB() {
     await createInitialAddress()
     await createInitialCreatures()
     await createInitialOrderHistory()
+    await createInitialCart()
 
   } catch (error) {
     console.log("Error during rebuildDB")
