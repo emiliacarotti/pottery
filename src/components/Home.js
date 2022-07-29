@@ -4,6 +4,7 @@ import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "reac
 
 
 export default function Home({creatures, setCreatures, selectedCreature, setSelectedCreature, isAdmin, setIsAdmin}){
+    let imgURL = "/creature"
     
     useEffect(()=>{
         async function getCreatures(){
@@ -32,20 +33,25 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
     
     return ( 
         <>
-           {/* <div>
-      {creatures.map((creatures) => {
-        return (
-          <div key={creatures.creatureid}>
-            <div>{creatures.name}</div>
-            <div>{creatures.price}</div> 
-            </div> */}
+
+        {
+        creatures.map((creature) => {
+            return (
+                <>
+                <br></br><br></br><br></br>
+                <div key={creature.creatureid}>
+                    <img src={imgURL + creature.creatureid + ".png"} width="100" height="100"></img>
+                    <div>{creature.name}</div>
+                    <div>{creature.price}</div> 
+                </div>
+
+                {/* Image - name creature1.png and dynamically generate the string for the image url */}
+                </>
+            )
+            })
+        }
         </>
     )
-
-
-    
-        
-
 }
 
 
