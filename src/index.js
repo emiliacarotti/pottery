@@ -35,7 +35,9 @@ function MadDog() {
     const [token, setToken] = useState("");
     const [profile, setProfile] = useState([]);
     const [username, setUsername] = useState("");
-    const [isAdmin, setIsAdmin] = useState(false); 
+    const [isAdmin, setIsAdmin] = useState(false);  
+    const [creatures, setCreatures] = useState([]);
+    const [selectedCreature, setSelectedCreature] = useState({})
     const navigate = useNavigate();
   
     useEffect(() => {
@@ -93,7 +95,16 @@ function MadDog() {
           ></Route>
           <Route
             path="/"
-            element={<Home profile={profile} setProfile={setProfile} />}
+            element={
+              <Home 
+                creatures={creatures} 
+                setCreatures={setCreatures} 
+                isAdmin={isAdmin}
+                setIsAdmin={setIsAdmin}
+                selectedCreature={selectedCreature}
+                setSelectedCreature={setSelectedCreature}
+              />
+            }
           ></Route>
 
 
