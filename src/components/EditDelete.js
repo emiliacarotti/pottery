@@ -163,7 +163,7 @@ return (
           <div>Temperment:{creatures.temper}</div>
       </div>
 
-      {/*EDIT CREATURE */}/*
+      /*{EDIT CREATURE }
       <form id={`editCreature${creatureid}`} className="editCreatureForm" onSubmit={async (event) => {
           event.preventDefault();
           const result = await editCreature(token, isAdmin, creatureName, creaturePrice, creatureStock, creatureEnvironment, creatureSize, creatureFood,creatureTemper);
