@@ -30,7 +30,7 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         getCreatures()
     },[])
 
-    
+
     return ( 
         <>
 
@@ -39,16 +39,20 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
             return (
                 <>
                 <br></br><br></br><br></br>
+                <div className="creaturegallery">
                 <div key={creature.creatureid}>
-                    <img src={imgURL + creature.creatureid + ".png"} width="100" height="100"></img>
+                    <img className="creatures" src={imgURL + creature.creatureid + ".png"} width="370" height="370"></img>
                     {
-                    isAdmin?<li><a href="./EditDelete"> {creature.name} </a></li> : <li><a href="./SingleItem"> {creature.name} </a></li>
+                    isAdmin?<button className=".inputMOTM2"> <a href="./EditDelete"> Delete </a></button> : <button className="inputMOTM"> <a href="./SingleItem"> Find More Info </a></button>
                     }
-                    <div>{creature.price}</div> 
+                    <div><h3>{creature.name}</h3></div>
+                    <div className="cPrice"><h6>{creature.price}</h6></div> 
                 </div>
 
                 {/* Image - name creature1.png and dynamically generate the string for the image url */}
+                </div>
                 </>
+                
             )
             })
         }

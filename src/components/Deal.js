@@ -11,8 +11,8 @@ function Deal(){
             <div className="content">
                 <img className="MOTM" src={butterbot}/>
                 <h3>Butter Bot</h3>
-                <p>Butter Bot is a robot designed by Rick Sanchez from Earth C-137.It's primary purpose is to pass the butter.</p>
-                <h6>$599.95</h6>
+                <p>Butter Bot is a robot designed by Rick Sanchez from Earth C-137. It's primary purpose is to pass the butter.</p>
+                <h6>$749.99</h6>
             <ul>
                 <li><i class="fa fa-star checked"></i></li>
                 <li><i class="fa fa-star checked"></i></li>
@@ -20,7 +20,7 @@ function Deal(){
                 <li><i class="fa fa-star checked"></i></li>
                 <li><i class="fa fa-star-half"></i></li>
             </ul>
-            <button className="inputMOTM">Buy Now <i class='fa fa-cart-shopping'></i></button>
+            <button className="inputMOTM"> <a href="./Cart"> Buy Now <i class='fa fa-cart-shopping'></i></a></button>
         </div>
         </div>
     </div>)
