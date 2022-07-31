@@ -25,9 +25,9 @@ creaturesRouter.get("/", async (req, res, next) => {
     const allCreatures = await getAllCreatures();
     console.log("all creatures got")
     if (allCreatures) {
-      res.send({
+      res.send(
         allCreatures
-      })
+      )
     }else{
       res.send({
         message: "Error getting creatures."
@@ -40,7 +40,7 @@ creaturesRouter.get("/", async (req, res, next) => {
 
 
 // create a creature
-creaturesRouter.post('/', async (req, res, next) => {
+creaturesRouter.post('/create', async (req, res, next) => {
   try {
     if(req.user.admin){ //user is an admin, idk if this is right
 

@@ -35,7 +35,7 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         <>
 
         {
-        creatures.map((creature) => {
+        creatures?.map((creature) => {
             return (
                 <>
                 <br></br><br></br><br></br>

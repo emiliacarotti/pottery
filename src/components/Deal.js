@@ -14,13 +14,13 @@ function Deal(){
                 <p>Butter Bot is a robot designed by Rick Sanchez from Earth C-137.It's primary purpose is to pass the butter.</p>
                 <h6>$599.95</h6>
             <ul>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star-half"></i></li>
+                <li><i className="fa fa-star checked"></i></li>
+                <li><i className="fa fa-star checked"></i></li>
+                <li><i className="fa fa-star checked"></i></li>
+                <li><i className="fa fa-star checked"></i></li>
+                <li><i className="fa fa-star-half"></i></li>
             </ul>
-            <button className="inputMOTM">Buy Now <i class='fa fa-cart-shopping'></i></button>
+            <button className="inputMOTM">Buy Now <i className='fa fa-cart-shopping'></i></button>
         </div>
         </div>
     </div>)

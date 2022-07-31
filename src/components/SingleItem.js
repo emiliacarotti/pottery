@@ -8,7 +8,6 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
     let imgURL = "/creature"
     const navigate = useNavigate();
 
-
     useEffect(() => {
         async function getCreaturebyId() {
             //console.log('creatureid', creatureid)
@@ -81,9 +80,9 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
-                <button href="./Cart" class="submit" type="submit">Add to Cart</button>
+                <button href="./Cart" className="submit" type="submit">Add to Cart</button>
                 <br></br>
-                <div id="createErrorMessage" class="errors"></div>
+                <div id="createErrorMessage" className="errors"></div>
                 <br></br>
                 </form>
         </>

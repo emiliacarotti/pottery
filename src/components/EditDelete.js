@@ -120,7 +120,7 @@ return (
                 <input type="file" defaultValue={selectedCreature.image}></input>
                 <button type="submit">Update Creature</button>
                 <br></br>
-                <div id="createErrorMessage" class="errors"></div>
+                <div id="createErrorMessage" className="errors"></div>
                 <br></br>
             </form> 
 
@@ -140,7 +140,7 @@ return (
                 <div key={selectedCreature.image}></div>
                 <button type="submit">Delete Creature</button>
                 <br></br>
-                <div id="createErrorMessage" class="errors"></div>
+                <div id="createErrorMessage" className="errors"></div>
                 <br></br>
             </form> */}
 

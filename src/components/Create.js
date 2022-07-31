@@ -72,7 +72,7 @@ export default function CreateCreature(){
 
     return (<div className="center1">
     <>
-    <center><h2><i class="fa fa-spaghetti-monster-flying"></i></h2></center>
+    <center><h2><i className="fa fa-spaghetti-monster-flying"></i></h2></center>
     <br></br>{
         <form
           onSubmit={(event) => {

@@ -14,7 +14,7 @@ async function getAllCreatures() {
   }
 }
 
-async function createCreature({name, price, stock, environment, size, food, temper}) {
+async function createCreature({ name, price, stock, environment, size, food, temper}) {
     try {
         const { rows } = await client.query(`
         INSERT INTO creature(name, price, stock, environment, size, food, temper)
