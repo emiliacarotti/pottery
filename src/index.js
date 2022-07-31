@@ -154,9 +154,6 @@ function MadDog() {
           
           
         </Routes>
-        
-        
-        <body/>
 
         <Footer />
       </>

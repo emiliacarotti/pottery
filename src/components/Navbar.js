@@ -10,7 +10,7 @@ export default function Navbar({loggedIn, Logout, isAdmin, setIsAdmin}){
         
 
   	    <input className="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
-  	    <label for="menu-icon"></label>
+  	    <label htmlFor="menu-icon"></label>
 
   	    <nav className="nav"> 	
             <>
