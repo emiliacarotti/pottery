@@ -16,7 +16,9 @@ async function dropTables() {
     console.log("Drop tables...");
    
     await client.query(`
+        DROP TABLE IF EXISTS history_items;
         DROP TABLE IF EXISTS history;
+        DROP TABLE IF EXISTS cart_items;
         DROP TABLE IF EXISTS cart;
         DROP TABLE IF EXISTS creature;
         DROP TABLE IF EXISTS users;
@@ -72,7 +74,7 @@ async function createTables() {
             cartid INTEGER REFERENCES cart(cartid) NOT NULL,
             creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
             count INTEGER NOT NULL
-          )
+          );
           CREATE TABLE history (
             historyid SERIAL PRIMARY KEY,
             price INTEGER NOT NULL,
@@ -84,7 +86,7 @@ async function createTables() {
             historyid INTEGER REFERENCES history(historyid) NOT NULL,
             creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
             count INTEGER NOT NULL
-          )
+          );
       `);
 
           console.log("Tables created successfully!");
@@ -210,7 +212,6 @@ async function createInitialOrderHistory() {
     const orderHistoryToCreate = [
       {
         historyid: 1,
-        creatureid: 1,
         price: "5000",
         count: 1,
         status: "not delievered, creature escaped packaging",
@@ -218,7 +219,6 @@ async function createInitialOrderHistory() {
       },
       {
         historyid: 2,
-        creatureid: 2,
         price: "750",
         count: 1,
         status: "delivered",
@@ -226,7 +226,6 @@ async function createInitialOrderHistory() {
       },
       {
         historyid: 3,
-        creatureid: 3,
         price: "1000",
         count: 2,
         status: "delivered",
@@ -298,7 +297,7 @@ async function createInitialCartItems() {
         count: 2
       }
     ]
-    const cartItemsContent = await Promise.all(cartItemsToCreate.map(cartItems.createCartItems))
+    const cartItemsContent = await Promise.all(cartItemsToCreate.map(cart.createCartItems))
 
     console.log("Cart items created:")
     console.log(cartItemsContent)

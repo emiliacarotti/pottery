@@ -6,7 +6,7 @@ const client = require('./client');
 async function getUserHistory() {
     try {
         const { rows } = await client.query(`
-        SELECT historyid, creatureid, price, count, status, date
+        SELECT historyid, price, count, status, date
         FROM history;
       `);
       console.log(rows)
@@ -16,15 +16,15 @@ async function getUserHistory() {
     }
 }
 //CreateOrderHistory 
-async function createUserHistory({ historyid, creatureid, price, count, status, date }) {
-  console.log("create user history", historyid, creatureid, price, count, status, date )
+async function createUserHistory({ historyid, price, count, status, date }) {
+  console.log("create user history", historyid, price, count, status, date )
   try {
     const { rows: [user] } = await client.query(`
-      INSERT INTO history(historyid, creatureid, price, count, status, date) 
-      VALUES($1, $2, $3, $4, $5, $6) 
+      INSERT INTO history(historyid, price, count, status, date) 
+      VALUES($1, $2, $3, $4, $5) 
       ON CONFLICT (historyid) DO NOTHING 
       RETURNING *;
-    `, [historyid, creatureid, price, count, status, date ]);
+    `, [historyid, price, count, status, date ]);
     return user;
 } catch (error) {
 console.error("Error creating user history!");
@@ -32,13 +32,13 @@ console.error("Error creating user history!");
 }
 
 
-async function createOrderHistory({creatureid, price, count, status, date}) {
+async function createOrderHistory({ price, count, status, date}) {
   try {
       const { rows } = await client.query(`
-      INSERT INTO history(creatureid, price, count, status, date)
-      VALUES($1,$2,$3,$4,$5)
+      INSERT INTO history( price, count, status, date)
+      VALUES($1,$2,$3,$4)
       RETURNING *;
-    `, [creatureid, price, count, status, date]);
+    `, [ price, count, status, date]);
     console.log(rows)
       return rows;
   } catch (error) {
@@ -49,5 +49,6 @@ async function createOrderHistory({creatureid, price, count, status, date}) {
 module.exports = {
     // add database adapter functions here
     getUserHistory,
+    createUserHistory,
     createOrderHistory
   };

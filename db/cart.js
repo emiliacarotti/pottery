@@ -17,23 +17,41 @@ async function getUserCart() {
     }
 }
 //CREATE 
-async function createCart({cartid, userid, creatureid, count, payment}) {
-  console.log("create CART",cartid, userid, creatureid, count, payment)
+async function createCart({cartid, sessionid, userid}) {
+  console.log("create CART",cartid, sessionid, userid )
   try {
   const { rows } = await client.query(`
-      INSERT INTO cart(userid, creatureid, count, payment)
-      VALUES($1, $2, $3, $4)
+      INSERT INTO cart(cartid, sessionid, userid)
+      VALUES($1, $2, $3)
       RETURNING *;
-    `, [userid, creatureid, count, payment ]);
+    `, [cartid, sessionid, userid ]);
     console.log(rows)
       return rows;
   } catch (error) {
-    console.error("Error creating cart!");
+    console.error("Error creating cart!", error);
+  }
+}
+
+//CREATE CART ITEMS
+async function createCartItems({cartid, creatureid, count}) {
+  console.log("create CART ITEMS",cartid, creatureid, count )
+  try {
+  const { rows } = await client.query(`
+      INSERT INTO cart_items(cartid, creatureid, count)
+      VALUES($1, $2, $3)
+      RETURNING *;
+    `, [cartid, creatureid, count ]);
+    console.log(rows)
+      return rows;
+  } catch (error) {
+    console.error("Error creating cart items!", error);
   }
 }
 
 module.exports = {
     // add database adapter functions here
     getUserCart,
-    createCart
+    createCart,
+    createCartItems
+
   };
