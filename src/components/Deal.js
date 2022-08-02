@@ -12,7 +12,8 @@ function Deal(){
                 <img className="MOTM" src={butterbot}/>
                 <h3>Butter Bot</h3>
                 <p>Butter Bot is a robot designed by Rick Sanchez from Earth C-137. It's primary purpose is to pass the butter.</p>
-                <h6>$749.99</h6>
+                <h6><strike>$749.99</strike></h6>
+                <h6>Now only $649.99</h6>
             <ul>
                 <li><i class="fa fa-star checked"></i></li>
                 <li><i class="fa fa-star checked"></i></li>

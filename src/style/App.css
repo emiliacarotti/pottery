@@ -308,6 +308,9 @@ body{
   cursor: pointer;
   margin-bottom: 15px;
 }
+.inputMOTM2 a:visited {
+  color: white;
+}
 
 /* ======================= End of Home page =======================*/
 
@@ -534,6 +537,28 @@ hr {
   text-decoration: none;
   text-decoration-color: white;
 }
+.inputMOTM a:visited {
+  color: white;
+}
+s,
+strike {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  }
+
+s:after,
+strike:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 3px solid red;
+  height: 45%;
+  height: calc(50% - 1px);
+  width: 100%;
+  transform: rotateZ(-6deg);
+}
 /* =================== end of MOTM page ====================*/
 
 /* ======================= Create page =======================*/
@@ -547,20 +572,18 @@ hr {
   border-radius: 10px;
   border: 1px solid silver;
   padding: 20px;
-  margin-top: 120px;
+  margin-top: 100px;
   padding-bottom: 20px;
-
-  
 }
 .center1 h2 {
   text-align: center;
   border-bottom: 1px solid silver;
-  font-size: 25px;
+  font-size: 50px;
   margin-top: 0px;
 
 }
 .center1 form {
-  padding: 0 40px;
+  
   box-sizing: border-box;
 }
 .center1 input,  

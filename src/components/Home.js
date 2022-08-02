@@ -43,7 +43,7 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
                 <div key={creature.creatureid}>
                     <img className="creatures" src={imgURL + creature.creatureid + ".png"} width="370" height="370"></img>
                     {
-                    isAdmin?<button className=".inputMOTM2"> <a href="./EditDelete"> Delete </a></button> : <button className="inputMOTM"> <a href="./SingleItem"> Find More Info </a></button>
+                    isAdmin?<button className="inputMOTM2"> <a href="./EditDelete"> Delete <i class='fa fa-trash-can'></i></a></button> : <button className="inputMOTM"> <a href="./SingleItem"> Find More Info <i class='fa fa-magnifying-glass'></i></a></button>
                     }
                     <div><h3>{creature.name}</h3></div>
                     <div className="cPrice"><h6>{creature.price}</h6></div> 

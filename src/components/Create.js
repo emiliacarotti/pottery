@@ -72,7 +72,7 @@ export default function CreateCreature(){
 
     return (<div className="center1">
     <>
-    <center><h2><i class="fa fa-spaghetti-monster-flying"></i></h2></center>
+    <center><h2><i class="fa fa-dragon"></i></h2></center>
     <br></br>{
         <form
           onSubmit={(event) => {
@@ -200,7 +200,7 @@ export default function CreateCreature(){
             <label>Image:</label>
             <br></br>
             <input
-              type="file"
+              type="file" 
               value={image}
               onChange={(event) => {
                 setimage(event.target[8].value);
