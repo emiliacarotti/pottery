@@ -15,7 +15,6 @@ body{
 	font-size: 15px;
 	line-height: 1.7;
 	color: black;
-	/* background-color: #cbcbc2; */
 	overflow-y: scroll;
   overflow-x: hidden;
   height: 100vh;
@@ -192,7 +191,7 @@ body{
 .nav ul li a{
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
+  font-size: 50px;
   text-transform: uppercase;
   line-height: 1.2;
   font-weight: 800;
@@ -203,7 +202,7 @@ body{
 }
 .nav ul li a:hover{
   text-decoration: none;
-  color: #ffeba7;
+  color: red;
 }
 .nav ul li a:after{
   display: block;
@@ -256,6 +255,7 @@ body{
   box-sizing: border-box;
   padding-top: 35px;
   font-size: 70px;
+  -webkit-text-stroke: 2px red;
   position: fixed; top: 0; left:0;right:0;
   color: white;
   font-family: Rock Salt;
@@ -270,8 +270,6 @@ body{
 .creaturegallery {
   text-align: center;
   border: solid 1px silver;
-  /* margin-left: 80px; */
-  /* margin-right: 80px; */
   width: 400px;
   border-radius: 10px;
   display: auto;
@@ -302,11 +300,12 @@ body{
   background: red;
   border-radius: 25px;
   font-size: 18px;
-  color: #e9f4fb;
+  color: white;
   font-weight: 700;
   outline: none;
   cursor: pointer;
   margin-bottom: 15px;
+  padding-top: 15px;
 }
 .inputMOTM2 a:visited {
   color: white;
@@ -663,3 +662,12 @@ strike:after {
   opacity: 1;
 }
 /* =================== end of footer ====================*/
+.blink {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
