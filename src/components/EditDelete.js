@@ -24,10 +24,10 @@ export default function EditDeleteCreature({
     const navigate = useNavigate();
 
 
-    // async function EDIT/PATCH creature
+    // async function EDIT/PATCH creature  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
     async function EditCreature(event){
         try{
-            const response = await fetch(`/*ENTER A ROUTE HERE, DUMMY*/` + selectedCreature.creatureid, {
+            const response = await fetch(`http://localhost:4000/api/creatures` + selectedCreature.creatureid, {
                 method: "PATCH",
                 headers: {
                   'Content-Type': 'application/json',
@@ -63,10 +63,10 @@ export default function EditDeleteCreature({
     }
 
 
-  // async function DELETE A CREATURE
+  // async function DELETE A CREATURE  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
   async function DeleteCreature(event){
     try{
-        const response = await fetch(`/*ENTER A ROUTE HERE, DUMMY*/` + selectedCreature.creatureid, {
+        const response = await fetch(`http://localhost:4000/api/creatures` + selectedCreature.creatureid, {
             method: "DELETE",
             headers: {
               'Content-Type': 'application/json',
@@ -191,7 +191,7 @@ return (
 
           <button type="submit" className="editCreature">Submit Changes</button>
       </form>
-          <button className="deleteCreature" onClick={() => { deleteCreature(token, creatureid) }}>Delete Creature</button>
+          <button className="deleteCreature" onClick={() => { deleteCreature(isAdmin, token, creatureid) }}>Delete Creature</button>
   </>
 )
 }

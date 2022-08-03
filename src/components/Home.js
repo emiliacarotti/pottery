@@ -10,13 +10,7 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         async function getCreatures(){
             try{
 
-                const response = await fetch('http://localhost:4000/api/creatures', {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json'
-
-                }
-                })
+                const response = await fetch('http://localhost:4000/api/creatures')
                 let data = await response.json()
                 console.log("data******:",data)
                 setCreatures(data)

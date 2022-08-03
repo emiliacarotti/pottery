@@ -8,16 +8,17 @@ const { JWT_SECRET } = process.env;
 const {
   getAllCreatures,
   createCreature,
-  // updateCreature,
-  // getCreaturebyCategory,
+  updateCreature,
+  deleteCreature,
+  getCreatureById
 } = require("../db/creature");
 
 
 creaturesRouter.use((req, res, next) => {
   console.log(req.body);
-  
+
   next();
-  });
+});
 
 // get all creatures
 creaturesRouter.get("/", async (req, res, next) => {
@@ -28,7 +29,7 @@ creaturesRouter.get("/", async (req, res, next) => {
       res.send(
         allCreatures
       )
-    }else{
+    } else {
       res.send({
         message: "Error getting creatures."
       })
@@ -38,13 +39,27 @@ creaturesRouter.get("/", async (req, res, next) => {
   }
 });
 
+// //GET /api/creatures/:creatureid
+creaturesRouter.get('/:creatureid', async (req, res, next) => {
 
+  try {
+    //console.log(req.params.creatureid)
+    const creature = await getCreatureById(req.params.creatureid);
+    //console.log(creature)
+    res.send(creature);
+
+  } catch (error) {
+    console.log("createbyid", error);
+    next(error)
+  }
+})
+
+//working
 // create a creature
 creaturesRouter.post('/create', async (req, res, next) => {
+  const { name, price, stock, environment, size, food, temper } = req.body;
   try {
-    if(req.user.admin){ //user is an admin, idk if this is right
-
-      const { name, price, stock, environment, size, food, temper } = req.body;
+    if (true) { //user is an admin, idk if this is right
       if (!name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing
         next({
           name: "MissingDataError",
@@ -53,22 +68,77 @@ creaturesRouter.post('/create', async (req, res, next) => {
 
       }
       else {
-        // creatue creature
+        // create creature
+        console.log("req", req.body)
         const newCreature = await createCreature({ name, price, stock, environment, size, food, temper });
-        res.send({newCreature});
+        res.send(newCreature);
 
       }
     }
-    else{ //user is not an admin 
+    else { //user is not an admin 
       next({
         name: 'NoUserError',
         message: 'You must be an admin.'
       });
 
     }
-    
+
   } catch (error) {
     next(error)
+  }
+})
+// //PATCH
+// // Update/Edit Creature  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
+creaturesRouter.patch('/', async (req, res, next) => {
+  try {
+    if (true) { //user is an admin, idk if this is right
+
+      const { creatureid, name, price, stock, environment, size, food, temper } = req.body;
+      if (!name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing
+        next({
+          name: "MissingDataError",
+          message: "Please provide all info for this creature."
+        });
+
+      }
+      else {
+        // update creature
+        const editCreature = await updateCreature({creatureid, name, price, stock, environment, size, food, temper });
+        res.send(editCreature);
+
+      }
+    }
+    else { //user is not an admin 
+      next({
+        name: 'UnauthorizedUserError',
+        message: 'You must be an admin.'
+      });
+
+    }
+
+  } catch ({ name, message }) {
+    next({ name, message })
+  }
+})
+
+// // Delete Creature
+creaturesRouter.delete('/', async (req, res, next) => {
+  try {
+    if (true) { //user is an admin, idk if this is right
+      //delete creature
+      //console.log("req body", req.body.creatureid)
+      const deletedCreature = await deleteCreature(req.body.creatureid);
+      res.send(deletedCreature);
+      // const getCreatures = await getAllCreatures();
+      // conole.log(getCreatures);
+    } else { //user is not an admin 
+      next({
+        name: 'UnauthorizedUserError',
+        message: 'You must be an admin.'
+      })
+    }
+    } catch ({ name, message }) {
+      next({ name, message })
   }
 })
 

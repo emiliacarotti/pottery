@@ -72,12 +72,13 @@ async function createTables() {
           );
           CREATE TABLE cart_items (
             cartid INTEGER REFERENCES cart(cartid) NOT NULL,
-            creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
+            creatureid INTEGER REFERENCES creature(creatureid) ON DELETE CASCADE,
             count INTEGER NOT NULL
           );
           CREATE TABLE history (
             historyid SERIAL PRIMARY KEY,
-            price INTEGER NOT NULL,
+            userid INTEGER REFERENCES users(userid) NOT NULL,
+            pricetotal INTEGER NOT NULL,
             count INTEGER NOT NULL,
             status VARCHAR(255) NOT NULL,
             date VARCHAR(255) NOT NULL
@@ -85,6 +86,7 @@ async function createTables() {
           CREATE TABLE history_items (
             historyid INTEGER REFERENCES history(historyid) NOT NULL,
             creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
+            priceitem INTEGER NOT NULL,
             count INTEGER NOT NULL
           );
       `);
@@ -212,27 +214,30 @@ async function createInitialOrderHistory() {
     const orderHistoryToCreate = [
       {
         historyid: 1,
-        price: "5000",
+        userid: 1,
+        pricetotal: "5000",
         count: 1,
         status: "not delievered, creature escaped packaging",
         date: "07/01/2022",
       },
       {
         historyid: 2,
-        price: "750",
+        userid: 2,
+        pricetotal: "750",
         count: 1,
         status: "delivered",
         date: "07/02/2022",
       },
       {
         historyid: 3,
-        price: "1000",
+        userid: 3,
+        pricetotal: "1000",
         count: 2,
         status: "delivered",
         date: "07/03/2022",
       },
     ]
-    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createOrderHistory))
+    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createHistory))
     
     console.log("Order History created:")
     console.log(orderHistory)
@@ -245,9 +250,45 @@ async function createInitialOrderHistory() {
   }
 }
 
+async function createInitialHistoryItems() {
+  console.log("Loading Order History...")
+  try {
+    const ItemsToCreate = [
+      {
+        historyid: 1,
+        creatureid: 1,
+        priceitem: "5000",
+        count: 1
+      },
+      {
+        historyid: 2,
+        creatureid: 2,
+        priceitem: "750",
+        count: 1
+      },
+      {
+        historyid: 3,
+        creatureid: 3,
+        priceitem: "1000",
+        count: 2
+      },
+    ]
+    const orderHistory = await Promise.all(ItemsToCreate.map(history.createInitialHistoryItems))
+    
+    console.log("Order History ITEM created:")
+    console.log(orderHistory)
+
+    console.log("Finished creating order history ITEM!")
+  } catch (error) {
+    console.error("Error creating order history ITEM!")
+    throw error
+
+  }
+}
+
 
 async function createInitialCart() {
-  console.log("Starting to create cart...")
+  console.log("Starting to create initial cart...")
   try {
     const cartToCreate = [
       {
@@ -278,7 +319,7 @@ async function createInitialCart() {
 }
 
 async function createInitialCartItems() {
-  console.log("Starting to create cart items...")
+  console.log("Starting to create initialcart items...")
   try {
     const cartItemsToCreate = [
       {
@@ -317,6 +358,7 @@ async function rebuildDB() {
     await createInitialAddress()
     await createInitialCreatures()
     await createInitialOrderHistory()
+    await createInitialHistoryItems()
     await createInitialCart()
     await createInitialCartItems()
 
