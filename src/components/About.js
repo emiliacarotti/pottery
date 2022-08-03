@@ -12,7 +12,7 @@ function About(){
                     </br>
                     <h1>About Us</h1>
                     <hr/>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis cras sed felis eget velit aliquet sagittis id.</p>
+                    <p>Beast Bazzaar was founded in 2022 by four "better than average looking" FullStack Academy students. </p>
                 </div>
                 <div id="about-2">
                     <div className="content-box-lg">
@@ -23,7 +23,7 @@ function About(){
                                         <i className="fa fa-skull"></i>
                                         <h3>Monster Mission</h3>
                                         <hr/>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis cras sed felis eget velit aliquet sagittis id.</p>
+                                        <p>Just like Hoover's campaign slogan "A Chicken for Every Pot", we feel that "A Beast in Every House" is an admirable business slogan. We will be working tirelessly to bring you the beast that you deserve.</p>
                                     </div>
                                 </div>
                                 <div className="col-md-4">

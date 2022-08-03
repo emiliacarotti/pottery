@@ -40,7 +40,8 @@ export default function Login({ username, setUsername, setToken, setLoggedIn, se
             console.log("Unable to log in! " + err)
         }
     }
-    return (<div className="center">
+    return (
+    <div className="center">
         <>
             <h2> Log In </h2>
             <form onSubmit={(event)=>{

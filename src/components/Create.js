@@ -70,9 +70,10 @@ export default function CreateCreature(){
   }
 
 
-    return (<div className="center1">
+    return (<div className="move"><div className="center1">
     <>
-    <center><h2><i className="fa fa-spaghetti-monster-flying"></i></h2></center>
+    
+    <center><h2><i className="fa fa-dragon"></i></h2></center>
     <br></br>{
         <form
           onSubmit={(event) => {
@@ -200,7 +201,7 @@ export default function CreateCreature(){
             <label>Image:</label>
             <br></br>
             <input
-              type="file"
+              type="file" 
               value={image}
               onChange={(event) => {
                 setimage(event.target[8].value);
@@ -211,13 +212,16 @@ export default function CreateCreature(){
             <br></br>
             <br></br>
             <button className='input' type="submit">
-              Create
+              Create <i class="fa fa-plus"></i>
             </button>
             <div id="createErrorMessage" ></div>
             </div>
         </form>
         }
+        
         </>
         </div>
+        </div>
+        
     )
 }
