@@ -274,10 +274,11 @@ body{
   border-radius: 10px;
   display: auto;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 60px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15px;
+
 }
 .creaturegallery a {
   text-decoration: none;
@@ -316,7 +317,7 @@ body{
 /* ======================= Login page =======================*/
 
 .center {
-  position: absolute;
+  position: sticky;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -324,7 +325,7 @@ body{
   border-radius: 10px;
   border: 1px solid silver;
   padding: 20px;
-  margin-top: 15px;
+  margin-top: 300px;
   z-index: 1;
 }
 .center h2{
@@ -467,7 +468,14 @@ hr {
 /* =================== end of About page ====================*/
 
 /* ======================= MOTD page =======================*/
-
+.blink {
+  animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 .MOTMDEAL {
   padding-top: 145px;
   text-align: center;
@@ -563,7 +571,7 @@ strike:after {
 /* ======================= Create page =======================*/
 
 .center1 {
-  position: absolute;
+  position: sticky;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -571,7 +579,7 @@ strike:after {
   border-radius: 10px;
   border: 1px solid silver;
   padding: 20px;
-  margin-top: 100px;
+  margin-top: 250px;
   padding-bottom: 20px;
 }
 .center1 h2 {
@@ -662,12 +670,6 @@ strike:after {
   opacity: 1;
 }
 /* =================== end of footer ====================*/
-.blink {
-  animation: blinker 2s linear infinite;
-}
-
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
+.move {
+  padding-top: 250px;
 }

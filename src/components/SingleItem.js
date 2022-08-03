@@ -59,6 +59,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
         <>
         <p>Single Item Page</p> 
         <br></br><br></br><br></br>
+                {/* <div className="center"> */}
                 <div key={selectedCreature.creatureid}>
                 <img src={imgURL + selectedCreature.creatureid + ".png"} width="300" height="300"></img>
                 <div> Name: {selectedCreature.name}</div> 
@@ -85,6 +86,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                 <div id="createErrorMessage" className="errors"></div>
                 <br></br>
                 </form>
+                {/* </div> */}
         </>
     )
 }
