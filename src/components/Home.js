@@ -15,11 +15,11 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
                 headers: {
                     'Content-Type': 'application/json'
 
-                },
+                }
                 })
                 let data = await response.json()
-                console.log("data******:",data.allCreatures)
-                setCreatures(data.allCreatures)
+                console.log("data******:",data)
+                setCreatures(data)
 
             }catch(err){
                 console.log(err)
@@ -35,7 +35,7 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         <>
 
         {
-        creatures.map((creature) => {
+        creatures?.map((creature) => {
             return (
                 <>
                 <br></br><br></br><br></br>

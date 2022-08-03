@@ -15,11 +15,11 @@ function Deal(){
                 <h6><strike>$749.99</strike></h6>
                 <div className="blink"><h6>Now only $649.99</h6></div>
             <ul>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star-half"></i></li>
+                <li><i className="fa fa-star checked"></i></li>
+                <li><i className="fa fa-star checked"></i></li>
+                <li><i className="fa fa-star checked"></i></li>
+                <li><i className="fa fa-star checked"></i></li>
+                <li><i className="fa fa-star-half"></i></li>
             </ul>
             <button className="inputMOTM"> <a href="./Cart"> Buy Now <i class='fa fa-cart-shopping'></i></a></button>
         </div>

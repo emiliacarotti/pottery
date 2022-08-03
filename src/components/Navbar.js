@@ -9,12 +9,12 @@ export default function Navbar({loggedIn, Logout, isAdmin, setIsAdmin}){
             
         
 
-  	    <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
-  	    <label for="menu-icon"></label>
+  	    <input className="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
+  	    <label htmlFor="menu-icon"></label>
 
-  	    <nav class="nav"> 	
+  	    <nav className="nav"> 	
             <>
-                <ul class="pt-5">
+                <ul className="pt-5">
                 <li><a href="/"> Home </a></li>
                 {
                 isAdmin?<li><a href="./Create"> Create New Creature Listing </a></li> : null

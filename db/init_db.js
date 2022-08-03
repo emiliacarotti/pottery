@@ -16,7 +16,9 @@ async function dropTables() {
     console.log("Drop tables...");
    
     await client.query(`
+        DROP TABLE IF EXISTS history_items;
         DROP TABLE IF EXISTS history;
+        DROP TABLE IF EXISTS cart_items;
         DROP TABLE IF EXISTS cart;
         DROP TABLE IF EXISTS creature;
         DROP TABLE IF EXISTS users;
@@ -43,7 +45,7 @@ async function createTables() {
             street VARCHAR(255) NOT NULL,
             city VARCHAR(255) NOT NULL,
             state VARCHAR(255) NOT NULL,
-            zip VARCHAR(255) NOT NULL,
+            zip INTEGER NOT NULL,
             payment VARCHAR(255) NOT NULL,
             currency VARCHAR(255) NOT NULL
           );
@@ -56,7 +58,7 @@ async function createTables() {
           CREATE TABLE creature (
             creatureid SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            price VARCHAR(255) NOT NULL,
+            price INTEGER NOT NULL,
             stock VARCHAR(255) NOT NULL,
             environment VARCHAR(255) NOT NULL,
             size VARCHAR(255) NOT NULL,
@@ -65,18 +67,25 @@ async function createTables() {
           );
           CREATE TABLE cart (
             cartid SERIAL PRIMARY KEY,
-            userid INTEGER REFERENCES users(userid) NOT NULL,
+            sessionid INTEGER NOT NULL,
+            userid INTEGER REFERENCES users(userid)
+          );
+          CREATE TABLE cart_items (
+            cartid INTEGER REFERENCES cart(cartid) NOT NULL,
             creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
-            count INTEGER,
-            payment VARCHAR(255) NOT NULL
+            count INTEGER NOT NULL
           );
           CREATE TABLE history (
             historyid SERIAL PRIMARY KEY,
-            creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
             price INTEGER NOT NULL,
             count INTEGER NOT NULL,
             status VARCHAR(255) NOT NULL,
             date VARCHAR(255) NOT NULL
+          );
+          CREATE TABLE history_items (
+            historyid INTEGER REFERENCES history(historyid) NOT NULL,
+            creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
+            count INTEGER NOT NULL
           );
       `);
 
@@ -112,32 +121,32 @@ async function createInitialAddress() {
   try {
     const addressToCreate = [
       { 
-      firstname: 'moby', 
-      lastname: 'bukhari',
-      street: '123 main street',
-      city: 'washington',
-      state:"DC",
-      zip:"20009",
-      payment:"paypal",
+      firstname: 'Moby', 
+      lastname: 'Bukhari',
+      street: '123 Rumplover St',
+      city: 'Washington',
+      state: "DC",
+      zip: 20009,
+      payment: "paypal",
       currency: "USD" 
       },
       { 
-      firstname: 'rick', 
-      lastname: 'sanchez',
-      street: '6910 birdman ave',
-      city: 'ann arbor',
+      firstname: 'Rick', 
+      lastname: 'Sanchez',
+      street: '6910 Birdman Ave',
+      city: 'Ann Arbor',
       state:"MI",
-      zip:"48013",
-      payment:"stripe",
+      zip: 48013,
+      payment: "stripe",
       currency: "USD" 
       },
       { 
       firstname: 'Emmet', 
       lastname: 'Brown',
-      street: '1640',
+      street: '1640 Candyland Ln',
       city: 'Hillside',
       state:"CA",
-      zip:"90210",
+      zip: 90210,
       payment:"stripe",
       currency: "USD" 
       }
@@ -159,8 +168,8 @@ async function createInitialCreatures() {
     const creaturesToCreate = [
       {
         name: "Stitch",
-        price: "$5000 USD",
-        stock: "1",
+        price: 5000,
+        stock: 1,
         environment: "land",
         size: "M",
         food: "omnivore",
@@ -168,8 +177,8 @@ async function createInitialCreatures() {
       },
       {
         name: "Butter Robot",
-        price: "$750 USD",
-        stock: "10",
+        price: 750,
+        stock: 10,
         environment: "land",
         size: "S",
         food: "electricity",
@@ -177,8 +186,8 @@ async function createInitialCreatures() {
       },
       {
         name: "Mogwai",
-        price: "$1000 USD",
-        stock: "999",
+        price: 1000,
+        stock: 999,
         environment: "land",
         size: "S",
         food: "Omnivore",
@@ -202,24 +211,21 @@ async function createInitialOrderHistory() {
   try {
     const orderHistoryToCreate = [
       {
-        historyid: "1",
-        creatureid: "1",
+        historyid: 1,
         price: "5000",
         count: 1,
         status: "not delievered, creature escaped packaging",
         date: "07/01/2022",
       },
       {
-        historyid: "2",
-        creatureid: "2",
+        historyid: 2,
         price: "750",
         count: 1,
         status: "delivered",
         date: "07/02/2022",
       },
       {
-        historyid: "3",
-        creatureid: "3",
+        historyid: 3,
         price: "1000",
         count: 2,
         status: "delivered",
@@ -245,25 +251,19 @@ async function createInitialCart() {
   try {
     const cartToCreate = [
       {
-        cartid: "1",
+        cartid: 1,
         userid: 1,
-        creatureid: 3,
-        count: 5,
-        payment: "USD"
+        sessionid: 1
       },
       {
-        cartid: "2",
+        cartid: 2,
         userid: 2,
-        creatureid: 2,
-        count: 20,
-        payment: "USD"
+        sessionid: 2
       },
       {
-        cartid: "3",
+        cartid: 3,
         userid: 3,
-        creatureid: 1,
-        count: 1,
-        payment: "USD"
+        sessionid: 3
       }
     ]
     const cartItems = await Promise.all(cartToCreate.map(cart.createCart))
@@ -273,6 +273,37 @@ async function createInitialCart() {
     console.log("Finished creating inital cart!")
   } catch (error) {
     console.error("Error creating initial cart!"+error)
+
+  }
+}
+
+async function createInitialCartItems() {
+  console.log("Starting to create cart items...")
+  try {
+    const cartItemsToCreate = [
+      {
+        cartid: 1,
+        creatureid: 1,
+        count: 1
+      },
+      {
+        cartid: 2,
+        creatureid: 2,
+        count: 3
+      },
+      {
+        cartid: 3,
+        creatureid: 3,
+        count: 2
+      }
+    ]
+    const cartItemsContent = await Promise.all(cartItemsToCreate.map(cart.createCartItems))
+
+    console.log("Cart items created:")
+    console.log(cartItemsContent)
+    console.log("Finished creating inital cart items!")
+  } catch (error) {
+    console.error("Error creating initial cart items!"+error)
 
   }
 }
@@ -287,6 +318,7 @@ async function rebuildDB() {
     await createInitialCreatures()
     await createInitialOrderHistory()
     await createInitialCart()
+    await createInitialCartItems()
 
   } catch (error) {
     console.log("Error during rebuildDB")
