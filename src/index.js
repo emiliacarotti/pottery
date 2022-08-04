@@ -29,6 +29,7 @@ import{
   Register,
   SingleItem
 } from "./components"
+import { set } from 'express/lib/application';
 
 function MadDog() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -49,6 +50,10 @@ function MadDog() {
         setToken(savedToken);
       }
     }, []);
+
+    useEffect(() => {
+      setIsAdmin(localStorage.getItem("isadmin"))
+    }, [username, isAdmin]);
   
     function Logout() {
       localStorage.removeItem("token");
@@ -129,7 +134,13 @@ function MadDog() {
            </Route>
 
 
-          <Route path="EditDelete" element={<EditDelete />}></Route>
+          <Route path="EditDelete" element={<EditDelete
+          selectedCreature = {selectedCreature}
+          setSelectedCreature = {setSelectedCreature}
+          loggedIn = {loggedIn}
+          isAdmin = {isAdmin}
+          setIsAdmin = {setIsAdmin}
+           />}></Route>
           <Route path="*" element={<Error />}></Route>
           <Route path="Filters" element={<Filters />}></Route>
           <Route path="Footer" element={<Footer />}></Route>
@@ -139,7 +150,9 @@ function MadDog() {
             path="SingleItem" 
             element={<SingleItem 
               selectedCreature={selectedCreature}
-              setSelectedCreature={setSelectedCreature}/>}>
+              setSelectedCreature={setSelectedCreature}
+              isAdmin = {isAdmin}
+              setIsAdmin = {setIsAdmin}/>}>
             </Route>
 
           <Route 

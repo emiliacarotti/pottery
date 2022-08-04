@@ -1,19 +1,9 @@
+import ReactDOM from 'react-dom';
 import React, {useState, useEffect} from "react";
 import reactdomclient from "react-dom/client"
 import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
-/**HARLEY'S EFFORTS 
-     const [creatureName, setCreatureName] = useState('');
-    const [creaturePrice, setCreaturePrice] = useState('');
-    const [creatureStock, setCreatureStock] = useState('');
-    const [creatureEnvironment, setCreatureEnvironment] = useState('');
-    const [creatureSize, setCreatureSize] = useState('');
-    const [creatureFood, setCreatureFood] = useState('');
-    const [creatureTemper, setCreatureTemper] = useState('');
- */
-
 export default function EditDeleteCreature({
-    creatureid,
     selectedCreature,
     setSelectedCreature,
     loggedIn,
@@ -21,13 +11,21 @@ export default function EditDeleteCreature({
     
   }) {
    
-    const navigate = useNavigate();
+    const [creatureName, setCreatureName] = useState('');
+    const [creaturePrice, setCreaturePrice] = useState('');
+    const [creatureStock, setCreatureStock] = useState('');
+    const [creatureEnvironment, setCreatureEnvironment] = useState('');
+    const [creatureSize, setCreatureSize] = useState('');
+    const [creatureFood, setCreatureFood] = useState('');
+    const [creatureTemper, setCreatureTemper] = useState('');
 
+    const navigate = useNavigate();
 
     // async function EDIT/PATCH creature  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
     async function EditCreature(event){
         try{
-            const response = await fetch(`http://localhost:4000/api/creatures` + selectedCreature.creatureid, {
+            const response = await fetch('http://localhost:4000/api/creatures/edit/${creatureid}' , {
+
                 method: "PATCH",
                 headers: {
                   'Content-Type': 'application/json',
@@ -35,15 +33,15 @@ export default function EditDeleteCreature({
                 },
                 body: JSON.stringify({
                   creature: {
-                    creatureid: event.target[0].value,
-                    name: event.target[1].value,
-                    price: event.target[2].value,
-                    stock: event.target[3].value,
-                    environment: event.target[4].value,
-                    size: event.target[5].value,
-                    food: event.target[6].value,
-                    temper: event.target[7].value,
-                    image: event.target[8].value,
+                    // creatureid: event.target[0].value,
+                    name: event.target[0].value,
+                    price: event.target[1].value,
+                    stock: event.target[2].value,
+                    environment: event.target[3].value,
+                    size: event.target[4].value,
+                    food: event.target[5].value,
+                    temper: event.target[6].value,
+                    // image: event.target[8].value,
                   }
                 })
                 
@@ -93,7 +91,7 @@ console.log(selectedCreature)
 return ( 
 
     <div>
-        <p>EditDelete Page</p>
+        <p>EditDeletdsfdsfsdfse Page</p>
         
             {/* <form onSubmit={(event)=>{
                 event.preventDefault()
