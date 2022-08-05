@@ -53,11 +53,13 @@ function MadDog() {
 
     useEffect(() => {
       setIsAdmin(localStorage.getItem("isadmin"))
-    }, [username, isAdmin]);
+    }, [username, isAdmin, setLoggedIn, loggedIn]);
   
     function Logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("username");
+      localStorage.setItem("isadmin", false);
+      setIsAdmin(false)
       setLoggedIn(false);
       setToken("");
       setUsername("");
