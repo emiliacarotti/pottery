@@ -62,7 +62,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
             <div className="single">
             <div key={selectedCreature.creatureid}>
                 <img src={imgURL + selectedCreature.creatureid + ".png"} width="300" height="300"></img>
-                <div className="beastid"> Name: {selectedCreature.name} {isAdmin ? (
+                <div className="beastid"> Name: {selectedCreature.name} (
                     <button className="editbtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -70,8 +70,8 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
-                ) : null}</div>
-                <div className="beastid"> Price: {selectedCreature.price} {isAdmin ? (
+                ) </div>
+                <div className="beastid"> Price: {selectedCreature.price} (
                     <button className="editbtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -79,8 +79,8 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
-                ) : null}</div>
-                <div className="beastid"> Quantity Available: {selectedCreature.stock} {isAdmin ? (
+                ) </div>
+                <div className="beastid"> Quantity Available: {selectedCreature.stock} (
                     <button className="editbtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -88,8 +88,8 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
-                ) : null}</div>
-                <div className="beastid"> Optimal Environment: {selectedCreature.environment} {isAdmin ? (
+                ) </div>
+                <div className="beastid"> Optimal Environment: {selectedCreature.environment} (
                     <button className="editbtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -97,8 +97,8 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
-                ) : null}</div>
-                <div className="beastid"> Size: {selectedCreature.size} {isAdmin ? (
+                ) </div>
+                <div className="beastid"> Size: {selectedCreature.size}  (
                     <button className="editbtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -106,8 +106,8 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
-                ) : null}</div>
-                <div className="beastid"> Type of Food: {selectedCreature.food} {isAdmin ? (
+                ) </div>
+                <div className="beastid"> Type of Food: {selectedCreature.food} (
                     <button className="editbtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -115,8 +115,8 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
-                ) : null}</div>
-                <div className="beastid"> Temperment: {selectedCreature.temper} {isAdmin ? (
+                ) </div>
+                <div className="beastid"> Temperment: {selectedCreature.temper} (
                     <button className="editbtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -124,7 +124,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
-                ) : null}</div>
+                )</div>
             </div>
             
             <form onSubmit={(event) => {
@@ -144,7 +144,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
 
                 <br></br></div>
             </form>
-            <div> {isAdmin ? (
+            <div> (
                     <button className="deletebtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -152,7 +152,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         Delete
                     </button>
-                ) : null}</div>
+                ) </div>
             </div></center>
 
         </>
