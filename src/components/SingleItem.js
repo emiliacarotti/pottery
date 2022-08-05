@@ -56,35 +56,109 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
 
 
     return (
-        <>
-        <p>Single Item Page</p> 
-        <br></br><br></br><br></br>
-                <div key={selectedCreature.creatureid}>
+        <><center>
+            <p>Single Item Page</p>
+            <br></br><br></br><br></br>
+            <div className="single">
+            <div key={selectedCreature.creatureid}>
                 <img src={imgURL + selectedCreature.creatureid + ".png"} width="300" height="300"></img>
-                <div> Name: {selectedCreature.name}</div> 
-                <div> Price: {selectedCreature.price}</div> 
-                <div> Quantity Available: {selectedCreature.stock}</div> 
-                <div> Optimal Environment: {selectedCreature.environment}</div> 
-                <div> Size: {selectedCreature.size}</div> 
-                <div> Type of Food: {selectedCreature.food}</div>
-                <div> Temperment: {selectedCreature.temper}</div>
-                </div>
-                
-                <form onSubmit={(event)=>{
-                    event.preventDefault()
-                    addToCart(event)             
-                    }}>
-                <div> Qty: </div> 
+                <div className="beastid"> Name: {selectedCreature.name} {isAdmin ? (
+                    <button className="editbtn"
+                        // onClick={() => {
+                        //     deleteCreature(creature.creatureid);
+                        // }}
+                    >
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                ) : null}</div>
+                <div className="beastid"> Price: {selectedCreature.price} {isAdmin ? (
+                    <button className="editbtn"
+                        // onClick={() => {
+                        //     deleteCreature(creature.creatureid);
+                        // }}
+                    >
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                ) : null}</div>
+                <div className="beastid"> Quantity Available: {selectedCreature.stock} {isAdmin ? (
+                    <button className="editbtn"
+                        // onClick={() => {
+                        //     deleteCreature(creature.creatureid);
+                        // }}
+                    >
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                ) : null}</div>
+                <div className="beastid"> Optimal Environment: {selectedCreature.environment} {isAdmin ? (
+                    <button className="editbtn"
+                        // onClick={() => {
+                        //     deleteCreature(creature.creatureid);
+                        // }}
+                    >
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                ) : null}</div>
+                <div className="beastid"> Size: {selectedCreature.size} {isAdmin ? (
+                    <button className="editbtn"
+                        // onClick={() => {
+                        //     deleteCreature(creature.creatureid);
+                        // }}
+                    >
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                ) : null}</div>
+                <div className="beastid"> Type of Food: {selectedCreature.food} {isAdmin ? (
+                    <button className="editbtn"
+                        // onClick={() => {
+                        //     deleteCreature(creature.creatureid);
+                        // }}
+                    >
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                ) : null}</div>
+                <div className="beastid"> Temperment: {selectedCreature.temper} {isAdmin ? (
+                    <button className="editbtn"
+                        // onClick={() => {
+                        //     deleteCreature(creature.creatureid);
+                        // }}
+                    >
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                ) : null}</div>
+            </div>
+            
+            <form onSubmit={(event) => {
+                event.preventDefault()
+                addToCart(event)
+            }}>
+                <div><div> Qty:  
+
                 <select name="quantity" id="quantity">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                </select>
-                <button href="./Cart" className="submit" type="submit">Add to Cart</button>
+                </select></div>
+                <button className="addtocart"> <a href="./Cart"> Buy Now <i class='fa fa-cart-shopping'></i></a></button>
                 <br></br>
                 <div id="createErrorMessage" className="errors"></div>
+
+                <br></br></div>
+            </form>
+            <div> {isAdmin ? (
+                    <button className="deletebtn"
+                        // onClick={() => {
+                        //     deleteCreature(creature.creatureid);
+                        // }}
+                    >
+                        Delete
+                    </button>
+                ) : null}</div>
+            </div></center>
+            
+
                 <br></br>
                 </form>
+
         </>
     )
 }
