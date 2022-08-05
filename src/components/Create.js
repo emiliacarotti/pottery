@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React, {useState } from "react";
 import reactdomclient from "react-dom/client"
-import { token, BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
+import { token, useNavigate } from "react-router-dom";
 
 
-export default function CreateCreature(){
+export default function Create({isAdmin}){
   const navigate = useNavigate()
 
-    const [creatureid, setcreatureid] = useState("");
+    //const [creatureid, setcreatureid] = useState("");
     const [name, setname] = useState("");
     const [price, setprice] = useState("");
     const [stock, setstock] = useState("");
@@ -18,88 +18,74 @@ export default function CreateCreature(){
 
 
     // async function CREATE A NEW CREATURE
-  async function newCreature(creature) {
+  async function newCreature() {
     try {
-      const response = await fetch(`/*ENTER A ROUTE HERE, DUMMY*/`,
-        {
+      console.log(
+        name, 
+        price, 
+        stock, 
+        environment, 
+        size, 
+        food, 
+        temper,
+        image)
+
+      console.log(localStorage.getItem("token"))
+
+      const response = await fetch(`http://localhost:4000/api/creatures/create`,        
+      {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
+            'Content-Type': 'application/json'
+            //'Authorization': 'Bearer ' + localStorage.getItem("token")
           },
           body: JSON.stringify({
-            creatureid: creature.target[0].value,
-            name: creature.target[1].value,
-            price: creature.target[2].value,
-            stock: creature.target[3].value,
-            environment: creature.target[4].value,
-            size: creature.target[5].value,
-            food: creature.target[6].value,
-            temper: creature.target[7].value,
-            image: creature.target[8].value,
-          }),
+            
+            name: name, 
+            price: price, 
+            stock: stock, 
+            environment: environment, 
+            size: size, 
+            food: food, 
+            temper: temper
+          })
         }
       );
-
       let result = await response.json();
+      console.log(result);
       if (result) {
-        alert("Your creature has been successfully created!")
+        alert("Your creature has been successfully created!")  // please clap
         navigate("/")
       } else {
+        console.log("nope")
         document.getElementById("createErrorMessage").innerHTML =
           result.error.message;
       }
     } catch (err) {
-      console.log("Couldn't create new creature!" + err);
+      console.log("Couldn't create new creature!" + err); 
     }
   }
 
-  // async function DELETE A CREATURE
-  async function deleteCreature(creatureid, token) {
-    try {
-      const response = await fetch(`/*ENTER A ROUTE HERE, DUMMY*/`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
 
-          Authorization: `Bearer ${token}`,  //IS TOKEN WORKING PROPERLY???
-
-        },
-      });
-    } catch (err) {}
-  }
-
-
-    return (<div className="move"><div className="center1">
+    return (<div className="center1">
     <>
-    
-    <center><h2><i className="fa fa-dragon"></i></h2></center>
+    <center><h2><i className="fa fa-spaghetti-monster-flying"></i></h2></center>
     <br></br>{
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            newCreature();
-          }}
-        >
-              <div>
+            newCreature(event)
+          }}>
+
+            <div>
+            
             <label>Creature Name/Type:</label>
             <br></br>
             <input
               type="text"
               value={name}
               onChange={(event) => {
-                setname(event.target[1].value);
-              }}
-            ></input>
-
-            <br></br>
-            <label>ID:</label>
-            <br></br>
-            <input
-              type="text"
-              value={creatureid}
-              onChange={(event) => {
-                setcreatureid(event.target[0].value);
+                setname(event.target.value);
               }}
             ></input>
 
@@ -111,7 +97,7 @@ export default function CreateCreature(){
               type="text"
               value={price}
               onChange={(event) => {
-                setprice(event.target[2].value);
+                setprice(event.target.value);
               }}
             ></input>
 
@@ -123,7 +109,7 @@ export default function CreateCreature(){
               type="text"
               value={stock}
               onChange={(event) => {
-                setstock(event.target[3].value);
+                setstock(event.target.value);
               }}
             ></input>
 
@@ -131,80 +117,72 @@ export default function CreateCreature(){
             <br></br>
             <label>Environment Type:</label>
             <br></br>
-            <select name="enviroment" id="enviroment">
+            <select name="enviroment" id="enviroment" 
+            value={environment}
+            onChange={(event) => {
+                setenvironment(event.target.value);
+              }}>
+              <option value=''>--Select One--</option>
               <option value='water'>--Swimmer--</option>
               <option value='air'>--Flyer--</option>
               <option value= 'earth'>--Walker--</option>
               <option value= 'unknown'>--Higher Powers--</option>
-
-            
-            <input
-              type="submit"
-              value={environment}
-              onChange={(event) => {
-                setenvironment(event.target[4].value);
-              }}
-            ></input>
-</select>
+            </select>
             
             <br></br>
             <label>Creature Size:</label>
             <br></br>
-            <select name="size" id="size">
+            <select name="size" id="size" 
+            value={size}
+            onChange={(event) => {
+                setsize(event.target.value);
+            }}>
+              <option value=''>--Select One--</option>
               <option value='small'>--Pocket--</option>
               <option value='med'>--Fit's Inside--</option>
               <option value='large'>--Outside Only--</option>
               <option value='extralarge'>--Cosmic Size--</option>
-            
-            <input
-              type="submit"
-              value={size}
-              onChange={(event) => {
-                setsize(event.target[5].value);
-              }}
-            ></input>
-</select>
+              </select>
+
         
             <br></br>
             <label>Type of Food:</label>
             <br></br>
-            <select name="food" id="food">
+            <select name="food" id="food" 
+            value={food}
+            onChange={(event) => {
+                setfood(event.target.value);
+              }}>
+              <option value=''>--Select One--</option>
               <option value='omnivore'>--Omnivore--</option>
               <option value='nuclear waste'>--Nuclear Waste--</option>
               <option value='unknown'>--Not Sure--</option>
               <option value='politicians_souls'>--Politician's Souls--</option>
-            <input
-              type="submit"
-              value={food}
-              onChange={(event) => {
-                setfood(event.target[6].value);
-              }}
-            ></input>
-</select>
+            </select>
+
             <br></br>
             <label>Temperment:</label>
             <br></br>
-            <select name="temperment" id="temperment">
+            <select name="temperment" id="temperment" 
+            value={temper}
+            onChange={(event) => {
+                settemper(event.target.value);
+              }}>
+              <option value=''>--Select One--</option>
               <option value='docile'>--Docile--</option>
               <option value='stubborn'>--Stubborn--</option>
               <option value='dangerous'>--Watch Out--</option>
               <option value='evil'>--Will Eat the World--</option>
-            <input
-              type="submit"
-              value={temper}
-              onChange={(event) => {
-                settemper(event.target[7].value);
-              }}
-            ></input>
-</select>
-<br></br>
+            </select>
+
+            <br></br>
             <label>Image:</label>
             <br></br>
             <input
-              type="file" 
+              type="file"
               value={image}
               onChange={(event) => {
-                setimage(event.target[8].value);
+                setimage(event.target.value);
               }}
             ></input>
 
@@ -212,16 +190,13 @@ export default function CreateCreature(){
             <br></br>
             <br></br>
             <button className='input' type="submit">
-              Create <i class="fa fa-plus"></i>
+              Create
             </button>
             <div id="createErrorMessage" ></div>
             </div>
         </form>
         }
-        
         </>
         </div>
-        </div>
-        
     )
 }

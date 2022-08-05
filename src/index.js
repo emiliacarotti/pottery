@@ -29,7 +29,6 @@ import{
   Register,
   SingleItem
 } from "./components"
-import { set } from 'express/lib/application';
 
 function MadDog() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -50,10 +49,6 @@ function MadDog() {
         setToken(savedToken);
       }
     }, []);
-
-    useEffect(() => {
-      setIsAdmin(localStorage.getItem("isadmin"))
-    }, [username, isAdmin]);
   
     function Logout() {
       localStorage.removeItem("token");
@@ -77,7 +72,6 @@ function MadDog() {
         <br></br>
         <div className='Header'>
         <center>Beast Bazzaar </center>
-        
         </div>
         
         <Routes>
@@ -124,7 +118,7 @@ function MadDog() {
           <Route path="About" element={<About />}></Route>
           <Route path="Cart" element={<Cart />}></Route>
           <Route path="Checkout" element={<Checkout />}></Route>
-          <Route path="Create" element={<Create />}></Route>           
+          <Route path="Create" element={<Create isAdmin={isAdmin} />}></Route>           
 
           <Route
            path="Deal" 
@@ -134,13 +128,7 @@ function MadDog() {
            </Route>
 
 
-          <Route path="EditDelete" element={<EditDelete
-          selectedCreature = {selectedCreature}
-          setSelectedCreature = {setSelectedCreature}
-          loggedIn = {loggedIn}
-          isAdmin = {isAdmin}
-          setIsAdmin = {setIsAdmin}
-           />}></Route>
+          <Route path="EditDelete" element={<EditDelete />}></Route>
           <Route path="*" element={<Error />}></Route>
           <Route path="Filters" element={<Filters />}></Route>
           <Route path="Footer" element={<Footer />}></Route>
@@ -150,9 +138,7 @@ function MadDog() {
             path="SingleItem" 
             element={<SingleItem 
               selectedCreature={selectedCreature}
-              setSelectedCreature={setSelectedCreature}
-              isAdmin = {isAdmin}
-              setIsAdmin = {setIsAdmin}/>}>
+              setSelectedCreature={setSelectedCreature}/>}>
             </Route>
 
           <Route 
