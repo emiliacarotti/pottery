@@ -154,10 +154,6 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     </button>
                 ) : null}</div>
             </div></center>
-            
-
-                <br></br>
-                </form>
 
         </>
     )
