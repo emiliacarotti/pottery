@@ -377,6 +377,31 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                         Edit
                     </button>
 
+
+                )</div>
+            </div>
+            
+            <form onSubmit={(event) => {
+                event.preventDefault()
+                addToCart(event)
+            }}>
+                <div><div> Qty:  
+
+                <select name="quantity" id="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select></div>
+                <button className="addtocart"> <a href="./Cart"> Buy Now <i class='fa fa-cart-shopping'></i></a></button>
+                <br></br>
+                <div id="createErrorMessage" className="errors"></div>
+
+                <br></br></div>
+            </form>
+
+            <div> 
+
+
                     <button className="deletebtn"
                     // onClick={() => {
                     //     deleteCreature(creature.creatureid);

@@ -191,7 +191,7 @@ body{
 }
 .nav ul li a{
   font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
+  font-size: 60px;
   text-transform: uppercase;
   line-height: 1.2;
   font-weight: 800;
@@ -199,10 +199,11 @@ body{
   position: relative;
   color: #ececee;
   transition: all 250ms linear;
+  text-decoration: none;
 }
 .nav ul li a:hover{
   text-decoration: none;
-  color: #ffeba7;
+  color: red;
 }
 .nav ul li a:after{
   display: block;
@@ -472,7 +473,7 @@ body{
 /* ======================= Login page =======================*/
 
 .center {
-  position: absolute;
+  position: sticky;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -480,7 +481,7 @@ body{
   border-radius: 10px;
   border: 1px solid silver;
   padding: 20px;
-  margin-top: 15px;
+  margin-top: 300px;
   z-index: 1;
 }
 .center h2{
@@ -623,7 +624,14 @@ hr {
 /* =================== end of About page ====================*/
 
 /* ======================= MOTD page =======================*/
-
+.blink {
+  animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 .MOTMDEAL {
   padding-top: 145px;
   text-align: center;
@@ -687,6 +695,32 @@ hr {
   outline: none;
   cursor: pointer;
   margin-bottom: 15px;
+}
+.inputMOTM a{
+  text-decoration: none;
+  text-decoration-color: white;
+}
+.inputMOTM a:visited {
+  color: white;
+}
+s,
+strike {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  }
+
+s:after,
+strike:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 3px solid red;
+  height: 45%;
+  height: calc(50% - 1px);
+  width: 100%;
+  transform: rotateZ(-6deg);
 }
 /* =================== end of MOTM page ====================*/
 
