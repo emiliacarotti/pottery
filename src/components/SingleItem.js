@@ -216,19 +216,19 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {nameIsShown == true ? 
-                        <>
-                        <br></br>
-                        <input
-                            type="text"
-                            onChange={(event) => {
-                                setCreatureName(event.target.value);
-                            }}
-                        ></input>
-                    </> : null}
+                        {nameIsShown == true ?
+                            <>
+                                <br></br>
+                                <input
+                                    type="text"
+                                    onChange={(event) => {
+                                        setCreatureName(event.target.value);
+                                    }}
+                                ></input>
+                            </> : null}
                     </div>
                     <div className="beastid"> Price: {selectedCreature.price}
-                    {isAdmin == "true" ? (
+                        {isAdmin == "true" ? (
                             <>
                                 <button
                                     onClick={handlePriceClick}
@@ -236,19 +236,19 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {priceIsShown == true ? 
-                        <>
-                        <br></br>
-                        <input
-                            type="text"
-                            onChange={(event) => {
-                                setCreaturePrice(event.target.value);
-                            }}
-                        ></input>
-                    </> : null}
+                        {priceIsShown == true ?
+                            <>
+                                <br></br>
+                                <input
+                                    type="text"
+                                    onChange={(event) => {
+                                        setCreaturePrice(event.target.value);
+                                    }}
+                                ></input>
+                            </> : null}
                     </div>
                     <div className="beastid"> Quantity Available: {selectedCreature.stock}
-                    {isAdmin == "true" ? (
+                        {isAdmin == "true" ? (
                             <>
                                 <button
                                     onClick={handleStockClick}
@@ -256,19 +256,19 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {stockIsShown == true ? 
-                        <>
-                        <br></br>
-                        <input
-                            type="text"
-                            onChange={(event) => {
-                                setCreatureStock(event.target.value);
-                            }}
-                        ></input>
-                    </> : null}
+                        {stockIsShown == true ?
+                            <>
+                                <br></br>
+                                <input
+                                    type="text"
+                                    onChange={(event) => {
+                                        setCreatureStock(event.target.value);
+                                    }}
+                                ></input>
+                            </> : null}
                     </div>
                     <div className="beastid"> Optimal Environment: {selectedCreature.environment}
-                    {isAdmin == "true" ? (
+                        {isAdmin == "true" ? (
                             <>
                                 <button
                                     onClick={handleEnvironmentClick}
@@ -276,19 +276,19 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {environmentIsShown == true ? 
-                        <>
-                        <br></br>
-                        <input
-                            type="text"
-                            onChange={(event) => {
-                                setCreatureEnvironment(event.target.value);
-                            }}
-                        ></input>
-                    </> : null}
+                        {environmentIsShown == true ?
+                            <>
+                                <br></br>
+                                <input
+                                    type="text"
+                                    onChange={(event) => {
+                                        setCreatureEnvironment(event.target.value);
+                                    }}
+                                ></input>
+                            </> : null}
                     </div>
                     <div className="beastid"> Size: {selectedCreature.size}
-                    {isAdmin == "true" ? (
+                        {isAdmin == "true" ? (
                             <>
                                 <button
                                     onClick={handleSizeClick}
@@ -296,19 +296,19 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {sizeIsShown == true ? 
-                        <>
-                        <br></br>
-                        <input
-                            type="text"
-                            onChange={(event) => {
-                                setCreatureSize(event.target.value);
-                            }}
-                        ></input>
-                    </> : null}
+                        {sizeIsShown == true ?
+                            <>
+                                <br></br>
+                                <input
+                                    type="text"
+                                    onChange={(event) => {
+                                        setCreatureSize(event.target.value);
+                                    }}
+                                ></input>
+                            </> : null}
                     </div>
                     <div className="beastid"> Type of Food: {selectedCreature.food}
-                    {isAdmin == "true" ? (
+                        {isAdmin == "true" ? (
                             <>
                                 <button
                                     onClick={handleFoodClick}
@@ -316,19 +316,19 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {foodIsShown == true ? 
-                        <>
-                        <br></br>
-                        <input
-                            type="text"
-                            onChange={(event) => {
-                                setCreatureFood(event.target.value);
-                            }}
-                        ></input>
-                    </> : null}
+                        {foodIsShown == true ?
+                            <>
+                                <br></br>
+                                <input
+                                    type="text"
+                                    onChange={(event) => {
+                                        setCreatureFood(event.target.value);
+                                    }}
+                                ></input>
+                            </> : null}
                     </div>
                     <div className="beastid"> Temperament: {selectedCreature.temper}
-                    {isAdmin == "true" ? (
+                        {isAdmin == "true" ? (
                             <>
                                 <button
                                     onClick={handleTemperClick}
@@ -336,16 +336,16 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {temperIsShown == true ? 
-                        <>
-                        <br></br>
-                        <input
-                            type="text"
-                            onChange={(event) => {
-                                setCreatureTemper(event.target.value);
-                            }}
-                        ></input>
-                    </> : null}
+                        {temperIsShown == true ?
+                            <>
+                                <br></br>
+                                <input
+                                    type="text"
+                                    onChange={(event) => {
+                                        setCreatureTemper(event.target.value);
+                                    }}
+                                ></input>
+                            </> : null}
                     </div>
                 </div>
 
@@ -371,49 +371,22 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
 
                     <button className="deletebtn"
                     // onClick={() => {
-                    //     editCreature(creature.creatureid);
+                    //     deleteCreature(creature.creatureid);
                     // }}
                     >
                         Edit
                     </button>
-
-
-                )</div>
-            </div>
-            
-            <form onSubmit={(event) => {
-                event.preventDefault()
-                addToCart(event)
-            }}>
-                <div><div> Qty:  
-
-                <select name="quantity" id="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select></div>
-                <button className="addtocart"> <a href="./Cart"> Buy Now <i class='fa fa-cart-shopping'></i></a></button>
-                <br></br>
-                <div id="createErrorMessage" className="errors"></div>
-
-                <br></br></div>
-            </form>
-
-            <div> 
-
-
-                    <button className="deletebtn"
-                    // onClick={() => {
-                    //     deleteCreature(creature.creatureid);
-                    // }}
-                    >
-                        Delete
-                    </button>
-
                 </div>
-
-            </div></center>
-
+            <div>
+                <button className="deletebtn"
+                // onClick={() => {
+                //     editCreature(creature.creatureid);
+                // }}
+                >
+                    Delete
+                </button>
+            </div>
+        </div></center>
         </>
     )
 }
