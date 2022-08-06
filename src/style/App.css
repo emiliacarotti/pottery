@@ -267,7 +267,10 @@ body{
 
 
 /* ======================= Home page =======================*/
-
+.monsterbutton a {
+  text-decoration: none;
+  font-size: 30px;
+}
 .creaturegallery {
   text-align: center;
   border: solid 1px silver;
@@ -770,10 +773,7 @@ strike:after {
   margin-top: 0px;
 
 }
-.center1 form {
-  /* padding: 0 40px; */
-  /* box-sizing: border-box; */
-}
+
 .center1 input,  
 .center1 select{
   width: 100%;
