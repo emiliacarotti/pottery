@@ -29,6 +29,7 @@ import{
   Register,
   SingleItem
 } from "./components"
+import { user } from 'pg/lib/defaults';
 
 function MadDog() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -49,10 +50,16 @@ function MadDog() {
         setToken(savedToken);
       }
     }, []);
+
+    useEffect(() => {
+      setIsAdmin(localStorage.getItem("isadmin"))
+    }, [username, isAdmin, setLoggedIn, loggedIn]);
   
     function Logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("username");
+      localStorage.setItem("isadmin", false);
+      setIsAdmin(false)
       setLoggedIn(false);
       setToken("");
       setUsername("");
@@ -137,6 +144,7 @@ function MadDog() {
           <Route 
             path="SingleItem" 
             element={<SingleItem 
+              isAdmin = {isAdmin}
               selectedCreature={selectedCreature}
               setSelectedCreature={setSelectedCreature}/>}>
             </Route>

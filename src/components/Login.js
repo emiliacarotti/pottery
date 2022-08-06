@@ -28,6 +28,7 @@ export default function Login({ username, setUsername, setToken, setLoggedIn, se
                 setLoggedIn(true)
                 localStorage.setItem("token", result.token)
                 if(result.user.isadmin == 1) {
+                    localStorage.setItem("isadmin", true)
                      setIsAdmin(true)
                      console.log("Admin!")
                 }
