@@ -135,59 +135,31 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
     }
 
     const handleNameClick = event => {
-        // 👇️ toggle shown state
         setNameIsShown(current => !current);
-
-        // 👇️ or simply set it to true
-        // setIsShown(true);
     };
 
     const handlePriceClick = event => {
-        // 👇️ toggle shown state
         setPriceIsShown(current => !current);
-
-        // 👇️ or simply set it to true
-        // setIsShown(true);
     };
 
     const handleStockClick = event => {
-        // 👇️ toggle shown state
         setStockIsShown(current => !current);
-
-        // 👇️ or simply set it to true
-        // setIsShown(true);
     };
 
     const handleEnvironmentClick = event => {
-        // 👇️ toggle shown state
-        setEnvironmentIsShown(current => !current);
-
-        // 👇️ or simply set it to true
-        // setIsShown(true);
+        setEnvironmentIsShown(current => !current)
     };
 
     const handleSizeClick = event => {
-        // 👇️ toggle shown state
         setSizeIsShown(current => !current);
-
-        // 👇️ or simply set it to true
-        // setIsShown(true);
     };
 
     const handleFoodClick = event => {
-        // 👇️ toggle shown state
         setFoodIsShown(current => !current);
-
-        // 👇️ or simply set it to true
-        // setIsShown(true);
     };
 
     const handleTemperClick = event => {
-        // 👇️ toggle shown state
         setTemperIsShown(current => !current);
-
-        // 👇️ or simply set it to true
-        // setIsShown(true);
     };
 
 
@@ -368,26 +340,20 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                 </form>
 
                 <div>
-
-                    <button className="deletebtn"
-                    // onClick={() => {
-
-                    //     deleteCreature(creature.creatureid);
-                    // }}
-                    >
-                        Edit
-                    </button>
+                    {isAdmin == "true" ? (
+                        <button className="deletebtn">
+                            Edit
+                        </button>
+                    ) : null}
                 </div>
-            <div>
-                <button className="deletebtn"
-                // onClick={() => {
-                //     editCreature(creature.creatureid);
-                // }}
-                >
-                    Delete
-                </button>
-            </div>
-        </div></center>
+                <div>
+                {isAdmin == "true" ? (
+                        <button className="deletebtn">
+                            Delete
+                        </button>
+                    ) : null}
+                </div>
+            </div></center>
         </>
     )
 }
