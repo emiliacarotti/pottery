@@ -10,7 +10,13 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         async function getCreatures(){
             try{
 
-                const response = await fetch('http://localhost:4000/api/creatures')
+                const response = await fetch('http://localhost:4000/api/creatures', {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+
+                }
+                })
                 let data = await response.json()
                 console.log("data******:",data)
                 setCreatures(data)
@@ -24,7 +30,7 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         getCreatures()
     },[])
 
-    
+
     return ( 
         <>
 
@@ -32,17 +38,21 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         creatures?.map((creature) => {
             return (
                 <>
+                
                 <br></br><br></br><br></br>
+                <div className="creaturegallery">
                 <div key={creature.creatureid}>
-                    <img src={imgURL + creature.creatureid + ".png"} width="100" height="100"></img>
+                    <img className="creatures" src={imgURL + creature.creatureid + ".png"} width="370" height="370"></img>
                     {
-                    isAdmin?<li><a href="./EditDelete"> {creature.name} </a></li> : <li><Link to="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </Link></li>
+                    <button className="inputMOTM"> <a href="./SingleItem"> {creature.name} <i class='fa fa-magnifying-glass'></i></a></button>
                     }
-                    <div>{creature.price}</div> 
+                    <div className="cPrice"><h6>{creature.price}</h6></div> 
                 </div>
 
                 {/* Image - name creature1.png and dynamically generate the string for the image url */}
+                </div>
                 </>
+                
             )
             })
         }

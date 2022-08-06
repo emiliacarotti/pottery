@@ -144,7 +144,9 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
 
                 <br></br></div>
             </form>
-            <div> (
+
+            <div> 
+
                     <button className="deletebtn"
                         // onClick={() => {
                         //     deleteCreature(creature.creatureid);
@@ -152,7 +154,9 @@ export default function SingleItem({ selectedCreature, setSelectedCreature }) {
                     >
                         Delete
                     </button>
-                ) </div>
+
+                </div>
+
             </div></center>
 
         </>
