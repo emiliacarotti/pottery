@@ -42,13 +42,11 @@ export default function Home({ creatures, setCreatures, selectedCreature, setSel
                 <br></br><br></br><br></br>
                 <div className="creaturegallery">
                 <div key={creature.creatureid}>
-
                     <img src={imgURL + creature.creatureid + ".png"} width="100" height="100"></img>
                     
                     <li><Link to="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </Link></li>
                     
                     <div>{creature.price}</div> 
-
                 </div>
 
                 {/* Image - name creature1.png and dynamically generate the string for the image url */}

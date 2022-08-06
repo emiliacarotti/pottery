@@ -44,12 +44,13 @@ function Cart(){
         </div>
        
     </div> 
+    <div className="cartpage">
     <center><div className="checkout">Ready to checkout?</div></center>
     <center><button className="checkout-btn"> Checkout </button></center>
-    <center>Want to set a reminder?</center>
+    <center>Sign up for our newsletter to recieve a 15% off code!</center>
     <center><input className="reminder" placeholder="Email"></input></center>
-    <center><button className="checkout-btn">Send yourself a reminder!</button></center>
-    </div>
+    <center><button className="checkout-btn">Sign Up</button></center>
+    </div></div>
     </>
     )
 }

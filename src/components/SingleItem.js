@@ -392,7 +392,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select></div>
-                <button className="addtocart"> <a href="./Cart"> Buy Now <i class='fa fa-cart-shopping'></i></a></button>
+                <button className="addtocart"> <a href="./Cart"> Add to Cart <i class='fa fa-cart-shopping'></i></a></button>
                 <br></br>
                 <div id="createErrorMessage" className="errors"></div>
 
