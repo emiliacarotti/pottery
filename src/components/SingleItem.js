@@ -371,6 +371,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
 
                     <button className="deletebtn"
                     // onClick={() => {
+
                     //     deleteCreature(creature.creatureid);
                     // }}
                     >

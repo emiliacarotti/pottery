@@ -67,9 +67,9 @@ export default function Create({isAdmin}){
   }
 
 
-    return (<div className="center1">
+    return (<div className="move"><div className="center1">
     <>
-    <center><h2><i className="fa fa-spaghetti-monster-flying"></i></h2></center>
+    <center><h2><i className="fa fa-dragon"></i></h2></center>
     <br></br>{
         <form
           onSubmit={(event) => {
@@ -197,6 +197,7 @@ export default function Create({isAdmin}){
         </form>
         }
         </>
+        </div>
         </div>
     )
 }
