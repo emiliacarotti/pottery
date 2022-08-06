@@ -6,28 +6,28 @@ const client = require('./client');
 async function getUserHistory() {
     try {
         const { rows } = await client.query(`
-        SELECT userid, pricetotal, count, status, date
+        SELECT price, count, status, date
         FROM history;
       `);
       console.log(rows)
         return rows;
     } catch (error) {
-      console.error("Error getting userHistory!"+error);
+      console.error("Error getting user!");
     }
 }
 //CreateOrderHistory 
-async function createHistory({ userid, pricetotal, count, status, date }) {
-  console.log("create ORDER history", userid, pricetotal, count, status, date )
+async function createHistory({ price, count, status, date }) {
+  console.log("create user history", price, count, status, date )
   try {
     const { rows: [user] } = await client.query(`
-      INSERT INTO history( userid, pricetotal, count, status, date) 
-      VALUES($1, $2, $3, $4, $5) 
+      INSERT INTO history( price, count, status, date) 
+      VALUES($1, $2, $3, $4) 
       ON CONFLICT (historyid) DO NOTHING 
       RETURNING *;
-    `, [ userid, pricetotal, count, status, date ]);
+    `, [ price, count, status, date ]);
     return user;
 } catch (error) {
-console.error("Error creating ORDER history!"+error);
+console.error("Error creating user history!");
 }
 }
 
@@ -36,28 +36,28 @@ console.error("Error creating ORDER history!"+error);
 async function getHistoryItems() {
   try {
       const { rows } = await client.query(`
-      SELECT historyid, creatureid, priceitem, count
+      SELECT historyid, creatureid, count
       FROM history_items;
     `);
     console.log(rows)
       return rows;
   } catch (error) {
-    console.error("Error getting history item!"+error);
+    console.error("Error getting user!");
   }
 }
 
 
-async function createInitialHistoryItems({ historyid, creatureid, priceitem, count}) {
+async function createHistoryItem({ historyid, creatureid, count}) {
   try {
       const { rows } = await client.query(`
-      INSERT INTO history_items(historyid, creatureid, priceitem, count)
-      VALUES($1,$2,$3,$4)
+      INSERT INTO history_items(historyid, creatureid, count)
+      VALUES($1,$2,$3)
       RETURNING *;
-    `, [ historyid, creatureid, priceitem, count]);
+    `, [ historyid, creatureid, count]);
     console.log(rows)
       return rows;
   } catch (error) {
-    console.error("Error creating history item !"+error);
+    console.error("Error creating address!"+error);
   }
 }
 
@@ -66,7 +66,5 @@ module.exports = {
     getUserHistory,
     createHistory,
     getHistoryItems,
-    createInitialHistoryItems
+    createHistoryItem
   };
-
-  //UPDATE THIS DB FILE

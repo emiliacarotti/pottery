@@ -58,6 +58,7 @@ creaturesRouter.get('/:creatureid', async (req, res, next) => {
 // create a creature
 creaturesRouter.post('/create', async (req, res, next) => {
   const { name, price, stock, environment, size, food, temper } = req.body;
+  console.log("in api")
   try {
     if (isAdmin) { //user is an admin, idk if this is right
       if (!name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing

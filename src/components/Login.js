@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import reactdomclient from "react-dom/client"
 import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
-export default function Login({ username, setUsername, setToken, setLoggedIn, isAdmin, setIsAdmin}){
+export default function Login({ username, setUsername, setToken, setLoggedIn, setIsAdmin}){
     //const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function Login({ username, setUsername, setToken, setLoggedIn, is
                 localStorage.setItem("token", result.token)
                 if(result.user.isadmin == 1) {
                     localStorage.setItem("isadmin", true)
-                    setIsAdmin(true)
+                     setIsAdmin(true)
                      console.log("Admin!")
                 }
                 console.log(result.user)
@@ -41,8 +41,7 @@ export default function Login({ username, setUsername, setToken, setLoggedIn, is
             console.log("Unable to log in! " + err)
         }
     }
-    return (
-    <div className="center">
+    return (<div className="center">
         <>
             <h2> Log In </h2>
             <form onSubmit={(event)=>{

@@ -29,7 +29,7 @@ import{
   Register,
   SingleItem
 } from "./components"
-import { set } from 'express/lib/application';
+import { user } from 'pg/lib/defaults';
 
 function MadDog() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -79,7 +79,6 @@ function MadDog() {
         <br></br>
         <div className='Header'>
         <center>Beast Bazzaar </center>
-        
         </div>
         
         <Routes>
@@ -126,7 +125,7 @@ function MadDog() {
           <Route path="About" element={<About />}></Route>
           <Route path="Cart" element={<Cart />}></Route>
           <Route path="Checkout" element={<Checkout />}></Route>
-          <Route path="Create" element={<Create />}></Route>           
+          <Route path="Create" element={<Create isAdmin={isAdmin} />}></Route>           
 
           <Route
            path="Deal" 
@@ -136,13 +135,7 @@ function MadDog() {
            </Route>
 
 
-          <Route path="EditDelete" element={<EditDelete
-          selectedCreature = {selectedCreature}
-          setSelectedCreature = {setSelectedCreature}
-          loggedIn = {loggedIn}
-          isAdmin = {isAdmin}
-          setIsAdmin = {setIsAdmin}
-           />}></Route>
+          <Route path="EditDelete" element={<EditDelete />}></Route>
           <Route path="*" element={<Error />}></Route>
           <Route path="Filters" element={<Filters />}></Route>
           <Route path="Footer" element={<Footer />}></Route>
@@ -151,10 +144,9 @@ function MadDog() {
           <Route 
             path="SingleItem" 
             element={<SingleItem 
-              selectedCreature={selectedCreature}
-              setSelectedCreature={setSelectedCreature}
               isAdmin = {isAdmin}
-              setIsAdmin = {setIsAdmin}/>}>
+              selectedCreature={selectedCreature}
+              setSelectedCreature={setSelectedCreature}/>}>
             </Route>
 
           <Route 

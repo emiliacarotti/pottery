@@ -16,6 +16,14 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
     const [creatureFood, setCreatureFood] = useState('');
     const [creatureTemper, setCreatureTemper] = useState('');
 
+    const [nameIsShown, setNameIsShown] = useState(false);
+    const [priceIsShown, setPriceIsShown] = useState(false);
+    const [stockIsShown, setStockIsShown] = useState(false);
+    const [environmentIsShown, setEnvironmentIsShown] = useState(false);
+    const [sizeIsShown, setSizeIsShown] = useState(false);
+    const [foodIsShown, setFoodIsShown] = useState(false);
+    const [temperIsShown, setTemperIsShown] = useState(false);
+
     useEffect(() => {
         async function getCreaturebyId() {
             //console.log('creatureid', creatureid)
@@ -126,126 +134,261 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
         }
     }
 
+    const handleNameClick = event => {
+        // 👇️ toggle shown state
+        setNameIsShown(current => !current);
+
+        // 👇️ or simply set it to true
+        // setIsShown(true);
+    };
+
+    const handlePriceClick = event => {
+        // 👇️ toggle shown state
+        setPriceIsShown(current => !current);
+
+        // 👇️ or simply set it to true
+        // setIsShown(true);
+    };
+
+    const handleStockClick = event => {
+        // 👇️ toggle shown state
+        setStockIsShown(current => !current);
+
+        // 👇️ or simply set it to true
+        // setIsShown(true);
+    };
+
+    const handleEnvironmentClick = event => {
+        // 👇️ toggle shown state
+        setEnvironmentIsShown(current => !current);
+
+        // 👇️ or simply set it to true
+        // setIsShown(true);
+    };
+
+    const handleSizeClick = event => {
+        // 👇️ toggle shown state
+        setSizeIsShown(current => !current);
+
+        // 👇️ or simply set it to true
+        // setIsShown(true);
+    };
+
+    const handleFoodClick = event => {
+        // 👇️ toggle shown state
+        setFoodIsShown(current => !current);
+
+        // 👇️ or simply set it to true
+        // setIsShown(true);
+    };
+
+    const handleTemperClick = event => {
+        // 👇️ toggle shown state
+        setTemperIsShown(current => !current);
+
+        // 👇️ or simply set it to true
+        // setIsShown(true);
+    };
+
+
+    function Box() {
+        return (
+            <div>
+                <h2>Box</h2>
+            </div>
+        );
+    }
+
 
     return (
-        <>
+        <><center>
             <p>Single Item Page</p>
             <br></br><br></br><br></br>
-            {/* <div className="center"> */}
-            <div key={selectedCreature.creatureid}>
-                <img src={imgURL + selectedCreature.creatureid + ".png"} width="300" height="300"></img>
-                <form><div> Name: {selectedCreature.name} {isAdmin == "true" ? (
-                    <>
+            <div className="single">
+                <div key={selectedCreature.creatureid}>
+                    <img src={imgURL + selectedCreature.creatureid + ".png"} width="300" height="300"></img>
+                    <div className="beastid"> Name: {selectedCreature.name}
+                        {isAdmin == "true" ? (
+                            <>
+                                <button
+                                    onClick={handleNameClick}
+                                    className="editbtn">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button></>
+                        ) : null}
+                        {nameIsShown == true ? 
+                        <>
                         <br></br>
                         <input
                             type="text"
                             onChange={(event) => {
-                                setCreatureName(event.targetvalue);
+                                setCreatureName(event.target.value);
                             }}
                         ></input>
-                    </>
-                ) : null}</div>
-                    <div> Price: {selectedCreature.price} {isAdmin == "true" ? (
+                    </> : null}
+                    </div>
+                    <div className="beastid"> Price: {selectedCreature.price}
+                    {isAdmin == "true" ? (
+                            <>
+                                <button
+                                    onClick={handlePriceClick}
+                                    className="editbtn">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button></>
+                        ) : null}
+                        {priceIsShown == true ? 
                         <>
-                            <br></br>
-                            <input
-                                type="text"
-                                onChange={(event) => {
-                                    setCreaturePrice(event.target.value);
-                                }}
-                            ></input>
-                        </>
-                    ) : null}</div>
-                    <div> Quantity Available: {selectedCreature.stock} {isAdmin == "true" ? (
+                        <br></br>
+                        <input
+                            type="text"
+                            onChange={(event) => {
+                                setCreaturePrice(event.target.value);
+                            }}
+                        ></input>
+                    </> : null}
+                    </div>
+                    <div className="beastid"> Quantity Available: {selectedCreature.stock}
+                    {isAdmin == "true" ? (
+                            <>
+                                <button
+                                    onClick={handleStockClick}
+                                    className="editbtn">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button></>
+                        ) : null}
+                        {stockIsShown == true ? 
                         <>
-                            <br></br>
-                            <input
-                                type="text"
-                                onChange={(event) => {
-                                    setCreatureStock(event.target.value);
-                                }}
-                            ></input>
-                        </>
-                    ) : null}</div>
-                    <div> Optimal Environment: {selectedCreature.environment} {isAdmin == "true" ? (
+                        <br></br>
+                        <input
+                            type="text"
+                            onChange={(event) => {
+                                setCreatureStock(event.target.value);
+                            }}
+                        ></input>
+                    </> : null}
+                    </div>
+                    <div className="beastid"> Optimal Environment: {selectedCreature.environment}
+                    {isAdmin == "true" ? (
+                            <>
+                                <button
+                                    onClick={handleEnvironmentClick}
+                                    className="editbtn">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button></>
+                        ) : null}
+                        {environmentIsShown == true ? 
                         <>
-                            <br></br>
-                            <input
-                                type="text"
-                                onChange={(event) => {
-                                    setCreatureEnvironment(event.target.value);
-                                }}
-                            ></input>
-                        </>
-                    ) : null}</div>
-                    <div> Size: {selectedCreature.size} {isAdmin == "true" ? (
+                        <br></br>
+                        <input
+                            type="text"
+                            onChange={(event) => {
+                                setCreatureEnvironment(event.target.value);
+                            }}
+                        ></input>
+                    </> : null}
+                    </div>
+                    <div className="beastid"> Size: {selectedCreature.size}
+                    {isAdmin == "true" ? (
+                            <>
+                                <button
+                                    onClick={handleSizeClick}
+                                    className="editbtn">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button></>
+                        ) : null}
+                        {sizeIsShown == true ? 
                         <>
-                            <br></br>
-                            <input
-                                type="text"
-                                onChange={(event) => {
-                                    setCreatureSize(event.target.value);
-                                }}
-                            ></input>
-                        </>
-                    ) : null}</div>
-                    <div> Type of Food: {selectedCreature.food} {isAdmin == "true" ? (
+                        <br></br>
+                        <input
+                            type="text"
+                            onChange={(event) => {
+                                setCreatureSize(event.target.value);
+                            }}
+                        ></input>
+                    </> : null}
+                    </div>
+                    <div className="beastid"> Type of Food: {selectedCreature.food}
+                    {isAdmin == "true" ? (
+                            <>
+                                <button
+                                    onClick={handleFoodClick}
+                                    className="editbtn">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button></>
+                        ) : null}
+                        {foodIsShown == true ? 
                         <>
-                            <br></br>
-                            <input
-                                type="text"
-                                onChange={(event) => {
-                                    setCreatureFood(event.target.value);
-                                }}
-                            ></input>
-                        </>
-                    ) : null}</div>
-                    <div> Temperament: {selectedCreature.temper} {isAdmin == "true" ? (
+                        <br></br>
+                        <input
+                            type="text"
+                            onChange={(event) => {
+                                setCreatureFood(event.target.value);
+                            }}
+                        ></input>
+                    </> : null}
+                    </div>
+                    <div className="beastid"> Temperament: {selectedCreature.temper}
+                    {isAdmin == "true" ? (
+                            <>
+                                <button
+                                    onClick={handleTemperClick}
+                                    className="editbtn">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button></>
+                        ) : null}
+                        {temperIsShown == true ? 
                         <>
-                            <br></br>
-                            <input
-                                type="text"
-                                onChange={(event) => {
-                                    setCreatureTemper(event.target.value);
-                                }}
-                            ></input>
-                        </>
-                    ) : null}</div>
-                </form>
-            </div>
+                        <br></br>
+                        <input
+                            type="text"
+                            onChange={(event) => {
+                                setCreatureTemper(event.target.value);
+                            }}
+                        ></input>
+                    </> : null}
+                    </div>
+                </div>
 
-            <form onSubmit={(event) => {
-                event.preventDefault()
-                addToCart(event)
-            }}>
-                <div> Qty:
-                    <select name="quantity" id="quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                    <button href="./Cart" className="submit" type="submit">Add to Cart</button>
-                    <br></br>
-                    <div id="createErrorMessage" className="errors"></div>
-                    <br></br></div>
-            </form>
-            <div> {isAdmin == "true" ? (
-                <><button
-                    onClick={() => {
-                        DeleteCreature(selectedCreature.creatureid);
-                    }}
-                >
-                    Delete
-                </button>
-                    <button
-                        onClick={() => {
-                            EditCreature(selectedCreature.creatureid);
-                        }}
+                <form onSubmit={(event) => {
+                    event.preventDefault()
+                    addToCart(event)
+                }}>
+                    <div><div> Qty:
+
+                        <select name="quantity" id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select></div>
+                        <button className="addtocart"> <a href="./Cart"> Buy Now <i class='fa fa-cart-shopping'></i></a></button>
+                        <br></br>
+                        <div id="createErrorMessage" className="errors"></div>
+
+                        <br></br></div>
+                </form>
+
+                <div>
+
+                    <button className="deletebtn"
+                    // onClick={() => {
+                    //     editCreature(creature.creatureid);
+                    // }}
                     >
                         Edit
-                    </button></>
-            ) : null}</div>
-            {/* </div> */}
+                    </button>
+
+                    <button className="deletebtn"
+                    // onClick={() => {
+                    //     deleteCreature(creature.creatureid);
+                    // }}
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+            </div></center>
+
         </>
     )
 }

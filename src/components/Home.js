@@ -24,39 +24,28 @@ export default function Home({ creatures, setCreatures, selectedCreature, setSel
         getCreatures()
     }, [])
 
-
-    return (
+    
+    return ( 
         <>
 
-            {
-                creatures?.map((creature) => {
-                    // localStorage.setItem("selectedCreature", creature)
-                    return (
-                        <>
+        {
+        creatures?.map((creature) => {
+            return (
+                <>
+                <br></br><br></br><br></br>
+                <div key={creature.creatureid}>
+                    <img src={imgURL + creature.creatureid + ".png"} width="100" height="100"></img>
+                    
+                    <li><Link to="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </Link></li>
+                    
+                    <div>{creature.price}</div> 
+                </div>
 
-                            <br></br><br></br><br></br>
-                            <div className="creaturegallery">
-                                <div key={creature.creatureid}>
-                                    <img className="creatures" src={imgURL + creature.creatureid + ".png"} width="370" height="370"></img>
-                                    {
-                                        <button 
-                                        onClick={(event) => {
-                                            ;
-                                        }}
-                                        className="inputMOTM">
-                                        
-                                        <a href="./SingleItem"> {creature.name} <i class='fa fa-magnifying-glass'></i></a></button>
-                                    }
-                                    <div className="cPrice"><h6>{creature.price}</h6></div>
-                                </div>
-
-                                {/* Image - name creature1.png and dynamically generate the string for the image url */}
-                            </div>
-                        </>
-
-                    )
-                })
-            }
+                {/* Image - name creature1.png and dynamically generate the string for the image url */}
+                </>
+            )
+            })
+        }
         </>
     )
 }

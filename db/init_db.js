@@ -16,7 +16,7 @@ async function dropTables() {
     console.log("Drop tables...");
    
     await client.query(`
-        DROP TABLE IF EXISTS history_items;
+        DROP TABLE IF EXISTS history_items;  
         DROP TABLE IF EXISTS history;
         DROP TABLE IF EXISTS cart_items;
         DROP TABLE IF EXISTS cart;
@@ -77,8 +77,7 @@ async function createTables() {
           );
           CREATE TABLE history (
             historyid SERIAL PRIMARY KEY,
-            userid INTEGER REFERENCES users(userid) NOT NULL,
-            pricetotal INTEGER NOT NULL,
+            price INTEGER NOT NULL,
             count INTEGER NOT NULL,
             status VARCHAR(255) NOT NULL,
             date VARCHAR(255) NOT NULL
@@ -86,7 +85,6 @@ async function createTables() {
           CREATE TABLE history_items (
             historyid INTEGER REFERENCES history(historyid) NOT NULL,
             creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
-            priceitem INTEGER NOT NULL,
             count INTEGER NOT NULL
           );
       `);
@@ -214,24 +212,21 @@ async function createInitialOrderHistory() {
     const orderHistoryToCreate = [
       {
         historyid: 1,
-        userid: 1,
-        pricetotal: "5000",
+        price: "5000",
         count: 1,
         status: "not delievered, creature escaped packaging",
         date: "07/01/2022",
       },
       {
         historyid: 2,
-        userid: 2,
-        pricetotal: "750",
+        price: "750",
         count: 1,
         status: "delivered",
         date: "07/02/2022",
       },
       {
         historyid: 3,
-        userid: 3,
-        pricetotal: "1000",
+        price: "1000",
         count: 2,
         status: "delivered",
         date: "07/03/2022",
@@ -245,42 +240,6 @@ async function createInitialOrderHistory() {
     console.log("Finished creating order history!")
   } catch (error) {
     console.error("Error creating order history!")
-    throw error
-
-  }
-}
-
-async function createInitialHistoryItems() {
-  console.log("Loading Order History...")
-  try {
-    const ItemsToCreate = [
-      {
-        historyid: 1,
-        creatureid: 1,
-        priceitem: "5000",
-        count: 1
-      },
-      {
-        historyid: 2,
-        creatureid: 2,
-        priceitem: "750",
-        count: 1
-      },
-      {
-        historyid: 3,
-        creatureid: 3,
-        priceitem: "1000",
-        count: 2
-      },
-    ]
-    const orderHistory = await Promise.all(ItemsToCreate.map(history.createInitialHistoryItems))
-    
-    console.log("Order History ITEM created:")
-    console.log(orderHistory)
-
-    console.log("Finished creating order history ITEM!")
-  } catch (error) {
-    console.error("Error creating order history ITEM!")
     throw error
 
   }
@@ -358,7 +317,6 @@ async function rebuildDB() {
     await createInitialAddress()
     await createInitialCreatures()
     await createInitialOrderHistory()
-    await createInitialHistoryItems()
     await createInitialCart()
     await createInitialCartItems()
 
