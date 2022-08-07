@@ -71,8 +71,24 @@ export default function Create({isAdmin}){
       });
     }
 
-    // async function CREATE A NEW CREATURE
+    async function getImageUrl(fileName) {
+      const storageRef = ref(storage, fileName);
+      const downloadURL = await getDownloadURL(storageRef);
+      return downloadURL
+      
+    }
 
+    async function saveImageName(url) {
+      const response = await fetch(`${server_url}/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url: url }),
+      });
+    }
+
+    // async function CREATE A NEW CREATURE
   async function newCreature(imageName) {
     try {
       console.log(localStorage.getItem("token"))
@@ -95,7 +111,6 @@ export default function Create({isAdmin}){
         
         console.log("imageURL: ", imageName)
       const response = await fetch(`${server_url}/`,        
-
       {
           method: "POST",
           headers: {
@@ -112,7 +127,6 @@ export default function Create({isAdmin}){
             food: food, 
             temper: temper,
             image: imageName
-
           })
         }
       );
@@ -135,12 +149,12 @@ export default function Create({isAdmin}){
     return (<div className="center1">
     <>
     <center><h2><i className="fa fa-spaghetti-monster-flying"></i></h2></center>
-
     <br></br>{
         <form
           onSubmit={async (event) => {
             event.preventDefault();
             await uploadImage();
+            
           }}>
 
             <div>
@@ -157,7 +171,7 @@ export default function Create({isAdmin}){
 
             
             <br></br>
-            <label>Price:</label>
+            <label>Price: $</label>
             <br></br>
             <input
               type="text"
@@ -248,7 +262,6 @@ export default function Create({isAdmin}){
               type="file"
               onChange={(event) => {
                 setSelectedFile(event.target.files);
-
               }}
             ></input>
 

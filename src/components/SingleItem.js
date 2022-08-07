@@ -132,7 +132,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
         } catch (err) {
             console.log("Could not delete creature! " + err)
         }
-    }
+      }
 
     const handleNameClick = event => {
         setNameIsShown(current => !current);
@@ -199,7 +199,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                                 ></input>
                             </> : null}
                     </div>
-                    <div className="beastid"> Price: {selectedCreature.price}
+                    <div className="beastid"> Price: ${selectedCreature.price}
                         {isAdmin == "true" ? (
                             <>
                                 <button

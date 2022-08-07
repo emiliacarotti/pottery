@@ -17,10 +17,10 @@ export default function Navbar({loggedIn, Logout, isAdmin, setIsAdmin}){
                 <ul className="pt-5">
                 <li><a href="/"> Home </a></li>
                 {
-                isAdmin == "true" ?(<li><a href="./Create"> Create New Creature Listing </a></li>) : null
+                isAdmin == "true" ?(<li><a href="./Create"> Create Creature </a></li>) : null
                 }
                 {
-                !loggedIn?<li><a href="./Login"> Login </a></li> : <li><a> <button onClick={Logout}> Logout</button> </a></li>
+                !loggedIn?<li><a href="./Login"> Login </a></li> : <li><a href="/"> <button onClick={Logout}> Logout</button> </a></li>
                 }
                 <li><a href="./Deal"> Beast of the Month </a></li>
                 <li><a href="./About"> About Us </a></li>

@@ -40,19 +40,19 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         {
         creatures?.map((creature) => {
             return (
-                <>
+                <div key={creature.creatureid}>
                     <br></br> <br></br> <br></br>
                 <div className="creaturegallery">
-                <div key={creature.creatureid}>
+                <div>
                 
                     <img src={ creature.image
                     } width="100" height="100"></img>
                     <div className="monsterbutton"><Link to="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </Link></div>
-                    <div className="cPrice"><h6>{creature.price}</h6></div> 
+                    <div className="cPrice"><h6> $ {creature.price}</h6></div> 
 
                 </div>
                 </div>
-                </>
+                </div>
             )
             })
         }
