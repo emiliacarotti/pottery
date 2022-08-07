@@ -109,28 +109,18 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
         }
     }
 
-    // async function DELETE A CREATURE  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
-    async function DeleteCreature(event) {
+    // DELETE A CREATURE
+    async function DeleteCreature(creatureid) {
         try {
-            const response = await fetch(`http://localhost:4000/api/creatures` + selectedCreature.creatureid, {
+            const response = await fetch(`http://localhost:4000/api/creatures/${creatureid}`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem("token")
                 }
-
             })
-            let result = await response.json()
-            if (result.success) {
-                alert("Your creature has been deleted!")
-                navigate("/")
-
-            } else {
-                document.getElementById("createErrorMessage").innerHTML = result.error.message
-            }
-
+            navigate("/")
         } catch (err) {
-            console.log("Could not delete creature! " + err)
+            console.log("Could not delete creature! " + err);
         }
       }
 
@@ -348,7 +338,13 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                 </div>
                 <div>
                 {isAdmin == "true" ? (
-                        <button className="deletebtn">
+                        <button 
+                        onClick={ (event) => {
+                            event.preventDefault();
+                             DeleteCreature(selectedCreature.creatureid);
+                        }}
+                        
+                        className="deletebtn">
                             Delete
                         </button>
                     ) : null}

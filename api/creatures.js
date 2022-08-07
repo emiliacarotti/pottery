@@ -121,22 +121,12 @@ creaturesRouter.patch('/', async (req, res, next) => {
   }
 })
 
-// // Delete Creature
-creaturesRouter.delete('/', async (req, res, next) => {
+// Delete Creature
+creaturesRouter.delete('/:creatureid', async (req, res, next) => {
   try {
-    if (true) { //user is an admin, idk if this is right
-      //delete creature
-      //console.log("req body", req.body.creatureid)
-      const deletedCreature = await deleteCreature(req.body.creatureid);
+      console.log("req params", req.params.creatureid)
+      const deletedCreature = await deleteCreature(req.params.creatureid);
       res.send(deletedCreature);
-      // const getCreatures = await getAllCreatures();
-      // conole.log(getCreatures);
-    } else { //user is not an admin 
-      next({
-        name: 'UnauthorizedUserError',
-        message: 'You must be an admin.'
-      })
-    }
     } catch ({ name, message }) {
       next({ name, message })
   }
