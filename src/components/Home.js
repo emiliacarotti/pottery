@@ -42,11 +42,11 @@ export default function Home({ creatures, setCreatures, selectedCreature, setSel
                 <br></br><br></br><br></br>
                 <div className="creaturegallery">
                 <div key={creature.creatureid}>
-                    <img src={imgURL + creature.creatureid + ".png"} width="100" height="100"></img>
+                    <img className="creatures" src={imgURL + creature.creatureid + ".png"} width="370" height="370"></img>
+                    {/* {<button className="inputMOTM"> <a href="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </a></button>} */}
+                    <div className="monsterbutton"><Link to="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </Link></div>
                     
-                    <li><Link to="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </Link></li>
-                    
-                    <div>{creature.price}</div> 
+                    <div className="cPrice"><h6>{creature.price}</h6></div> 
                 </div>
 
                 {/* Image - name creature1.png and dynamically generate the string for the image url */}
