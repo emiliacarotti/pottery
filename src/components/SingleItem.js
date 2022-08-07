@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import reactdomclient from "react-dom/client"
-import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -152,16 +151,6 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
         setTemperIsShown(current => !current);
     };
 
-
-    function Box() {
-        return (
-            <div>
-                <h2>Box</h2>
-            </div>
-        );
-    }
-
-
     return (
         <><center>
             <p>Single Item Page</p>
@@ -170,7 +159,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                 <div key={selectedCreature.creatureid}>
                     <img src={selectedCreature.image} width="300" height="300"></img>
                     <div className="beastid"> Name: {selectedCreature.name}
-                        {isAdmin == "true" ? (
+                        {isAdmin === "true" ? (
                             <>
                                 <button
                                     onClick={handleNameClick}
@@ -178,7 +167,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {nameIsShown == true ?
+                        {nameIsShown === true ?
                             <>
                                 <br></br>
                                 <input
@@ -198,7 +187,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {priceIsShown == true ?
+                        {priceIsShown === true ?
                             <>
                                 <br></br>
                                 <input
@@ -210,7 +199,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                             </> : null}
                     </div>
                     <div className="beastid"> Quantity Available: {selectedCreature.stock}
-                        {isAdmin == "true" ? (
+                        {isAdmin === "true" ? (
                             <>
                                 <button
                                     onClick={handleStockClick}
@@ -218,7 +207,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {stockIsShown == true ?
+                        {stockIsShown === true ?
                             <>
                                 <br></br>
                                 <input
@@ -230,7 +219,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                             </> : null}
                     </div>
                     <div className="beastid"> Optimal Environment: {selectedCreature.environment}
-                        {isAdmin == "true" ? (
+                        {isAdmin === "true" ? (
                             <>
                                 <button
                                     onClick={handleEnvironmentClick}
@@ -238,7 +227,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {environmentIsShown == true ?
+                        {environmentIsShown === true ?
                             <>
                                 <br></br>
                                 <input
@@ -250,7 +239,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                             </> : null}
                     </div>
                     <div className="beastid"> Size: {selectedCreature.size}
-                        {isAdmin == "true" ? (
+                        {isAdmin === "true" ? (
                             <>
                                 <button
                                     onClick={handleSizeClick}
@@ -258,7 +247,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {sizeIsShown == true ?
+                        {sizeIsShown === true ?
                             <>
                                 <br></br>
                                 <input
@@ -270,7 +259,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                             </> : null}
                     </div>
                     <div className="beastid"> Type of Food: {selectedCreature.food}
-                        {isAdmin == "true" ? (
+                        {isAdmin === "true" ? (
                             <>
                                 <button
                                     onClick={handleFoodClick}
@@ -278,7 +267,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {foodIsShown == true ?
+                        {foodIsShown === true ?
                             <>
                                 <br></br>
                                 <input
@@ -290,7 +279,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                             </> : null}
                     </div>
                     <div className="beastid"> Temperament: {selectedCreature.temper}
-                        {isAdmin == "true" ? (
+                        {isAdmin === "true" ? (
                             <>
                                 <button
                                     onClick={handleTemperClick}
@@ -298,7 +287,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button></>
                         ) : null}
-                        {temperIsShown == true ?
+                        {temperIsShown === true ?
                             <>
                                 <br></br>
                                 <input
@@ -330,14 +319,14 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                 </form>
 
                 <div>
-                    {isAdmin == "true" ? (
+                    {isAdmin === "true" ? (
                         <button className="deletebtn">
                             Edit
                         </button>
                     ) : null}
                 </div>
                 <div>
-                {isAdmin == "true" ? (
+                {isAdmin === "true" ? (
                         <button 
                         onClick={ (event) => {
                             event.preventDefault();

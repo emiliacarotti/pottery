@@ -1,16 +1,10 @@
-import React, {useState, useEffect} from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React from "react";
 import logo from "../images/critter.png";
-export default function Navbar({loggedIn, Logout, isAdmin, setIsAdmin}){
+
+export default function Navbar({ loggedIn, Logout, isAdmin }) {
     return (
         <div className="navbar">
-            <a href="/"><img className="logo" src={logo} width= "230px"/>
-            </a>
-            
-        
-
-  	    <input className="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
-  	    <label htmlFor="menu-icon"></label>
+            <a href="/"><img className="logo" src={logo} width="230px" /></a>
 
   	    <nav className="nav"> 	
             <>
@@ -28,7 +22,7 @@ export default function Navbar({loggedIn, Logout, isAdmin, setIsAdmin}){
                 </ul>
             </>	
 
-  	    </nav>
+            </nav>
         </div>
     )
 }
