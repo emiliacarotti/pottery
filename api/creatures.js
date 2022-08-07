@@ -57,11 +57,11 @@ creaturesRouter.get('/:creatureid', async (req, res, next) => {
 //working
 // create a creature
 creaturesRouter.post('/create', async (req, res, next) => {
-  const { name, price, stock, environment, size, food, temper } = req.body;
+  const { name, price, stock, environment, size, food, temper, image } = req.body;
   console.log("in api")
   try {
-    if (isAdmin) { //user is an admin, idk if this is right
-      if (!name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing
+    if (true) { //user is an admin, idk if this is right
+      if (!name || !price || !stock || !environment || !size || !food || !temper || !image) { //if data is missing
         next({
           name: "MissingDataError",
           message: "Please provide all info for this creature."
@@ -71,7 +71,7 @@ creaturesRouter.post('/create', async (req, res, next) => {
       else {
         // create creature
         console.log("req", req.body)
-        const newCreature = await createCreature({ name, price, stock, environment, size, food, temper });
+        const newCreature = await createCreature({ name, price, stock, environment, size, food, temper, image });
         res.send(newCreature);
 
       }
@@ -89,13 +89,12 @@ creaturesRouter.post('/create', async (req, res, next) => {
   }
 })
 // //PATCH
-// // Update/Edit Creature  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
 creaturesRouter.patch('/', async (req, res, next) => {
   try {
     if (true) { //user is an admin, idk if this is right
 
-      const { creatureid, name, price, stock, environment, size, food, temper } = req.body;
-      if (!name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing
+      const { creatureid, name, price, stock, environment, size, food, temper, image } = req.body;
+      if (!name || !price || !stock || !environment || !size || !food || !temper || !image) { //if data is missing
         next({
           name: "MissingDataError",
           message: "Please provide all info for this creature."
@@ -104,7 +103,7 @@ creaturesRouter.patch('/', async (req, res, next) => {
       }
       else {
         // update creature
-        const editCreature = await updateCreature({creatureid, name, price, stock, environment, size, food, temper });
+        const editCreature = await updateCreature({creatureid, name, price, stock, environment, size, food, temper, image });
         res.send(editCreature);
 
       }

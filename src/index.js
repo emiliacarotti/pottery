@@ -29,7 +29,9 @@ import{
   Register,
   SingleItem
 } from "./components"
+
 import { user } from 'pg/lib/defaults';
+
 
 function MadDog() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -54,6 +56,7 @@ function MadDog() {
     useEffect(() => {
       setIsAdmin(localStorage.getItem("isadmin"))
     }, [username, isAdmin, setLoggedIn, loggedIn]);
+
   
     function Logout() {
       localStorage.removeItem("token");
@@ -125,13 +128,20 @@ function MadDog() {
           <Route path="About" element={<About />}></Route>
           <Route path="Cart" element={<Cart />}></Route>
           <Route path="Checkout" element={<Checkout />}></Route>
-          <Route path="Create" element={<Create isAdmin={isAdmin} />}></Route>           
+
+          <Route 
+          path="Create" 
+          element={<Create 
+            isAdmin={isAdmin} 
+            />}>
+            </Route>           
 
           <Route
            path="Deal" 
            element={<Deal 
             selectedCreature={selectedCreature}
-            setSelectedCreature={setSelectedCreature}/>}>
+            setSelectedCreature={setSelectedCreature}
+            />}>
            </Route>
 
 

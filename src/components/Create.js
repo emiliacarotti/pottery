@@ -1,12 +1,16 @@
 import React, {useState } from "react";
 import reactdomclient from "react-dom/client"
 import { token, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../firebase";
+//import { createCreature } from "../../db/creature";
 
+const server_url = `http://localhost:4000/api/creatures/create`;
 
 export default function Create({isAdmin}){
   const navigate = useNavigate()
 
-    //const [creatureid, setcreatureid] = useState("");
     const [name, setname] = useState("");
     const [price, setprice] = useState("");
     const [stock, setstock] = useState("");
@@ -14,12 +18,70 @@ export default function Create({isAdmin}){
     const [size, setsize] = useState("");
     const [food, setfood] = useState("");
     const [temper, settemper] = useState("");
-    const [image, setimage] = useState("");
+    const [imageURL, setImageURL] = useState("");
+    const [selectedFile, setSelectedFile] = useState([]);
+    const metadata = {contentType: "image/jpeg"};
 
+    async function uploadImage() {
+      try {
+        let imageName = uuidv4() + ".jpg";
+        setImageURL(imageName)
+        const storageRef = ref(storage, imageName);
+        const uploadTask = uploadBytesResumable(storageRef, selectedFile[0], metadata);
+        // const downloadURL = await getDownloadURL(storageRef);
+        // console.log("downloadURL: ", downloadURL)
+        // if (downloadURL) setImageURL(downloadURL)
+        uploadTask.on("state_changed", null, null, complete);
+        
+        async function complete() {
+          console.log("upload complete!");
+
+          let url = await getImageUrl(imageName)
+          newCreature(url)
+
+          // getImageUrl(imageName);
+          //saveImageName(imageName);
+          // const downloadURL = await getDownloadURL(storageRef);
+          // console.log("downloadURL: ", downloadURL)
+          // setImageURL(downloadURL)
+
+        }
+        
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+
+
+    async function getImageUrl(fileName) {
+      const storageRef = ref(storage, fileName);
+      const downloadURL = await getDownloadURL(storageRef);
+      return downloadURL
+      
+    }
+
+    async function saveImageName(url) {
+      const response = await fetch(`${server_url}/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url: url }),
+      });
+    }
 
     // async function CREATE A NEW CREATURE
-  async function newCreature() {
+
+  async function newCreature(imageName) {
     try {
+      console.log(localStorage.getItem("token"))
+      console.log("selectedfile: ", selectedFile)
+
+      //if(selectedFile.length>0) {
+      //  await uploadImage();
+      //}
+
       console.log(
         name, 
         price, 
@@ -28,11 +90,12 @@ export default function Create({isAdmin}){
         size, 
         food, 
         temper,
-        image)
+        imageName
+        )
+        
+        console.log("imageURL: ", imageName)
+      const response = await fetch(`${server_url}/`,        
 
-      console.log(localStorage.getItem("token"))
-
-      const response = await fetch(`http://localhost:4000/api/creatures/create`,        
       {
           method: "POST",
           headers: {
@@ -47,7 +110,9 @@ export default function Create({isAdmin}){
             environment: environment, 
             size: size, 
             food: food, 
-            temper: temper
+            temper: temper,
+            image: imageName
+
           })
         }
       );
@@ -67,14 +132,15 @@ export default function Create({isAdmin}){
   }
 
 
-    return (<div className="move"><div className="center1">
+    return (<div className="center1">
     <>
-    <center><h2><i className="fa fa-dragon"></i></h2></center>
+    <center><h2><i className="fa fa-spaghetti-monster-flying"></i></h2></center>
+
     <br></br>{
         <form
-          onSubmit={(event) => {
+          onSubmit={async (event) => {
             event.preventDefault();
-            newCreature(event)
+            await uploadImage();
           }}>
 
             <div>
@@ -180,9 +246,9 @@ export default function Create({isAdmin}){
             <br></br>
             <input
               type="file"
-              value={image}
               onChange={(event) => {
-                setimage(event.target.value);
+                setSelectedFile(event.target.files);
+
               }}
             ></input>
 
@@ -197,7 +263,6 @@ export default function Create({isAdmin}){
         </form>
         }
         </>
-        </div>
         </div>
     )
 }

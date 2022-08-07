@@ -63,7 +63,8 @@ async function createTables() {
             environment VARCHAR(255) NOT NULL,
             size VARCHAR(255) NOT NULL,
             food VARCHAR(255) NOT NULL,
-            temper VARCHAR(255) NOT NULL
+            temper VARCHAR(255) NOT NULL,
+            image VARCHAR(255) NOT NULL
           );
           CREATE TABLE cart (
             cartid SERIAL PRIMARY KEY,
@@ -173,7 +174,8 @@ async function createInitialCreatures() {
         environment: "land",
         size: "M",
         food: "omnivore",
-        temper: "stubborn"
+        temper: "stubborn",
+        image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/Stitch.jpg?alt=media&token=bed7cb8b-1bf7-4cc0-b675-c84d9a9e4926"
       },
       {
         name: "Butter Robot",
@@ -182,7 +184,8 @@ async function createInitialCreatures() {
         environment: "land",
         size: "S",
         food: "electricity",
-        temper: "compliant"
+        temper: "compliant",
+        image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/butter-bot.png?alt=media&token=8f8013cd-df8d-4442-bbf3-048859f85e1d"
       },
       {
         name: "Mogwai",
@@ -191,7 +194,8 @@ async function createInitialCreatures() {
         environment: "land",
         size: "S",
         food: "Omnivore",
-        temper: "Varies"
+        temper: "Varies",
+        image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/f0d0698e-0575-498b-b835-581da55b02c0.jpg?alt=media&token=e7faeae9-8a62-4d80-995d-0dc95e58825f"
       },
     ]
     const creatures = await Promise.all(creaturesToCreate.map(creature.createCreature))

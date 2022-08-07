@@ -4,7 +4,7 @@ const client = require('./client');
 async function getAllCreatures() {
   try {
       const { rows } = await client.query(`
-      SELECT creatureid, name, price, stock, environment, size, food, temper
+      SELECT creatureid, name, price, stock, environment, size, food, temper, image
       FROM creature;
     `);
     //console.log(rows)
@@ -17,7 +17,7 @@ async function getAllCreatures() {
 async function getCreatureById(creatureid) {
   try {
       const { rows: [creature] } = await client.query(`
-      SELECT creatureid, name, price, stock, environment, size, food, temper
+      SELECT creatureid, name, price, stock, environment, size, food, temper, image
       FROM creature
       WHERE creatureid=${creatureid}
     `);
@@ -28,13 +28,13 @@ async function getCreatureById(creatureid) {
   }
 }
 
-async function createCreature({ name, price, stock, environment, size, food, temper}) {
+async function createCreature({ name, price, stock, environment, size, food, temper, image}) {
     try {
         const { rows } = await client.query(`
-       INSERT INTO creature(name, price, stock, environment, size, food, temper)
-       VALUES ($1,$2,$3,$4,$5,$6,$7)
+       INSERT INTO creature(name, price, stock, environment, size, food, temper, image)
+       VALUES ($1,$2,$3,$4,$5,$6,$7, $8)
        RETURNING *;
-      `,[ name, price, stock, environment, size, food, temper]);
+      `,[ name, price, stock, environment, size, food, temper, image]);
       //console.log(rows)
         return rows;
     } catch (error) {

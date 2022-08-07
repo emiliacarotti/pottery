@@ -4,7 +4,7 @@ import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "reac
 
 
 
-export default function SingleItem({ selectedCreature, setSelectedCreature, isAdmin }) {
+export default function SingleItem({ selectedCreature, setSelectedCreature, selectedFile, setSelectedFile }) {
     let imgURL = "/creature"
     const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
             //console.log('creatureid', creatureid)
             try {
                 //UPDATE URL 
-                const response = await fetch('http://localhost:4000/api/creatures/${creatureid}', {
+                const response = await fetch('http://localhost:4000/api/creatures/${creatureid}' , {
                     method: "GET",
                     headers: {
                         'Content-Type': 'application/json'
@@ -46,29 +46,29 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
         //getCreaturebyId()
     }, [])
 
-    async function addToCart(event) {
+    async function addToCart(event){
         console.log(event);
-        try {
+        try{
             const response = await fetch('INSERT ROUTE HERE, DUMMY', {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                  'Content-Type': 'application/json',
                 },
-
-            })
-            let result = await response.json()
-            if (result.success) {
-                alert("Item Added to Cart!")
-                navigate("/")
-
-            } else {
+                
+              })
+              let result = await response.json()
+              if(result.success){
+                  alert("Item Added to Cart!")
+                  navigate("/")
+                  
+              }else{
                 document.getElementById("createErrorMessage").innerHTML = result.error.message
-            }
-
-        } catch (err) {
+              }
+  
+        }catch(err){
             console.log("Could not add item to cart!" + err)
         }
-    }
+      }
 
     // async function EDIT/PATCH creature  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
     async function EditCreature(event) {
@@ -178,7 +178,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, isAd
             <br></br><br></br><br></br>
             <div className="single">
                 <div key={selectedCreature.creatureid}>
-                    <img src={imgURL + selectedCreature.creatureid + ".png"} width="300" height="300"></img>
+                    <img src={selectedCreature.image} width="300" height="300"></img>
                     <div className="beastid"> Name: {selectedCreature.name}
                         {isAdmin == "true" ? (
                             <>
