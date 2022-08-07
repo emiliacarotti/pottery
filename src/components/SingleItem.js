@@ -4,7 +4,7 @@ import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "reac
 
 
 
-export default function SingleItem({ selectedCreature, setSelectedCreature, selectedFile, setSelectedFile }) {
+export default function SingleItem({ selectedCreature, setSelectedCreature, selectedFile, setSelectedFile, isAdmin }) {
     let imgURL = "/creature"
     const navigate = useNavigate();
 

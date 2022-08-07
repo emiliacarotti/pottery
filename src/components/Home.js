@@ -40,7 +40,8 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
         {
         creatures?.map((creature) => {
             return (
-                <br></br><br></br><br></br>
+                <>
+                    <br></br> <br></br> <br></br>
                 <div className="creaturegallery">
                 <div key={creature.creatureid}>
                 
@@ -51,6 +52,7 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
 
                 </div>
                 </div>
+                </>
             )
             })
         }
