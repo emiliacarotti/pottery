@@ -89,33 +89,22 @@ creaturesRouter.post('/create', async (req, res, next) => {
   }
 })
 // //PATCH
-creaturesRouter.patch('/', async (req, res, next) => {
+creaturesRouter.patch('/edit/:creatureid', async (req, res, next) => {
   try {
-    if (true) { //user is an admin, idk if this is right
-
-      const { creatureid, name, price, stock, environment, size, food, temper, image } = req.body;
-      if (!name || !price || !stock || !environment || !size || !food || !temper || !image) { //if data is missing
-        next({
-          name: "MissingDataError",
-          message: "Please provide all info for this creature."
-        });
-
-      }
-      else {
-        // update creature
-        const editCreature = await updateCreature({creatureid, name, price, stock, environment, size, food, temper, image });
-        res.send(editCreature);
-
-      }
-    }
-    else { //user is not an admin 
+    // console.log("req1", req.body)
+    const { creatureid, name, price, stock, environment, size, food, temper } = req.body;
+    if (!name || !price || !stock || !environment || !size || !food || !temper) { //if data is missing
       next({
-        name: 'UnauthorizedUserError',
-        message: 'You must be an admin.'
+        name: "MissingDataError",
+        message: "Please provide all info for this creature."
       });
-
+    } else {
+      // update creature
+      // console.log("req2", req.body)
+      const editCreature = await updateCreature(creatureid, name, price, stock, environment, size, food, temper );
+      res.send(editCreature);
+      console.log('update complete')
     }
-
   } catch ({ name, message }) {
     next({ name, message })
   }
@@ -124,21 +113,13 @@ creaturesRouter.patch('/', async (req, res, next) => {
 // // Delete Creature
 creaturesRouter.delete('/', async (req, res, next) => {
   try {
-    if (true) { //user is an admin, idk if this is right
-      //delete creature
-      //console.log("req body", req.body.creatureid)
-      const deletedCreature = await deleteCreature(req.body.creatureid);
-      res.send(deletedCreature);
-      // const getCreatures = await getAllCreatures();
-      // conole.log(getCreatures);
-    } else { //user is not an admin 
-      next({
-        name: 'UnauthorizedUserError',
-        message: 'You must be an admin.'
-      })
-    }
-    } catch ({ name, message }) {
-      next({ name, message })
+
+    console.log("req params", req.params.creatureid)
+    const deletedCreature = await deleteCreature(req.params.creatureid);
+    res.send(deletedCreature);
+  } catch ({ name, message }) {
+    next({ name, message })
+
   }
 })
 

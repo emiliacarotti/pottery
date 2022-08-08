@@ -55,7 +55,6 @@ function MadDog() {
     useEffect(() => {
       setIsAdmin(localStorage.getItem("isadmin"))
     }, [username, isAdmin, setLoggedIn, loggedIn]);
-
   
     function Logout() {
       localStorage.removeItem("token");
