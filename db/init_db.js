@@ -195,7 +195,7 @@ async function createInitialCreatures() {
         size: "S",
         food: "Omnivore",
         temper: "Varies",
-        image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/f0d0698e-0575-498b-b835-581da55b02c0.jpg?alt=media&token=e7faeae9-8a62-4d80-995d-0dc95e58825f"
+        image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/gizmo-mogwai.jpeg?alt=media&token=fe45089b-9b09-4baf-82d1-08ebf30aa5df"
       },
     ]
     const creatures = await Promise.all(creaturesToCreate.map(creature.createCreature))
