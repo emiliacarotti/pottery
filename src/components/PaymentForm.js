@@ -66,7 +66,8 @@ export default function PaymentForm() {
                         <div id ="FormRow">
                             <CardElement options={CARD_OPTIONS} />
                         </div>
-                    </fieldset>
+                        </fieldset>
+                    
                     <button onClick={() => { showAlert(); }} className ="purchase">Pay</button>
                 </form>
                 :

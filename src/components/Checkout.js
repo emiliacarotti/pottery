@@ -14,6 +14,13 @@ function Checkout() {
 				<>
                     <center><h4> Purchase Total</h4></center>
 					<h3>$1299.98</h3>
+					<div>
+                        <center><label>Shipping Address </label></center>
+                        <center><input type="text" ></input></center>
+                        <br></br>
+                        <center><label>Email </label></center>
+                        <center><input type="text" ></input></center>
+                    </div>
 					<center><button className="purchase" onClick={() => setShowItem(true)}>Purchase Creature</button></center>
 				</>
 			)}
