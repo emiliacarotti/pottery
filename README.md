@@ -35,7 +35,7 @@ $ git init
 
 ```bash
 ├── .github/workflows
-│   └── heroku-deploy
+│   └── heroku-deploy.yaml
 │  
 ├── api
 │   ├── apiRouter.test.js

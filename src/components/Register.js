@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import { useNavigate} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import reactdomclient from "react-dom/client"
+import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
 
 export default function CreateProfile({setToken, setLoggedIn}){
@@ -31,7 +32,7 @@ export default function CreateProfile({setToken, setLoggedIn}){
                 localStorage.setItem("token", result.token)
                 navigate("/")
               } else {
-                if(result.name === "PasswordLengthError") {
+                if(result.name == "PasswordLengthError") {
                     document.getElementById("createErrorMessage").innerHTML = "Password must be at least 8 characters!"
 
                 }

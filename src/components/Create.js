@@ -8,7 +8,7 @@ import { storage } from "../firebase";
 
 const server_url = `http://localhost:4000/api/creatures/create`;
 
-export default function Create({ isAdmin }) {
+export default function Create({isAdmin}){
   const navigate = useNavigate()
 
     const [name, setname] = useState("");
@@ -99,12 +99,12 @@ export default function Create({ isAdmin }) {
       //}
 
       console.log(
-        name,
-        price,
-        stock,
-        environment,
-        size,
-        food,
+        name, 
+        price, 
+        stock, 
+        environment, 
+        size, 
+        food, 
         temper,
         imageName
         )
@@ -141,7 +141,7 @@ export default function Create({ isAdmin }) {
           result.error.message;
       }
     } catch (err) {
-      console.log("Couldn't create new creature!" + err);
+      console.log("Couldn't create new creature!" + err); 
     }
   }
 
@@ -157,8 +157,8 @@ export default function Create({ isAdmin }) {
             
           }}>
 
-          <div>
-
+            <div>
+            
             <label>Creature Name/Type:</label>
             <br></br>
             <input
@@ -169,7 +169,7 @@ export default function Create({ isAdmin }) {
               }}
             ></input>
 
-
+            
             <br></br>
             <label>Price: $</label>
             <br></br>
@@ -181,7 +181,7 @@ export default function Create({ isAdmin }) {
               }}
             ></input>
 
-
+            
             <br></br>
             <label>Quantity Available:</label>
             <br></br>
@@ -193,44 +193,44 @@ export default function Create({ isAdmin }) {
               }}
             ></input>
 
-
+            
             <br></br>
             <label>Environment Type:</label>
             <br></br>
-            <select name="enviroment" id="enviroment"
-              value={environment}
-              onChange={(event) => {
+            <select name="enviroment" id="enviroment" 
+            value={environment}
+            onChange={(event) => {
                 setenvironment(event.target.value);
               }}>
               <option value=''>--Select One--</option>
               <option value='water'>--Swimmer--</option>
               <option value='air'>--Flyer--</option>
-              <option value='earth'>--Walker--</option>
-              <option value='unknown'>--Higher Powers--</option>
+              <option value= 'earth'>--Walker--</option>
+              <option value= 'unknown'>--Higher Powers--</option>
             </select>
-
+            
             <br></br>
             <label>Creature Size:</label>
             <br></br>
-            <select name="size" id="size"
-              value={size}
-              onChange={(event) => {
+            <select name="size" id="size" 
+            value={size}
+            onChange={(event) => {
                 setsize(event.target.value);
-              }}>
+            }}>
               <option value=''>--Select One--</option>
               <option value='small'>--Pocket--</option>
               <option value='med'>--Fit's Inside--</option>
               <option value='large'>--Outside Only--</option>
               <option value='extralarge'>--Cosmic Size--</option>
-            </select>
+              </select>
 
-
+        
             <br></br>
             <label>Type of Food:</label>
             <br></br>
-            <select name="food" id="food"
-              value={food}
-              onChange={(event) => {
+            <select name="food" id="food" 
+            value={food}
+            onChange={(event) => {
                 setfood(event.target.value);
               }}>
               <option value=''>--Select One--</option>
@@ -243,9 +243,9 @@ export default function Create({ isAdmin }) {
             <br></br>
             <label>Temperment:</label>
             <br></br>
-            <select name="temperment" id="temperment"
-              value={temper}
-              onChange={(event) => {
+            <select name="temperment" id="temperment" 
+            value={temper}
+            onChange={(event) => {
                 settemper(event.target.value);
               }}>
               <option value=''>--Select One--</option>
@@ -272,7 +272,7 @@ export default function Create({ isAdmin }) {
               Create
             </button>
             <div id="createErrorMessage" ></div>
-          </div>
+            </div>
         </form>
         }
         </>

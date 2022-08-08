@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import reactdomclient from "react-dom/client"
+import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
-function Footer() {
+function Footer(){
     return <div className="social-footer">
         <section className="footer">
             <div className="social">
@@ -9,7 +11,7 @@ function Footer() {
                 <a href="https://twitter.com/?lang=en"><i className="fab fa-twitter"></i></a>
                 <a href="https://www.facebook.com/"><i className="fab fa-facebook-f"></i></a>
             </div>
-            <ul className="list">
+            <ul className= "list">
                 <li>
                     <a href="/">Home</a>
                 </li>
@@ -26,8 +28,8 @@ function Footer() {
                     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Privacy Policy</a>
                 </li>
             </ul>
-            <p className="copyright">
-                © twenty twenty-two by Team MadDog
+            <p className= "copyright">
+            © twenty twenty-two by Team MadDog
             </p>
         </section>
     </div>

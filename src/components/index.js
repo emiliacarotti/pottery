@@ -11,9 +11,7 @@ export { default as Header } from './Header';
 export { default as Home } from './Home';
 export { default as EditDelete } from './EditDelete';
 export { default as Login } from './Login';
+export { default as MyProfile } from './MyProfile';
 export { default as Navbar } from './Navbar';
 export { default as Register } from './Register';
 export { default as SingleItem } from './SingleItem';
-export { default as PaymentForm } from './PaymentForm';
-export { default as StripeContainer } from './StripeContainer';
-
