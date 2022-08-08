@@ -5,7 +5,7 @@
 	border-style: none;
 	background-color: #40ae46;
 	will-change: opacity, transform;
-	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 grey;
+	box-shadow: 0 6px 9px rgba(126, 126, 189, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 grey;
 	border-radius: 4px;
 }
 
@@ -33,15 +33,20 @@
 	width: calc(100% - 30px);
 	height: 40px;
 	margin: 40px 15px 0;
-	background-color: green;
+	background-color: #2691d9;
 	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 green;
 	border-radius: 4px;
-	color: #fff;
+	color: white;
 	font-weight: 600;
 	cursor: pointer;
 	transition: all 100ms ease-in-out;
 	will-change: transform, background-color, box-shadow;
 	border: none;
+	text-decoration: none;
+}
+.purchase a{
+	text-decoration: none;
+	color: white;
 }
 
 .purchase:active {

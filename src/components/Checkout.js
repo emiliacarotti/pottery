@@ -5,7 +5,7 @@ import StripeContainer from './StripeContainer'
 
 function Checkout() {
 	const [showItem, setShowItem] = useState(false);
-	return (
+	return ( <div className='spacer'>
 		<div className='App'>
 			<h1>The Beast Bazzar Store</h1>
 			{showItem ? (
@@ -21,9 +21,10 @@ function Checkout() {
                         <center><label>Email </label></center>
                         <center><input type="text" ></input></center>
                     </div>
-					<center><button className="purchase" onClick={() => setShowItem(true)}>Purchase Creature</button></center>
+					<center><button className="inputMOTM3" onClick={() => setShowItem(true)}>Purchase Creature</button></center>
 				</>
 			)}
+		</div>
 		</div>
 	);
 }
