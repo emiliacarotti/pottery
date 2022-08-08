@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react'
+import { Navigate } from "react-router-dom"
 
 //STYLE -- card payment screen
 const CARD_OPTIONS = {
@@ -68,7 +69,7 @@ export default function PaymentForm() {
                         </div>
                         </fieldset>
                     
-                    <button onClick={() => { showAlert(); }} className ="purchase">Pay</button>
+                    <button onClick={() => { showAlert(); }} className ="purchase"><a href="./About">Pay</a></button>
                 </form>
                 :
                 <div>
@@ -80,6 +81,7 @@ export default function PaymentForm() {
     )
 }
 function showAlert() {
+   
         alert("PAYMENT SUCESSFUL!!! ")
         alert("DISCLAIMER ALERT: Your Payment information may fund my next vacation, however, your creature order has been initiated and will arrive to your address soon");
     }
