@@ -203,7 +203,7 @@ body{
 }
 .nav ul li a:hover{
   text-decoration: none;
-  color: #ffeba7;
+  color: red;
 }
 .nav ul li a:after{
   display: block;
