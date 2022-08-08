@@ -24,7 +24,6 @@ import{
   Header,
   Home,
   Login,
-  MyProfile,
   Navbar,
   Register,
   SingleItem
@@ -158,18 +157,6 @@ function MadDog() {
               selectedCreature={selectedCreature}
               setSelectedCreature={setSelectedCreature}/>}>
             </Route>
-
-          <Route 
-            path="MyProfile" 
-            element={<MyProfile  
-              username={username}
-              setUsername={setUsername}
-              token={token}
-              setToken={setToken}
-              setLoggedIn={setLoggedIn}/>}>
-            </Route>
-
-          
           
         </Routes>
 

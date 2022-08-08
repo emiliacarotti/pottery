@@ -109,18 +109,28 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
         }
     }
 
-    // DELETE A CREATURE
-    async function DeleteCreature(creatureid) {
+    // async function DELETE A CREATURE  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
+    async function DeleteCreature(event) {
         try {
-            const response = await fetch(`http://localhost:4000/api/creatures/${creatureid}`, {
+            const response = await fetch(`http://localhost:4000/api/creatures` + selectedCreature.creatureid, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem("token")
                 }
+
             })
-            navigate("/")
+            let result = await response.json()
+            if (result.success) {
+                alert("Your creature has been deleted!")
+                navigate("/")
+
+            } else {
+                document.getElementById("createErrorMessage").innerHTML = result.error.message
+            }
+
         } catch (err) {
-            console.log("Could not delete creature! " + err);
+            console.log("Could not delete creature! " + err)
         }
       }
 
@@ -324,6 +334,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                         </select></div>
                         <button className="addtocart"> <a href="./Cart"> Buy Now <i class='fa fa-cart-shopping'></i></a></button>
                         <br></br>
+                        <div className="signup_link"> <a href="../"> Back to Creatures Homepage</a></div>
                         <div id="createErrorMessage" className="errors"></div>
 
                         <br></br></div>
@@ -338,13 +349,7 @@ export default function SingleItem({ selectedCreature, setSelectedCreature, sele
                 </div>
                 <div>
                 {isAdmin == "true" ? (
-                        <button 
-                        onClick={ (event) => {
-                            event.preventDefault();
-                             DeleteCreature(selectedCreature.creatureid);
-                        }}
-                        
-                        className="deletebtn">
+                        <button className="deletebtn">
                             Delete
                         </button>
                     ) : null}
