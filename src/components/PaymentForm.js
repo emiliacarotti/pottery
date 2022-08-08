@@ -1,7 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react'
-import { Navigate } from "react-router-dom"
 
 //STYLE -- card payment screen
 const CARD_OPTIONS = {
