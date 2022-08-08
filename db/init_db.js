@@ -196,6 +196,7 @@ async function createInitialCreatures() {
         food: "Omnivore",
         temper: "Varies",
         image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/gizmo-mogwai.jpeg?alt=media&token=fe45089b-9b09-4baf-82d1-08ebf30aa5df"
+        // Hey, did you know that you're not supposed to feed a Mogwai after midnight?
       },
     ]
     const creatures = await Promise.all(creaturesToCreate.map(creature.createCreature))
