@@ -416,7 +416,7 @@ export default function SingleItem({
               <button
                 onClick={(event) => {
                   event.preventDefault();
-                  DeleteCreature(selectedCreature);
+                  DeleteCreature(selectedCreature.creatureid);
                 }}
                 className="deletebtn"
               >

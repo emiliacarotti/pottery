@@ -111,7 +111,7 @@ creaturesRouter.patch('/edit/:creatureid', async (req, res, next) => {
 })
 
 // // Delete Creature
-creaturesRouter.delete('/', async (req, res, next) => {
+creaturesRouter.delete('/:creatureid', async (req, res, next) => {
   try {
 
     console.log("req params", req.params.creatureid)
@@ -119,7 +119,6 @@ creaturesRouter.delete('/', async (req, res, next) => {
     res.send(deletedCreature);
   } catch ({ name, message }) {
     next({ name, message })
-
   }
 })
 
