@@ -46,7 +46,7 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
                 <div>
                 
                     <img src={ creature.image
-                    } width="100" height="100"></img>
+                    } width="370" height="370"></img>
                     <div className="monsterbutton"><Link to="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </Link></div>
                     <div className="cPrice"><h6> $ {creature.price}</h6></div> 
 

@@ -146,10 +146,11 @@ export default function Create({ isAdmin }) {
   }
 
 
-    return (<div className="center1">
+    return (<div className="move">
+    <div className="center1">
     <>
-    <center><h2><i className="fa fa-spaghetti-monster-flying"></i></h2></center>
-    <br></br>{
+    <center><h2><i className="fa fa-dragon"></i></h2></center>
+    {
         <form
           onSubmit={async (event) => {
             event.preventDefault();
@@ -157,9 +158,8 @@ export default function Create({ isAdmin }) {
             
           }}>
 
-<br></br>
-<br></br>
-<br></br>
+
+
 
             <div>
             
@@ -280,6 +280,6 @@ export default function Create({ isAdmin }) {
         </form>
         }
         </>
-        </div>
+        </div></div>
     )
 }
