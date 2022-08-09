@@ -854,6 +854,15 @@ hr {
    border: solid silver 1px;
    padding: 20px;
    border-radius: 10px;
+   width: 600px;
+   background-color: silver;
+ }
+ .App input {
+   width: 90%;
+   margin-left: 20px;
+ }
+ .App label {
+   margin-left: 20px;
  }
  .inputMOTM3{
   width: 90%;
@@ -866,5 +875,8 @@ hr {
   font-weight: 700;
   outline: none;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 20px;
  }
+.checkbox {
+  margin-left: 40px;
+}

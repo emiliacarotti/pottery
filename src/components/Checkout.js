@@ -12,16 +12,39 @@ function Checkout() {
 				<StripeContainer />
 			) : (
 				<>
+					
                     <center><h4> Purchase Total</h4></center>
 					<h3>$1299.98</h3>
 					<div>
-                        <center><label>Shipping Address </label></center>
-                        <center><input type="text" ></input></center>
-                        <br></br>
-                        <center><label>Email </label></center>
-                        <center><input type="text" ></input></center>
+					<label for="fname"><i class="fa fa-user"></i> Full Name </label>
+					<br/>
+            		<input type="text" id="fname" name="firstname" placeholder="John M. Doe"/>
+					<br/>
+					<label for="email"><i class="fa fa-envelope"></i> Email </label>
+					<br/>
+            		<input type="text" id="email" name="email" placeholder="john@example.com"></input>
+					<br/>
+					<label for="adr"><i class="fa fa-address-card"></i> Address </label>
+					<br/>
+            		<input type="text" id="adr" name="address" placeholder="542 W. 15th Street"/>
+					<br/>
+            		<label for="city"><i class="fa fa-institution"></i> City </label>
+					<br/>
+            		<input type="text" id="city" name="city" placeholder="New York"/>
+                    <br/>
+					<label for="state">State </label>
+					<br/>
+                	<input type="text" id="state" name="state" placeholder="NY"/>
+					<br/>
+					<label for="zip">Zip </label>
+					<br/>
+                	<input type="text" id="zip" name="zip" placeholder="10001"/>
+					<div className='checkbox'>
+					<br/>
+					
                     </div>
-					<center><button className="inputMOTM3" onClick={() => setShowItem(true)}>Purchase Creature</button></center>
+					</div>
+					<center><button className="inputMOTM3" onClick={() => setShowItem(true)}>Proceed to Checkout</button></center>
 				</>
 			)}
 		</div>
