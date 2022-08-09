@@ -12,17 +12,18 @@ function Checkout() {
 				<StripeContainer />
 			) : (
 				<>
+				<form>
 					
                     <center><h4> Purchase Total</h4></center>
 					<h3>$1299.98</h3>
 					<div>
 					<label for="fname"><i class="fa fa-user"></i> Full Name </label>
 					<br/>
-            		<input type="text" id="fname" name="firstname" placeholder="John M. Doe"/>
+            		<input type="text" id="fname" name="firstname" placeholder="Moby Bukhari"/>
 					<br/>
 					<label for="email"><i class="fa fa-envelope"></i> Email </label>
 					<br/>
-            		<input type="text" id="email" name="email" placeholder="john@example.com"></input>
+            		<input type="text" id="email" name="email" placeholder="mobybukhari@beastbazzaar.com"></input>
 					<br/>
 					<label for="adr"><i class="fa fa-address-card"></i> Address </label>
 					<br/>
@@ -30,21 +31,24 @@ function Checkout() {
 					<br/>
             		<label for="city"><i class="fa fa-institution"></i> City </label>
 					<br/>
-            		<input type="text" id="city" name="city" placeholder="New York"/>
+            		<input type="text" id="city" name="city" placeholder="Washington"/>
                     <br/>
 					<label for="state">State </label>
 					<br/>
-                	<input type="text" id="state" name="state" placeholder="NY"/>
+                	<input type="text" id="state" name="state" placeholder="DC"/>
 					<br/>
 					<label for="zip">Zip </label>
 					<br/>
-                	<input type="text" id="zip" name="zip" placeholder="10001"/>
+                	<input type="text" id="zip" name="zip" placeholder="20016"/>
 					<div className='checkbox'>
 					<br/>
-					
+					<label>
+          <input type="checkbox" checked="checked" name="sameadr"/> Shipping address same as billing
+        </label>
                     </div>
 					</div>
 					<center><button className="inputMOTM3" onClick={() => setShowItem(true)}>Proceed to Checkout</button></center>
+				</form>
 				</>
 			)}
 		</div>
