@@ -79,7 +79,7 @@ function MadDog() {
         <br></br>
         <br></br>
         <div className='Header'>
-        <center>Beast Bazzaar </center>
+        <center>Beast Bazaar </center>
         </div>
         
         <Routes>

@@ -7,7 +7,7 @@ function Checkout() {
 	const [showItem, setShowItem] = useState(false);
 	return ( <div className='spacer'>
 		<div className='App'>
-			<h3>The Beast Bazzaar Store</h3>
+			<h3>The Beast Bazaar Store</h3>
 			<center><h1><i class="fa-solid fa-poo-storm"></i></h1></center>
 			{showItem ? (
 				<StripeContainer />
