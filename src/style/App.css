@@ -848,7 +848,10 @@ hr {
 }
 /* =================== end of footer ====================*/
 .spacer {
-  margin-top: 200px;
+  margin-top: 80px;
+  display: flex;
+justify-content: center;
+align-items: center;
 }
 .App {
    border: solid silver 1px;
@@ -856,6 +859,10 @@ hr {
    border-radius: 10px;
    width: 600px;
    background-color: silver;
+   
+ }
+ .App h1 {
+   font-size: 50px;
  }
  .App input {
    width: 90%;

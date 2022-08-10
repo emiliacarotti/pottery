@@ -7,14 +7,15 @@ function Checkout() {
 	const [showItem, setShowItem] = useState(false);
 	return ( <div className='spacer'>
 		<div className='App'>
-			<h1>The Beast Bazzar Store</h1>
+			<h3>The Beast Bazzaar Store</h3>
+			<center><h1><i class="fa-solid fa-poo-storm"></i></h1></center>
 			{showItem ? (
 				<StripeContainer />
 			) : (
 				<>
 				<form>
 					
-                    <center><h4> Purchase Total</h4></center>
+                    <center><h3> Purchase Total</h3></center>
 					<h3>$1299.98</h3>
 					<div>
 					<label for="fname"><i class="fa fa-user"></i> Full Name </label>
@@ -43,7 +44,7 @@ function Checkout() {
 					<div className='checkbox'>
 					<br/>
 					<label>
-          <input type="checkbox" checked="checked" name="sameadr"/> Shipping address same as billing
+          <center><input type="checkbox" checked="checked" name="sameadr"/> Shipping address same as billing</center>
         </label>
                     </div>
 					</div>
