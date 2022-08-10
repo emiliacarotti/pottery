@@ -41,12 +41,11 @@ function Checkout() {
 					<label for="zip">Zip </label>
 					<br/>
                 	<input type="text" id="zip" name="zip" placeholder="20016"/>
-					<div className='checkbox'>
-					<br/>
-					<label>
-          <center><input type="checkbox" checked="checked" name="sameadr"/> Shipping address same as billing</center>
-        </label>
-                    </div>
+					<div>
+      				<input type="checkbox" id="scales" name="scales"
+             		checked/>
+      				<label for="scales">Shipping and Billing are the same</label>
+    				</div>
 					</div>
 					<center><button className="inputMOTM3" onClick={() => setShowItem(true)}>Proceed to Checkout</button></center>
 				</form>
