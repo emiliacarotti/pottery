@@ -10,36 +10,30 @@ import {
 } from "react-router-dom";
 
 export default function SingleItem({
-  selectedCreature,
-  setSelectedCreature,
+  selectedPot,
+  setSelectedPot,
   selectedFile,
   setSelectedFile,
   isAdmin,
 }) {
-  let imgURL = "/creature";
+  let imgURL = "/pot";
   const navigate = useNavigate();
 
-  const [creatureName, setCreatureName] = useState("");
-  const [creaturePrice, setCreaturePrice] = useState("");
-  const [creatureStock, setCreatureStock] = useState("");
-  const [creatureEnvironment, setCreatureEnvironment] = useState("");
-  const [creatureSize, setCreatureSize] = useState("");
-  const [creatureFood, setCreatureFood] = useState("");
-  const [creatureTemper, setCreatureTemper] = useState("");
+  const [potName, setPotName] = useState("");
+  const [potPrice, setPotPrice] = useState("");
+  const [potStock, setPotStock] = useState("");
+  const [potSize, setPotSize] = useState("");
 
   const [nameIsShown, setNameIsShown] = useState(false);
   const [priceIsShown, setPriceIsShown] = useState(false);
   const [stockIsShown, setStockIsShown] = useState(false);
-  const [environmentIsShown, setEnvironmentIsShown] = useState(false);
   const [sizeIsShown, setSizeIsShown] = useState(false);
-  const [foodIsShown, setFoodIsShown] = useState(false);
-  const [temperIsShown, setTemperIsShown] = useState(false);
 
   useEffect(() => {
-    async function getCreaturebyId() {
+    async function getPotById() {
       try {
         const response = await fetch(
-          "http://localhost:4000/api/creatures/${creatureid}",
+          "http://localhost:4000/api/pottery/${potid}",
           {
             method: "GET",
             headers: {
@@ -48,14 +42,14 @@ export default function SingleItem({
           }
         );
         let data = await response.json();
-        console.log("data******:", data.creatureid);
+        console.log("data******:", data.potid);
 
       } catch (err) {
         console.log(err);
       }
     }
 
-    //getCreaturebyId()
+    //getPotById()
   }, []);
 
   async function addToCart(event) {
@@ -81,10 +75,10 @@ export default function SingleItem({
   }
 
   // async function EDIT/PATCH creature
-  async function EditCreature(selectedCreature) {
+  async function EditPot(selectedPot) {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/creatures/edit/${selectedCreature.creatureid}`,
+        `http://localhost:4000/api/pottery/edit/${selectedPot.potid}`,
         {
           method: "PATCH",
           headers: {
@@ -92,16 +86,12 @@ export default function SingleItem({
 
           },
           body: JSON.stringify({
-              creatureid: selectedCreature.creatureid,
-              name: creatureName == "" ? selectedCreature.name : creatureName,
-              price: creaturePrice == "" ? selectedCreature.price : creaturePrice,
-              stock: creatureStock == "" ? selectedCreature.stock : creatureStock,
-              environment: creatureEnvironment == "" ? selectedCreature.environment : creatureEnvironment,
-              size: creatureSize == "" ? selectedCreature.size : creatureSize,
-              food: creatureFood == "" ? selectedCreature.food : creatureFood,
-              temper: creatureTemper == "" ? selectedCreature.temper : creatureTemper,
-
-            },
+            potid: selectedPot.potid,
+            name: potName == "" ? selectedPot.name : potName,
+            price: potPrice == "" ? selectedPot.price : potPrice,
+            stock: potStock == "" ? selectedPot.stock : potStock,
+            size: potSize == "" ? selectedPot.size : potSize,
+          },
           ),
         }
       );
@@ -113,10 +103,10 @@ export default function SingleItem({
 
 
   // DELETE A CREATURE
-  async function DeleteCreature(creatureid) {
+  async function deletePot(potid) {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/creatures/${creatureid}`,
+        `http://localhost:4000/api/pottery/${potid}`,
         {
           method: "DELETE",
           headers: {
@@ -143,20 +133,8 @@ export default function SingleItem({
     setStockIsShown((current) => !current);
   };
 
-  const handleEnvironmentClick = (event) => {
-    setEnvironmentIsShown((current) => !current);
-  };
-
   const handleSizeClick = (event) => {
     setSizeIsShown((current) => !current);
-  };
-
-  const handleFoodClick = (event) => {
-    setFoodIsShown((current) => !current);
-  };
-
-  const handleTemperClick = (event) => {
-    setTemperIsShown((current) => !current);
   };
 
   function Box() {
@@ -175,22 +153,22 @@ export default function SingleItem({
         <br></br>
         <br></br>
         <div className="single">
-          <div key={selectedCreature.creatureid}>
-            <img src={selectedCreature.image} width="300" height="300"></img>
+          <div key={selectedPot.potid}>
+            <img src={selectedPot.image} width="300" height="300"></img>
             <form id="editCreature" //PLEASE DO NOT change this ID for CSS purposes it mess up the form
               onSubmit={async (event) => {
                 event.preventDefault();
-                EditCreature();
+                EditPot();
               }}
             >
               <div className="beastid">
                 {" "}
-                Name: {selectedCreature.name}
+                Name: {selectedPot.name}
                 {isAdmin == "true" ? (
                   <>
-                    <button 
-                    type = "button"
-                    onClick={handleNameClick} className="editbtn">
+                    <button
+                      type="button"
+                      onClick={handleNameClick} className="editbtn">
                       <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
                   </>
@@ -200,9 +178,9 @@ export default function SingleItem({
                     <br></br>
                     <input
                       type="text"
-                      value={creatureName}
+                      value={potName}
                       onChange={(event) => {
-                        setCreatureName(event.target.value);
+                        setPotName(event.target.value);
                       }}
                     ></input>
                   </>
@@ -210,12 +188,12 @@ export default function SingleItem({
               </div>
               <div className="beastid">
                 {" "}
-                Price: ${selectedCreature.price}
+                Price: ${selectedPot.price}
                 {isAdmin == "true" ? (
                   <>
                     <button
-                    type = "button"
-                    onClick={handlePriceClick} className="editbtn">
+                      type="button"
+                      onClick={handlePriceClick} className="editbtn">
                       <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
                   </>
@@ -225,9 +203,9 @@ export default function SingleItem({
                     <br></br>
                     <input
                       type="text"
-                      value={creaturePrice}
+                      value={potPrice}
                       onChange={(event) => {
-                        setCreaturePrice(event.target.value);
+                        setPotPrice(event.target.value);
                       }}
                     ></input>
                   </>
@@ -235,12 +213,12 @@ export default function SingleItem({
               </div>
               <div className="beastid">
                 {" "}
-                Quantity Available: {selectedCreature.stock}
+                Quantity Available: {selectedPot.stock}
                 {isAdmin == "true" ? (
                   <>
                     <button
-                    type = "button"
-                    onClick={handleStockClick} className="editbtn">
+                      type="button"
+                      onClick={handleStockClick} className="editbtn">
                       <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
                   </>
@@ -250,49 +228,23 @@ export default function SingleItem({
                     <br></br>
                     <input
                       type="text"
-                      value={creatureStock}
+                      value={potStock}
                       onChange={(event) => {
-                        setCreatureStock(event.target.value);
+                        setPotStock(event.target.value);
                       }}
                     ></input>
                   </>
                 ) : null}
               </div>
+  
               <div className="beastid">
                 {" "}
-                Optimal Environment: {selectedCreature.environment}
+                Size: {selectedPot.size}
                 {isAdmin == "true" ? (
                   <>
                     <button
-                    type = "button"
-                      onClick={handleEnvironmentClick}
-                      className="editbtn"
-                    >
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </>
-                ) : null}
-                {environmentIsShown == true ? (
-                  <>
-                    <br></br>
-                    <input
-                      type="text"
-                      value={creatureEnvironment}
-                      onChange={(event) => {
-                        setCreatureEnvironment(event.target.value);
-                      }}
-                    ></input>
-                  </>
-                ) : null}
-              </div>
-              <div className="beastid">
-                {" "}
-                Size: {selectedCreature.size}
-                {isAdmin == "true" ? (
-                  <>
-                    <button
-                    type = "button"
-                    onClick={handleSizeClick} className="editbtn">
+                      type="button"
+                      onClick={handleSizeClick} className="editbtn">
                       <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
                   </>
@@ -302,59 +254,9 @@ export default function SingleItem({
                     <br></br>
                     <input
                       type="text"
-                      value={creatureSize}
+                      value={potSize}
                       onChange={(event) => {
-                        setCreatureSize(event.target.value);
-                      }}
-                    ></input>
-                  </>
-                ) : null}
-              </div>
-              <div className="beastid">
-                {" "}
-                Type of Food: {selectedCreature.food}
-                {isAdmin == "true" ? (
-                  <>
-                    <button
-                    type = "button"
-                    onClick={handleFoodClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </>
-                ) : null}
-                {foodIsShown == true ? (
-                  <>
-                    <br></br>
-                    <input
-                      type="text"
-                      value={creatureFood}
-                      onChange={(event) => {
-                        setCreatureFood(event.target.value);
-                      }}
-                    ></input>
-                  </>
-                ) : null}
-              </div>
-              <div className="beastid">
-                {" "}
-                Temperament: {selectedCreature.temper}
-                {isAdmin == "true" ? (
-                  <>
-                    <button
-                    type = "button"
-                    onClick={handleTemperClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </>
-                ) : null}
-                {temperIsShown == true ? (
-                  <>
-                    <br></br>
-                    <input
-                      type="text"
-                      value={creatureTemper}
-                      onChange={(event) => {
-                        setCreatureTemper(event.target.value);
+                        setPotSize(event.target.value);
                       }}
                     ></input>
                   </>
@@ -399,11 +301,11 @@ export default function SingleItem({
           <div>
             {isAdmin == "true" ? (
               <button
-                type= "submit"
+                type="submit"
                 form="editCreature" //DO NOT CHANGE THIS FORM TEXT EITHER
                 onClick={(event) => {
                   event.preventDefault();
-                  EditCreature(selectedCreature);
+                  EditPot(selectedPot);
                 }}
                 className="deletebtn"
               >
@@ -416,7 +318,7 @@ export default function SingleItem({
               <button
                 onClick={(event) => {
                   event.preventDefault();
-                  DeleteCreature(selectedCreature.creatureid);
+                  deletePot(selectedPot.potid);
                 }}
                 className="deletebtn"
               >

@@ -1,26 +1,26 @@
 //SEED DATA
 
 
-const client  = require("./client");
+const client = require("./client");
 const { user,
-        address,
-        creature,
-        history,
-        cart    
-} = require('./');    
+  address,
+  pot,
+  history,
+  cart
+} = require('./');
 
- // drop tables in correct order
+// drop tables in correct order
 async function dropTables() {
-      try {    
-        client.connect();
+  try {
+    client.connect();
     console.log("Drop tables...");
-   
+
     await client.query(`
         DROP TABLE IF EXISTS history_items;  
         DROP TABLE IF EXISTS history;
         DROP TABLE IF EXISTS cart_items;
         DROP TABLE IF EXISTS cart;
-        DROP TABLE IF EXISTS creature;
+        DROP TABLE IF EXISTS pot;
         DROP TABLE IF EXISTS users;
         DROP TABLE IF EXISTS address;
       `);
@@ -34,9 +34,9 @@ async function dropTables() {
 // build tables in correct order
 async function createTables() {
   try {
-      console.log("Starting to build tables...");
+    console.log("Starting to build tables...");
 
-      await client.query(`
+    await client.query(`
 
           CREATE TABLE address (
             addressid SERIAL PRIMARY KEY,
@@ -55,15 +55,12 @@ async function createTables() {
             password VARCHAR(255) NOT NULL,
             isAdmin INTEGER DEFAULT 0
           );
-          CREATE TABLE creature (
-            creatureid SERIAL PRIMARY KEY,
+          CREATE TABLE pot (
+            potid SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             price INTEGER NOT NULL,
             stock VARCHAR(255) NOT NULL,
-            environment VARCHAR(255) NOT NULL,
             size VARCHAR(255) NOT NULL,
-            food VARCHAR(255) NOT NULL,
-            temper VARCHAR(255) NOT NULL,
             image VARCHAR(255) NOT NULL
           );
           CREATE TABLE cart (
@@ -73,7 +70,7 @@ async function createTables() {
           );
           CREATE TABLE cart_items (
             cartid INTEGER REFERENCES cart(cartid) NOT NULL,
-            creatureid INTEGER REFERENCES creature(creatureid) ON DELETE CASCADE,
+            potid INTEGER REFERENCES pot(potid) ON DELETE CASCADE,
             count INTEGER NOT NULL
           );
           CREATE TABLE history (
@@ -85,16 +82,16 @@ async function createTables() {
           );
           CREATE TABLE history_items (
             historyid INTEGER REFERENCES history(historyid) NOT NULL,
-            creatureid INTEGER REFERENCES creature(creatureid) NOT NULL,
+            potid INTEGER REFERENCES pot(potid) NOT NULL,
             count INTEGER NOT NULL
           );
       `);
 
-          console.log("Tables created successfully!");
+    console.log("Tables created successfully!");
   } catch (error) {
-          console.error("Error creating tables!"+error);
+    console.error("Error creating tables!" + error);
   }
-}      
+}
 
 //working
 async function createInitialUsers() {
@@ -112,7 +109,7 @@ async function createInitialUsers() {
     console.log(users)
     console.log("Finished creating inital users!")
   } catch (error) {
-    console.error("Error creating initial users!"+error)
+    console.error("Error creating initial users!" + error)
   }
 }
 
@@ -121,88 +118,79 @@ async function createInitialAddress() {
   console.log("Creating address...");
   try {
     const addressToCreate = [
-      { 
-      firstname: 'Moby', 
-      lastname: 'Bukhari',
-      street: '123 Rumplover St',
-      city: 'Washington',
-      state: "DC",
-      zip: 20009,
-      payment: "paypal",
-      currency: "USD" 
+      {
+        firstname: 'Moby',
+        lastname: 'Bukhari',
+        street: '123 Rumplover St',
+        city: 'Washington',
+        state: "DC",
+        zip: 20009,
+        payment: "paypal",
+        currency: "USD"
       },
-      { 
-      firstname: 'Rick', 
-      lastname: 'Sanchez',
-      street: '6910 Birdman Ave',
-      city: 'Ann Arbor',
-      state:"MI",
-      zip: 48013,
-      payment: "stripe",
-      currency: "USD" 
+      {
+        firstname: 'Rick',
+        lastname: 'Sanchez',
+        street: '6910 Birdman Ave',
+        city: 'Ann Arbor',
+        state: "MI",
+        zip: 48013,
+        payment: "stripe",
+        currency: "USD"
       },
-      { 
-      firstname: 'Emmet', 
-      lastname: 'Brown',
-      street: '1640 Candyland Ln',
-      city: 'Hillside',
-      state:"CA",
-      zip: 90210,
-      payment:"stripe",
-      currency: "USD" 
+      {
+        firstname: 'Emmet',
+        lastname: 'Brown',
+        street: '1640 Candyland Ln',
+        city: 'Hillside',
+        state: "CA",
+        zip: 90210,
+        payment: "stripe",
+        currency: "USD"
       }
     ]
-const addresses = await Promise.all(addressToCreate.map(address.createAddresses))
+    const addresses = await Promise.all(addressToCreate.map(address.createAddresses))
 
-console.log("address created:")
-console.log(addresses)
-console.log("Finished creating address!");
-} catch (error) {
-  console.error("Error creating address!");
-  throw error;
-}
+    console.log("address created:")
+    console.log(addresses)
+    console.log("Finished creating address!");
+  } catch (error) {
+    console.error("Error creating address!");
+    throw error;
+  }
 }
 
-async function createInitialCreatures() {
+async function createInitialPottery() {
   console.log("Creating creatures...")
   try {
-    const creaturesToCreate = [
+    const potteryToCreate = [
       {
         name: "Stitch",
         price: 5000,
         stock: 1,
-        environment: "land",
         size: "M",
-        food: "omnivore",
-        temper: "stubborn",
         image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/Stitch.jpg?alt=media&token=bed7cb8b-1bf7-4cc0-b675-c84d9a9e4926"
       },
       {
         name: "Butter Robot",
         price: 750,
         stock: 10,
-        environment: "land",
         size: "S",
-        food: "electricity",
-        temper: "compliant",
         image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/butter-bot.png?alt=media&token=8f8013cd-df8d-4442-bbf3-048859f85e1d"
       },
       {
         name: "Mogwai",
         price: 1000,
         stock: 999,
-        environment: "land",
         size: "S",
-        food: "Omnivore",
-        temper: "Varies",
         image: "https://firebasestorage.googleapis.com/v0/b/beast-bazaar.appspot.com/o/gizmo-mogwai.jpeg?alt=media&token=fe45089b-9b09-4baf-82d1-08ebf30aa5df"
         // Hey, did you know that you're not supposed to feed a Mogwai after midnight?
       },
     ]
-    const creatures = await Promise.all(creaturesToCreate.map(creature.createCreature))
+    const pottery = await Promise.all(potteryToCreate.map(pot.createPot))
 
     console.log("creatures created:")
-    console.log(creatures)
+    console.log(pottery)
 
     console.log("Finished creating creatures!")
   } catch (error) {
@@ -238,7 +226,7 @@ async function createInitialOrderHistory() {
       },
     ]
     const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createHistory))
-    
+
     console.log("Order History created:")
     console.log(orderHistory)
 
@@ -277,7 +265,7 @@ async function createInitialCart() {
     console.log(cartItems)
     console.log("Finished creating inital cart!")
   } catch (error) {
-    console.error("Error creating initial cart!"+error)
+    console.error("Error creating initial cart!" + error)
 
   }
 }
@@ -288,17 +276,17 @@ async function createInitialCartItems() {
     const cartItemsToCreate = [
       {
         cartid: 1,
-        creatureid: 1,
+        potid: 1,
         count: 1
       },
       {
         cartid: 2,
-        creatureid: 2,
+        potid: 2,
         count: 3
       },
       {
         cartid: 3,
-        creatureid: 3,
+        potid: 3,
         count: 2
       }
     ]
@@ -308,7 +296,7 @@ async function createInitialCartItems() {
     console.log(cartItemsContent)
     console.log("Finished creating inital cart items!")
   } catch (error) {
-    console.error("Error creating initial cart items!"+error)
+    console.error("Error creating initial cart items!" + error)
 
   }
 }
@@ -320,7 +308,7 @@ async function rebuildDB() {
     await createTables()
     await createInitialUsers()
     await createInitialAddress()
-    await createInitialCreatures()
+    await createInitialPottery()
     await createInitialOrderHistory()
     await createInitialCart()
     await createInitialCartItems()
@@ -332,13 +320,13 @@ async function rebuildDB() {
 }
 
 rebuildDB()
-//client.connect()
+  //client.connect()
   .catch(console.error)
   .finally(() => client.end());
 
 
-  module.exports = {
-    rebuildDB,
-    dropTables,
-    createTables,
-  }
+module.exports = {
+  rebuildDB,
+  dropTables,
+  createTables,
+}

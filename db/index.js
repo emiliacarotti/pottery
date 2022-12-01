@@ -2,7 +2,7 @@
 const client = require('./client')
 const user = require('./user')
 const address = require ('./address')
-const creature = require ('./creature')
+const pot = require ('./pot')
 const cart = require ('./cart')
 const history = require('./history')
 
@@ -13,7 +13,7 @@ module.exports = {
 client,
 user,
 address,
-creature,
+pot,
 cart,
 history
 };

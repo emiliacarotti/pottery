@@ -5,17 +5,17 @@ import { v4 as uuidv4 } from "uuid";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 
-export default function Home({creatures, setCreatures, selectedCreature, setSelectedCreature, isAdmin, selectedFile, setSelectedFile}){
-    let imgURL = "/creature"
-    
-    useEffect(()=>{
-        async function getCreatures(){
-            try{
-                const response = await fetch('http://localhost:4000/api/creatures')
+export default function Home({ pottery, setPottery, selectedPot, setSelectedPot, isAdmin, selectedFile, setSelectedFile }) {
+    let imgURL = "/pot"
+
+    useEffect(() => {
+        async function getPottery() {
+            try {
+                const response = await fetch('http://localhost:4000/api/pottery')
 
                 let data = await response.json()
                 console.log("data******:", data)
-                setCreatures(data)
+                setPottery(data)
 
             } catch (err) {
                 console.log(err)
@@ -23,39 +23,39 @@ export default function Home({creatures, setCreatures, selectedCreature, setSele
 
         }
 
-        getCreatures()
+        getPottery()
     }, [])
 
     async function getImageUrl(fileName) {
         const storageRef = ref(storage, fileName);
         const downloadURL = await getDownloadURL(storageRef);
         console.log(downloadURL)
-        
-      }
-//squatch
-    
-    return ( 
+
+    }
+    //squatch
+
+    return (
         <>
 
-        {
-        creatures?.map((creature) => {
-            return (
-                <div key={creature.creatureid}>
-                    <br></br> <br></br> <br></br>
-                <div className="creaturegallery">
-                <div>
-                
-                    <img src={ creature.image
-                    } width="370" height="370"></img>
-                    <div className="monsterbutton"><Link to="./SingleItem" onClick={() => setSelectedCreature(creature)}> {creature.name} </Link></div>
-                    <div className="cPrice"><h6> $ {creature.price}</h6></div> 
+            {
+                pottery?.map((pot) => {
+                    return (
+                        <div key={pot.potid}>
+                            <br></br> <br></br> <br></br>
+                            <div className="creaturegallery">
+                                <div>
 
-                </div>
-                </div>
-                </div>
-            )
-            })
-        }
+                                    <img src={pot.image
+                                    } width="370" height="370"></img>
+                                    <div className="monsterbutton"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
+                                    <div className="cPrice"><h6> $ {pot.price}</h6></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </>
     )
 }
