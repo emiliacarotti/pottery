@@ -3,15 +3,15 @@ import { getStorage } from "firebase/storage";
 
    
 
-   const firebaseConfig = {
-    apiKey: "AIzaSyCgREHvLWADPlUYWVg74hhjYrJS0x9Zx3E",
-    authDomain: "beast-bazaar.firebaseapp.com",
-    projectId: "beast-bazaar",
-    storageBucket: "beast-bazaar.appspot.com",
-    messagingSenderId: "563185874514",
-    appId: "1:563185874514:web:ac047cb37c995b47a1518b",
-    measurementId: "G-GFQ6BN7K8J"
-   };
+const firebaseConfig = {
+  apiKey: "AIzaSyDfP1BI60vLUSWKo7MRqMur-bJVhopeQEk",
+  authDomain: "emilia-pottery.firebaseapp.com",
+  projectId: "emilia-pottery",
+  storageBucket: "emilia-pottery.appspot.com",
+  messagingSenderId: "1047927258046",
+  appId: "1:1047927258046:web:8ca100039478ea591ad7ef",
+  measurementId: "G-7SBVLB5P98"
+};
 
    const firebaseApp = initializeApp(firebaseConfig);
    export const storage = getStorage(firebaseApp);
