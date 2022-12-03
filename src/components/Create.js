@@ -14,7 +14,6 @@ export default function Create({ isAdmin }) {
   const [name, setname] = useState("");
   const [price, setprice] = useState("");
   const [stock, setstock] = useState("");
-  const [size, setsize] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [selectedFile, setSelectedFile] = useState([]);
   const metadata = { contentType: "image/jpeg" };
@@ -99,7 +98,6 @@ export default function Create({ isAdmin }) {
         name,
         price,
         stock,
-        size,
         imageName
       )
 
@@ -116,7 +114,6 @@ export default function Create({ isAdmin }) {
             name: name,
             price: price,
             stock: stock,
-            size: size,
             image: imageName
           })
         }
@@ -187,21 +184,6 @@ export default function Create({ isAdmin }) {
                   setstock(event.target.value);
                 }}
               ></input>
-
-              <br></br>
-              <label>Creature Size:</label>
-              <br></br>
-              <select name="size" id="size"
-                value={size}
-                onChange={(event) => {
-                  setsize(event.target.value);
-                }}>
-                <option value=''>--Select One--</option>
-                <option value='small'>--Pocket--</option>
-                <option value='med'>--Fit's Inside--</option>
-                <option value='large'>--Outside Only--</option>
-                <option value='extralarge'>--Cosmic Size--</option>
-              </select>
 
               <br></br>
               <label>Image:</label>

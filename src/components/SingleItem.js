@@ -22,12 +22,10 @@ export default function SingleItem({
   const [potName, setPotName] = useState("");
   const [potPrice, setPotPrice] = useState("");
   const [potStock, setPotStock] = useState("");
-  const [potSize, setPotSize] = useState("");
 
   const [nameIsShown, setNameIsShown] = useState(false);
   const [priceIsShown, setPriceIsShown] = useState(false);
   const [stockIsShown, setStockIsShown] = useState(false);
-  const [sizeIsShown, setSizeIsShown] = useState(false);
 
   useEffect(() => {
     async function getPotById() {
@@ -90,7 +88,6 @@ export default function SingleItem({
             name: potName == "" ? selectedPot.name : potName,
             price: potPrice == "" ? selectedPot.price : potPrice,
             stock: potStock == "" ? selectedPot.stock : potStock,
-            size: potSize == "" ? selectedPot.size : potSize,
           },
           ),
         }
@@ -131,10 +128,6 @@ export default function SingleItem({
 
   const handleStockClick = (event) => {
     setStockIsShown((current) => !current);
-  };
-
-  const handleSizeClick = (event) => {
-    setSizeIsShown((current) => !current);
   };
 
   function Box() {
@@ -236,32 +229,7 @@ export default function SingleItem({
                   </>
                 ) : null}
               </div>
-  
-              <div className="beastid">
-                {" "}
-                Size: {selectedPot.size}
-                {isAdmin == "true" ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={handleSizeClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </>
-                ) : null}
-                {sizeIsShown == true ? (
-                  <>
-                    <br></br>
-                    <input
-                      type="text"
-                      value={potSize}
-                      onChange={(event) => {
-                        setPotSize(event.target.value);
-                      }}
-                    ></input>
-                  </>
-                ) : null}
-              </div>
+
             </form>
           </div>
 

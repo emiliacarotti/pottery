@@ -57,11 +57,11 @@ potteryRouter.get('/:potid', async (req, res, next) => {
 //working
 // create a pot
 potteryRouter.post('/create', async (req, res, next) => {
-  const { name, price, stock, size, image } = req.body;
+  const { name, price, stock, image } = req.body;
   console.log("in api")
   try {
     if (true) { //user is an admin, idk if this is right
-      if (!name || !price || !stock || !size || !image) { //if data is missing
+      if (!name || !price || !stock || !image) { //if data is missing
         next({
           name: "MissingDataError",
           message: "Please provide all info for this pot."
@@ -71,7 +71,7 @@ potteryRouter.post('/create', async (req, res, next) => {
       else {
         // create pot
         console.log("req", req.body)
-        const newPot = await createPot({ name, price, stock, size, image });
+        const newPot = await createPot({ name, price, stock, image });
         res.send(newPot);
 
       }
@@ -92,8 +92,8 @@ potteryRouter.post('/create', async (req, res, next) => {
 potteryRouter.patch('/edit/:potid', async (req, res, next) => {
   try {
     // console.log("req1", req.body)
-    const { potid, name, price, stock, size } = req.body;
-    if (!name || !price || !stock || !size ) { //if data is missing
+    const { potid, name, price, stock } = req.body;
+    if (!name || !price || !stock ) { //if data is missing
       next({
         name: "MissingDataError",
         message: "Please provide all info for this pot."
@@ -101,7 +101,7 @@ potteryRouter.patch('/edit/:potid', async (req, res, next) => {
     } else {
       // update creature
       // console.log("req2", req.body)
-      const editPot = await updatePot(potid, name, price, stock, size );
+      const editPot = await updatePot(potid, name, price, stock );
       res.send(editPot);
       console.log('update complete')
     }

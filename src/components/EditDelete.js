@@ -29,7 +29,6 @@ export default function EditdeletePot({
             name: event.target[1].value,
             price: event.target[2].value,
             stock: event.target[3].value,
-            size: event.target[4].value,
             image: event.target[5].value,
           }
         })

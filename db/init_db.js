@@ -60,7 +60,6 @@ async function createTables() {
             name VARCHAR(255) NOT NULL,
             price INTEGER NOT NULL,
             stock VARCHAR(255) NOT NULL,
-            size VARCHAR(255) NOT NULL,
             image VARCHAR(255) NOT NULL
           );
           CREATE TABLE cart (
@@ -168,77 +167,60 @@ async function createInitialPottery() {
         name: "Quilted White Mug on Brown Clay",
         price: 40,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/1.jpg?alt=media&token=5467d121-98f2-4d18-96ab-d57cec6dafe4"
       },
       {
         name: "Ridged Speckled Aqua Mug",
         price: 26,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/2.jpg?alt=media&token=1476996c-9e08-41dc-a32a-566165f3966e"
       },
       {
         name: "Tall White and Emerald Striped Mug on Natural Clay",
         price: 38,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/3.jpg?alt=media&token=d7672a92-9661-4b24-ba12-39dd5bdf7d2f"
       },
       {
         name: "Blue Carved Mug on Brown Clay",
         price: 35,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/4.jpg?alt=media&token=e9db48bb-b426-492f-9e57-4cbc94ab7f3d"
       },
       {
         name: "Blue and Brown Blend Mug",
         price: 24,
         stock: 10,
-        size: "S",
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/5.jpg?alt=media&token=b121ceb7-551d-44f4-9c70-783c1ac5ea3f"
-      },
-      {
-        name: "Blue and Brown Blend Mug",
-        price: 24,
-        stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/5.jpg?alt=media&token=b121ceb7-551d-44f4-9c70-783c1ac5ea3f"
       },
       {
         name: "Short White and Emerald Striped Mug on Natural Clay",
         price: 30,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/6.jpg?alt=media&token=cc6c9e10-0326-4ba4-810d-ce72ad6c3ae2"
       },
       {
         name: "Gold and White Blend Carved Mug",
         price: 30,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/7.jpg?alt=media&token=178b791f-eb74-4d0b-90f5-99d782be36ec"
       },
       {
         name: "White and Violet Drip Mug",
         price: 25,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/8.jpg?alt=media&token=2327f614-d445-409d-8f3b-7a3b2c1c81db"
       },
       {
         name: "Quilted Blue Mug on Brown Clay",
         price: 40,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/9.jpg?alt=media&token=cf07aa31-503e-48ab-941a-79f7cfe18b22"
       },
       {
         name: "Moss Green Carved Mug",
         price: 25,
         stock: 10,
-        size: "S",
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/10.jpg?alt=media&token=a47c0fba-0e25-4079-8dbb-b23fc6be3b82"
       },
 
