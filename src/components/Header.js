@@ -3,7 +3,7 @@ import reactdomclient from "react-dom/client"
 import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "react-router-dom";
 
 function Header(){
-    return <p>header</p>
+    return <p></p>
 }
 
 export default Header;
