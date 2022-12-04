@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate } from "react
 
 // css stylesheets can be created for each component
 // place them in the src/style directory, and import them like this:
-import './style/index.css';
+import './style/App.css';
 
 import {
   About,
@@ -69,20 +69,28 @@ function MadDog() {
 
   return (
     <>
-
       <Navbar
         loggedIn={loggedIn}
         Logout={Logout}
         isAdmin={isAdmin}
         setIsAdmin={setIsAdmin}
       />
-      <br></br>
-      <br></br>
-      <div className='Header'>
-        <center>emilia's pottery </center>
-      </div>
 
       <Routes>
+
+        <Route
+          path="/"
+          element={
+            <Home
+              pottery={pottery}
+              setPottery={setPottery}
+              isAdmin={isAdmin}
+              setIsAdmin={setIsAdmin}
+              selectedPot={selectedPot}
+              setSelectedPot={setSelectedPot}
+            />
+          }
+        ></Route>
 
         <Route
           path="Login"
@@ -107,21 +115,6 @@ function MadDog() {
             />
           }
         ></Route>
-        <Route
-          path="/"
-          element={
-            <Home
-              pottery={pottery}
-              setPottery={setPottery}
-              isAdmin={isAdmin}
-              setIsAdmin={setIsAdmin}
-              selectedPot={selectedPot}
-              setSelectedPot={setSelectedPot}
-            />
-          }
-        ></Route>
-
-
 
         <Route path="About" element={<About />}></Route>
         <Route path="Cart" element={<Cart />}></Route>

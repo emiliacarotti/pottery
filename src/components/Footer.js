@@ -16,20 +16,17 @@ function Footer(){
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="../About">About Us</a>
+                    <a href="../About">About</a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
+                    <a href="#">Join the Club</a>
                 </li>
                 <li>
-                    <a href="#">Payment Methods</a>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Privacy Policy</a>
+                    <a href="/Contact">Contact</a>
                 </li>
             </ul>
             <p className= "copyright">
-            © twenty twenty-two by Team MadDog
+            © pots by emilia
             </p>
         </section>
     </div>

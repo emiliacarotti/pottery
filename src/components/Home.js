@@ -22,7 +22,6 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
             }
 
         }
-
         getPottery()
     }, [])
 
@@ -32,7 +31,6 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
         console.log(downloadURL)
 
     }
-    //squatch
 
     return (
         <>
@@ -40,16 +38,10 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
                 {
                     pottery?.map((pot) => {
                         return (
-                            <div key={pot.potid}>
-                                <br></br> <br></br> <br></br>
-                                <div className="post">
-                                    <div>
-                                        <img src={pot.image
-                                        } width="370" height="370"></img>
-                                        <div className="monsterbutton"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
-                                        <div className="cPrice"><h6> $ {pot.price}</h6></div>
-                                    </div>
-                                </div>
+                            <div key={pot.potid} className="post">
+                                    <img src={pot.image} ></img>
+                                    <div className="potName"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
+                                    <div className="cPrice">$ {pot.price}</div>
                             </div>
                         )
                     })

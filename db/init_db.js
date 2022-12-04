@@ -164,64 +164,64 @@ async function createInitialPottery() {
   try {
     const potteryToCreate = [
       {
-        name: "Quilted White Mug on Brown Clay",
+        name: "Quilted White Mug on Brown Clay", //1
         price: 40,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/1.jpg?alt=media&token=5467d121-98f2-4d18-96ab-d57cec6dafe4"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/1.jpg?alt=media&token=f97c289a-8cd8-46ed-a562-17f7fbe679a0"
       },
       {
-        name: "Ridged Speckled Aqua Mug",
+        name: "Ridged Speckled Aqua Mug", //2
         price: 26,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/2.jpg?alt=media&token=1476996c-9e08-41dc-a32a-566165f3966e"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/2.jpg?alt=media&token=fa15986c-0506-475c-b1ef-0588584a5cd8"
       },
       {
-        name: "Tall White and Emerald Striped Mug on Natural Clay",
+        name: "Tall White and Emerald Striped Mug on Natural Clay", //3
         price: 38,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/3.jpg?alt=media&token=d7672a92-9661-4b24-ba12-39dd5bdf7d2f"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/3.jpg?alt=media&token=087f1120-89fb-459c-9dec-1b6f398a5925"
       },
       {
-        name: "Blue Carved Mug on Brown Clay",
+        name: "Blue Carved Mug on Brown Clay", //4
         price: 35,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/4.jpg?alt=media&token=e9db48bb-b426-492f-9e57-4cbc94ab7f3d"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/4.jpg?alt=media&token=3de7cf69-1bf0-4d09-b92f-03a858f88f3f"
       },
       {
-        name: "Blue and Brown Blend Mug",
+        name: "Blue and Brown Blend Mug", //5
         price: 24,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/5.jpg?alt=media&token=b121ceb7-551d-44f4-9c70-783c1ac5ea3f"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/5.jpg?alt=media&token=fc84288a-4e16-4491-9af1-912c00f72e98"
       },
       {
-        name: "Short White and Emerald Striped Mug on Natural Clay",
+        name: "Short White and Emerald Striped Mug on Natural Clay", //6
         price: 30,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/6.jpg?alt=media&token=cc6c9e10-0326-4ba4-810d-ce72ad6c3ae2"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/6.jpg?alt=media&token=fd48f15d-39f2-4ca2-a86e-7567f0ccbf8f"
       },
       {
-        name: "Gold and White Blend Carved Mug",
+        name: "Gold and White Blend Carved Mug", //7
         price: 30,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/7.jpg?alt=media&token=178b791f-eb74-4d0b-90f5-99d782be36ec"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/7.jpg?alt=media&token=6fc82cd1-c0ca-4a83-b5f9-4f714d54c6b7"
       },
       {
-        name: "White and Violet Drip Mug",
+        name: "White and Violet Drip Mug", //8
         price: 25,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/8.jpg?alt=media&token=2327f614-d445-409d-8f3b-7a3b2c1c81db"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/8.jpg?alt=media&token=afa3340f-35bc-4fdb-be91-3b9347931029"
       },
       {
-        name: "Quilted Blue Mug on Brown Clay",
+        name: "Quilted Blue Mug on Brown Clay", //9
         price: 40,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/9.jpg?alt=media&token=cf07aa31-503e-48ab-941a-79f7cfe18b22"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/9.jpg?alt=media&token=b4689671-750b-4e46-bed1-748270f53b87"
       },
       {
-        name: "Moss Green Carved Mug",
+        name: "Moss Green Carved Mug", //10
         price: 25,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/10.jpg?alt=media&token=a47c0fba-0e25-4079-8dbb-b23fc6be3b82"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/10.jpg?alt=media&token=a6e3b6ae-e2eb-4efe-bd48-8240384d1f34"
       },
 
     ]
