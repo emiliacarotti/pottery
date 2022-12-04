@@ -164,7 +164,7 @@ async function createInitialPottery() {
   try {
     const potteryToCreate = [
       {
-        name: "Quilted White Mug on Brown Clay", //1
+        name: "Quilted Speckled White Mug on Brown Clay", //1
         price: 40,
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/1.jpg?alt=media&token=f97c289a-8cd8-46ed-a562-17f7fbe679a0"
@@ -176,10 +176,34 @@ async function createInitialPottery() {
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/2.jpg?alt=media&token=fa15986c-0506-475c-b1ef-0588584a5cd8"
       },
       {
-        name: "Tall White and Emerald Striped Mug on Natural Clay", //3
+        name: "Ying Yang Split Catch-All Dish", //12
+        price: 35,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/12.jpg?alt=media&token=30f59570-80e0-4f41-bf99-7250be9eb8ac"
+      },
+      {
+        name: "Tall Speckled White and Emerald Striped Mug on Natural Clay", //3
         price: 38,
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/3.jpg?alt=media&token=087f1120-89fb-459c-9dec-1b6f398a5925"
+      },
+      {
+        name: "Hand Painted Leaf Mug on Natural Clay", //15
+        price: 40,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/15.jpg?alt=media&token=c4dd90f2-5bc7-43a9-a28b-24ec34b5a27b"
+      },
+      {
+        name: "Speckled White Bubble Mug", //13
+        price: 27,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/13.jpg?alt=media&token=2fb6d0ee-2b2d-4509-9e1d-3d07f37d31bc"
+      },
+      {
+        name: "Bue and White Speckled Stripe Plates", //17
+        price: 25,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/17.jpg?alt=media&token=9b09840e-fbd5-4ea1-9fe3-46248e26edfb"
       },
       {
         name: "Blue Carved Mug on Brown Clay", //4
@@ -188,19 +212,31 @@ async function createInitialPottery() {
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/4.jpg?alt=media&token=3de7cf69-1bf0-4d09-b92f-03a858f88f3f"
       },
       {
+        name: "Brown Carved Catch-All Bowl", //16
+        price: 20,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/16.jpg?alt=media&token=63c3f754-3ac9-4685-ad02-7af528b5ff6b"
+      },
+      {
         name: "Blue and Brown Blend Mug", //5
         price: 24,
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/5.jpg?alt=media&token=fc84288a-4e16-4491-9af1-912c00f72e98"
       },
       {
-        name: "Short White and Emerald Striped Mug on Natural Clay", //6
+        name: "Speckled White and Emerald Striped Mug on Brown Clay", //6
         price: 30,
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/6.jpg?alt=media&token=fd48f15d-39f2-4ca2-a86e-7567f0ccbf8f"
       },
       {
-        name: "Gold and White Blend Carved Mug", //7
+        name: "Blue and Brown Fade Bubble Mug", //14
+        price: 27,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/14.jpg?alt=media&token=bf0a901f-de85-4909-839f-c79a106500d3"
+      },
+      {
+        name: "Speckled Gold and White Blend Carved Mug", //7
         price: 30,
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/7.jpg?alt=media&token=6fc82cd1-c0ca-4a83-b5f9-4f714d54c6b7"
@@ -216,6 +252,18 @@ async function createInitialPottery() {
         price: 40,
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/9.jpg?alt=media&token=b4689671-750b-4e46-bed1-748270f53b87"
+      },
+      {
+        name: "Speckled White Gold Rim Drip Tray", //11
+        price: 30,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/11.jpg?alt=media&token=6e59bbe6-8d90-4bfd-a4b9-b71b1df67766"
+      },
+      {
+        name: "Speckled White and Brown Brushed Mug", //18
+        price: 20,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/18.jpg?alt=media&token=557dd8df-f8e9-4263-aa8c-92cbe487324d"
       },
       {
         name: "Moss Green Carved Mug", //10

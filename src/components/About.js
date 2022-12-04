@@ -4,8 +4,8 @@ import { BrowserRouter, useNavigate, useParams, Routes, Route, Link } from "reac
 
 function About() {
 
-    return <section id="about">
-        <div className="about-1">
+    return <section id="aboutpage">
+        <div className="abouttext">
             <h1>About</h1>
             <hr />
             <p>In 2021, I discovered I was really into pottery. Like, really into it.
@@ -21,7 +21,6 @@ function About() {
                 10% of all proceeds go to charity!!! Thanks for stopping by, it means a lot to me. And to my chiropractor.
             </p>
         </div>
-
     </section>
 }
 

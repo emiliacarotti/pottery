@@ -72,7 +72,7 @@ body {
   flex-direction: column;
   text-align: left;
   width: 200px;
-  height: 250px;
+  height: 235px;
   margin: 10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -400,65 +400,30 @@ form .txt_field {
 
 /* ======================= About page =======================*/
 
-.about-1 {
-  margin: 0px;
-  padding: 5px;
-  padding-top: 85px;
+.aboutpage {
+  font-family: Inter;
+  font-weight: 200;
 }
 
-.about-1 h3 {
-  text-align: center;
-  font-weight: bold;
+.abouttext h1 {
+  font-family: Inter;
+  font-weight: 400;
 }
 
-.about-1 h1 {
-  font-weight: bold;
-  font-size: 35px;
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-.about-1 p {
-  text-align: center;
-  padding: 3px;
-}
-
-.about-item {
-  margin-bottom: 20px;
-  margin-top: 2px;
-  box-shadow: 0 0 9px rgba(0, 0, 0 .6);
-  text-align: center;
-  /* border:#353746 solid 1px; */
-  /* width: 48%; */
-  /* margin-left: 15px; */
-  /* flex: 1; */
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.about-item i {
-  font-size: 40px;
-  margin-bottom: 0;
-  padding-top: 15px;
-
-}
-
-.about-item h3 {
-  font-size: 25px;
-  margin-bottom: 10px;
-  text-align: center;
+.abouttext {
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: Inter;
+  font-weight: 400;
 }
 
 hr {
-  width: 245px;
-  height: 5px;
-  margin: 0 auto;
+  width: 445px;
+  height: 2px;
+  margin-bottom: 5px;
   border: none;
   background-color: #353746;
-}
-
-.about-item p {
-  margin-top: 10px;
 }
 
 /* =================== end of About page ====================*/
