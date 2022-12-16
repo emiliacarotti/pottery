@@ -1,6 +1,8 @@
 /* ===================== CSS ===================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Slabo+27px&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
+
 
 /* ============= Body ============= */
 
@@ -12,7 +14,7 @@ body {
   font-family: Inter;
 }
 
-/* ============= Header ============= */
+/* ============= Header/Navbar ============= */
 
 .title {
   /* OK */
@@ -38,17 +40,21 @@ body {
   /* OK */
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  padding: 3px;
   font-family: Inter;
   font-weight: 200;
   background-color: #c7d5e2;
+  width: 100%
 }
 
 .navbarLinks a {
   /* OK */
   text-decoration: none;
   color: black;
+  white-space: nowrap;
 }
-
 
 /* ======================= Home page =======================*/
 
@@ -94,7 +100,7 @@ body {
   color: black;
   font-family: 'Slabo 27px', serif;
   font-weight: 200;
-  font-size: 12px;
+  font-size: 15px;
   text-decoration: none;
   padding-bottom: 20px;
 }
@@ -141,8 +147,6 @@ body {
   flex-direction: column;
   border: 1px solid silver;
 }
-
-
 
 .item {
   padding: 20px 30px;
@@ -233,49 +237,91 @@ body {
   margin-top: 15px;
 }
 
-/* ======================= End of Shopping Cart page =======================*/
-
 /* ======================= Single Item page =======================*/
 
-.single {
-  width: 400px;
-  border: solid 1px silver;
-  border-radius: 10px;
-  /* background-color: #666666; */
-  padding-top: 20px;
-  background-color: silver;
+.singlepage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 110px;
+  font-family: Inter;
+}
 
+.singlepage h1 {
+  display: flex;
+  flex-direction: row;
+  font-size: 19px;
+  font-family: Inter;
+  justify-content: space-between;
+}
+
+.singlepage h2 {
+  font-size: 17px;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.singlepage h3 {
+  font-size: 17px;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.singlesquare {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  background-color: #c7d5e2;
+  width: 500px;
+  height: 600px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.singlepot  {
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.singlepage form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
 }
 
 .deletebtn {
-  width: 90%;
-  height: 50px;
+  width: 50%;
+  height: 40px;
   border: 1px solid;
-  background: red;
+  background: rgb(255, 53, 53);
   border-radius: 25px;
-  font-size: 18px;
+  font-size: 15px;
   color: white;
-  font-weight: 700;
-  outline: none;
   cursor: pointer;
   margin-bottom: 15px;
-  /* padding-top: 15px; */
 }
 
 .addtocart {
-  width: 90%;
-  height: 50px;
+  width: 50%;
+  height: 40px;
   border: 1px solid;
   background: #2691d9;
   border-radius: 25px;
-  font-size: 18px;
+  font-size: 15px;
   color: #e9f4fb;
-  font-weight: 700;
   outline: none;
   cursor: pointer;
-  margin-top: 10px;
   text-decoration: none;
 }
+
+
 
 .addtocart a:visited {
   color: white;
@@ -287,8 +333,6 @@ body {
   float: right;
   margin-right: 10px;
 }
-
-/* ======================= End of Single Item page =======================*/
 
 /* ======================= Login page =======================*/
 
@@ -426,8 +470,6 @@ hr {
   background-color: #353746;
 }
 
-/* =================== end of About page ====================*/
-
 /* ======================= MOTD page =======================*/
 
 .MOTMDEAL {
@@ -504,45 +546,47 @@ hr {
   margin-bottom: 15px;
 }
 
-/* =================== end of MOTM page ====================*/
-
 /* ======================= Create page =======================*/
-.move {
-  margin-top: 500px;
+.createpage {
+  margin-top: 110px;
+  font-family: Inter;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.center1 {
-  position: sticky;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
+.createsquare {
+  background-color: #c7d5e2;
+  width: 500px;
+  height: 400px;
   border-radius: 10px;
-  border: 1px solid silver;
-  /* padding: 20px; */
-  /* margin-top: 0px; */
-  padding-bottom: 20px;
-  background-color: silver;
 }
 
-.center1 h2 {
-  text-align: center;
-  border-bottom: 1px solid silver;
-  font-size: 50px;
-  margin-top: 10px;
-
-}
-
-.center1 form {
+.createform form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 0 40px;
   box-sizing: border-box;
 }
 
-.center1 input,
-.center1 select {
+.createform input,
+.createform select {
   width: 100%;
 }
 
+.createform h1 {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  font-family: Inter;
+  justify-content: left;
+}
+
+.createform h2 {
+  font-size: 15px;
+  margin: 0px;
+}
 
 
 /* =================== end of Create page ====================*/

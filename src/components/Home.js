@@ -39,9 +39,9 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
                     pottery?.map((pot) => {
                         return (
                             <div key={pot.potid} className="post">
-                                    <img src={pot.image} ></img>
-                                    <div className="potName"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
-                                    <div className="cPrice">$ {pot.price}</div>
+                                <Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> <img src={pot.image} ></img> </Link>
+                                <div className="potName"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
+                                <div className="cPrice">$ {pot.price}</div>
                             </div>
                         )
                     })
