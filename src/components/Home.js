@@ -41,7 +41,7 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
                             <div key={pot.potid} className="post">
                                 <Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> <img src={pot.image} ></img> </Link>
                                 <div className="potName"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
-                                <div className="cPrice">$ {pot.price}</div>
+                                <div className="potPrice"><div>${pot.price}</div> <div>{pot.stock} left!</div></div>
                             </div>
                         )
                     })

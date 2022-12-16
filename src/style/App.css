@@ -77,8 +77,8 @@ body {
   display: flex;
   flex-direction: column;
   text-align: left;
-  width: 200px;
-  height: 235px;
+  width: 210px;
+  height: 245px;
   margin: 10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -103,6 +103,14 @@ body {
   font-size: 15px;
   text-decoration: none;
   padding-bottom: 20px;
+}
+
+.potPrice{
+display: flex;
+flex-direction: row; 
+justify-content: space-between;
+margin-top: 3px;
+font-size: 12px;
 }
 
 /* ======================= Shopping Cart page =======================*/
@@ -243,7 +251,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 110px;
+  margin-top: 30px;
   font-family: Inter;
 }
 
@@ -256,7 +264,7 @@ body {
 }
 
 .singlepage h2 {
-  font-size: 17px;
+  font-size: 15px;
   margin: 0px;
   display: flex;
   flex-direction: row;
@@ -264,7 +272,7 @@ body {
 }
 
 .singlepage h3 {
-  font-size: 17px;
+  font-size: 15px;
   margin: 0px;
   display: flex;
   flex-direction: row;
@@ -277,61 +285,95 @@ body {
   justify-items: center;
   background-color: #c7d5e2;
   width: 500px;
-  height: 600px;
+  height: 100%;
   border-radius: 10px;
   font-size: 20px;
 }
 
-.singlepot  {
+.singlepot {
   text-align: center;
   flex-direction: column;
   justify-content: center;
   padding-top: 20px;
 }
 
+.singlepot img {
+  width: 420px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
 .singlepage form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 40px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
 }
 
-.deletebtn {
-  width: 50%;
-  height: 40px;
-  border: 1px solid;
-  background: rgb(255, 53, 53);
-  border-radius: 25px;
-  font-size: 15px;
-  color: white;
-  cursor: pointer;
-  margin-bottom: 15px;
+.qtyandaddtocart {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.qty {
+  margin-bottom: 8px;
 }
 
 .addtocart {
-  width: 50%;
+  width: 40%;
   height: 40px;
   border: 1px solid;
   background: #2691d9;
   border-radius: 25px;
-  font-size: 15px;
+  font-size: 14px;
   color: #e9f4fb;
   outline: none;
   cursor: pointer;
   text-decoration: none;
 }
 
-
-
 .addtocart a:visited {
   color: white;
   text-decoration: none;
 }
 
+.deletebtn {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  border: 1px solid;
+  background: rgb(255, 53, 53);
+  border-radius: 25px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
 .editbtn {
+  text-align: center;
   border-radius: 50%;
   float: right;
+  height: 23px;
+  height: 23px;
   margin-right: 10px;
+}
+
+.editanddelete {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+}
+
+.editanddelete div{
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 /* ======================= Login page =======================*/
@@ -548,7 +590,7 @@ hr {
 
 /* ======================= Create page =======================*/
 .createpage {
-  margin-top: 110px;
+  margin-top: 30px;
   font-family: Inter;
   display: flex;
   flex-direction: row;

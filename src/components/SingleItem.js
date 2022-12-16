@@ -162,18 +162,17 @@ export default function SingleItem({
                       </button>
                     </>
                   ) : null}</h1>
-                  {nameIsShown == true ? (
-                    <>
-                      <br></br>
-                      <input
-                        type="text"
-                        value={potName}
-                        onChange={(event) => {
-                          setPotName(event.target.value);
-                        }}
-                      ></input>
-                    </>
-                  ) : null}
+                {nameIsShown == true ? (
+                  <>
+                    <input
+                      type="text"
+                      value={potName}
+                      onChange={(event) => {
+                        setPotName(event.target.value);
+                      }}
+                    ></input>
+                  </>
+                ) : null}
               </div>
               <div>
                 {" "}
@@ -188,18 +187,17 @@ export default function SingleItem({
                       </button>
                     </>
                   ) : null}</h2>
-                  {priceIsShown == true ? (
-                    <>
-                      <br></br>
-                      <input
-                        type="text"
-                        value={potPrice}
-                        onChange={(event) => {
-                          setPotPrice(event.target.value);
-                        }}
-                      ></input>
-                    </>
-                  ) : null}
+                {priceIsShown == true ? (
+                  <>
+                    <input
+                      type="text"
+                      value={potPrice}
+                      onChange={(event) => {
+                        setPotPrice(event.target.value);
+                      }}
+                    ></input>
+                  </>
+                ) : null}
               </div>
               <div>
                 {" "}
@@ -214,18 +212,17 @@ export default function SingleItem({
                       </button>
                     </>
                   ) : null}</h3>
-                  {stockIsShown == true ? (
-                    <>
-                      <br></br>
-                      <input
-                        type="text"
-                        value={potStock}
-                        onChange={(event) => {
-                          setPotStock(event.target.value);
-                        }}
-                      ></input>
-                    </>
-                  ) : null}
+                {stockIsShown == true ? (
+                  <>
+                    <input
+                      type="text"
+                      value={potStock}
+                      onChange={(event) => {
+                        setPotStock(event.target.value);
+                      }}
+                    ></input>
+                  </>
+                ) : null}
               </div>
 
             </form>
@@ -236,8 +233,8 @@ export default function SingleItem({
               addToCart(event);
             }}
           >
-            <div className = "qtyandaddtocart">
-              <div>
+            <div className="qtyandaddtocart">
+              <div className="qty">
                 {" "}
                 Qty:
                 <select name="quantity" id="quantity">
@@ -257,38 +254,39 @@ export default function SingleItem({
               <div id="createErrorMessage" className="errors"></div>
 
 
-              <br></br>
+
             </div>
           </form>
 
-
-          <div>
-            {isAdmin == "true" ? (
-              <button
-                type="submit"
-                form="editCreature" //DO NOT CHANGE THIS FORM TEXT EITHER
-                onClick={(event) => {
-                  event.preventDefault();
-                  EditPot(selectedPot);
-                }}
-                className="deletebtn"
-              >
-                Edit
-              </button>
-            ) : null}
-          </div>
-          <div>
-            {isAdmin == "true" ? (
-              <button
-                onClick={(event) => {
-                  event.preventDefault();
-                  deletePot(selectedPot.potid);
-                }}
-                className="deletebtn"
-              >
-                Delete
-              </button>
-            ) : null}
+          <div className="editanddelete">
+            <div>
+              {isAdmin == "true" ? (
+                <button
+                  type="submit"
+                  form="editCreature" //DO NOT CHANGE THIS FORM TEXT EITHER
+                  onClick={(event) => {
+                    event.preventDefault();
+                    EditPot(selectedPot);
+                  }}
+                  className="deletebtn"
+                >
+                  Edit
+                </button>
+              ) : null}
+            </div>
+            <div>
+              {isAdmin == "true" ? (
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    deletePot(selectedPot.potid);
+                  }}
+                  className="deletebtn"
+                >
+                  Delete
+                </button>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
