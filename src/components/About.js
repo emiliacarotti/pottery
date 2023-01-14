@@ -13,7 +13,7 @@ function About() {
             </p>
             <p>
                 I put this personal project together to demonstrate my ability
-                to design a full stack web application. (My second hobby is pottery - I made these pots myself!)
+                to design a full stack web application.
             </p>
             <p>
                 This app is built from a Postgres database and uses APIs via AJAX,
@@ -26,6 +26,9 @@ function About() {
                 will be a regular user) or try out the Admin credentials below, to test out these additional features:
                 <p className = "smalltext" >&nbsp; &nbsp; &nbsp; &nbsp;  Username: admin</p>
                 <p className = "smalltext" >&nbsp; &nbsp; &nbsp; &nbsp;  Password: admin</p>
+            </p>
+            <p>
+                Thanks for checking out my website!
             </p>
         </div>
     </section>

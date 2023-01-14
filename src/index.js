@@ -14,6 +14,7 @@ import './style/App.css';
 import {
   About,
   Cart,
+  Contact,
   Checkout,
   Create,
   Deal,
@@ -117,6 +118,7 @@ function MadDog() {
         ></Route>
 
         <Route path="About" element={<About />}></Route>
+        <Route path="Contact" element={<Contact />}></Route>
         <Route path="Cart" element={<Cart />}></Route>
         <Route path="Checkout" element={<Checkout />}></Route>
 
