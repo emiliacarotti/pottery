@@ -1,6 +1,8 @@
 const client = require("./client");
 
+// Get all pottery listings
 async function getAllPottery() {
+
   try {
     const { rows } = await client.query(`
       SELECT potid, name, price, stock, image
@@ -8,18 +10,20 @@ async function getAllPottery() {
     `);
     //console.log(rows)
     return rows;
+
   } catch (error) {
-    console.error("Error getting creatures!" + error);
+    console.error("Error getting pottery listings." + error);
   }
 }
-//working
-async function getPotById(potid) {
-  try {
 
+// Get single pottery listing by pottery id
+async function getPotById(potid) {
+
+  try {
     const {
       rows: [pot],
-    } = await client.query(`
 
+    } = await client.query(`
       SELECT potid, name, price, stock, image
       FROM pot
       WHERE potid=${potid}
@@ -29,17 +33,18 @@ async function getPotById(potid) {
     return pot;
 
   } catch (error) {
-    console.error("Error getting creature by ID !" + error);
+    console.error("Error getting pottery listing by id." + error);
   }
 }
 
-
+// Create pottery listing
 async function createPot({
   name,
   price,
   stock,
   image,
 }) {
+
   try {
     const { rows } = await client.query(
       `
@@ -51,36 +56,38 @@ async function createPot({
     );
     //console.log(rows)
     return rows;
-  } catch (error) {
-    console.error("Error creating creatures!" + error);
-  }
 
+  } catch (error) {
+    console.error("Error creating pottery listing." + error);
+  }
 }
 
-//PATCH CREATURES
-
+//Patch edit pottery listing
 async function updatePot(potid, name, price, stock) {
+
   try {
     console.log([name, price, stock, potid])
+
     const { rows } = await client.query(
       `UPDATE pot
        SET name = $1, price = $2, stock = $3
        WHERE potid=$4`,
       [name, price, stock, potid]
     );
-    console.log('new rows', rows);
+
+    console.log('new rows: ', rows);
     return rows;
 
   } catch (error) {
-    console.error("update ERROR", error);
+    console.error("update error: ", error);
   }
 }
 
-// Delete Creature
+// Delete pottery listing
 async function deletePot(potid) {
   console.log("potid", potid);
-  try {
 
+  try {
     const { rows } = await client.query(
       `
     DELETE 
@@ -93,13 +100,12 @@ async function deletePot(potid) {
     return rows;
 
   } catch (error) {
-    console.error("Error deleting creature!" + error);
+    console.error("Error deleting pottery listing." + error);
   }
 }
 
+// Export
 module.exports = {
-
-  // add database adapter functions here
   getAllPottery,
   getPotById,
   createPot,

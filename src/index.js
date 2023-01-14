@@ -1,4 +1,3 @@
-
 import ReactDOM from 'react-dom';
 import { App } from './components';
 
@@ -6,17 +5,14 @@ import React, { useState, useEffect } from "react";
 import reactdomclient from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 
-
-// css stylesheets can be created for each component
-// place them in the src/style directory, and import them like this:
-import './style/index.css';
+import './style/App.css';
 
 import {
   About,
   Cart,
+  Contact,
   Checkout,
   Create,
-  Deal,
   EditDelete,
   Error,
   Filters,
@@ -31,8 +27,7 @@ import {
 
 import { user } from 'pg/lib/defaults';
 
-
-function MadDog() {
+function PotterySite() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [token, setToken] = useState("");
   const [profile, setProfile] = useState([]);
@@ -69,44 +64,15 @@ function MadDog() {
 
   return (
     <>
-
       <Navbar
         loggedIn={loggedIn}
         Logout={Logout}
         isAdmin={isAdmin}
         setIsAdmin={setIsAdmin}
       />
-      <br></br>
-      <br></br>
-      <div className='Header'>
-        <center>Beast Bazzaar </center>
-      </div>
 
       <Routes>
 
-        <Route
-          path="Login"
-          element={
-            <Login
-              username={username}
-              setUsername={setUsername}
-              token={token}
-              setToken={setToken}
-              setLoggedIn={setLoggedIn}
-              setIsAdmin={setIsAdmin}
-            />
-          }
-        ></Route>
-        <Route
-          path="Register"
-          element={
-            <Register
-              token={token}
-              setToken={setToken}
-              setLoggedIn={setLoggedIn}
-            />
-          }
-        ></Route>
         <Route
           path="/"
           element={
@@ -121,11 +87,30 @@ function MadDog() {
           }
         ></Route>
 
+        <Route
+          path="Login"
+          element={
+            <Login
+              username={username}
+              setUsername={setUsername}
+              token={token}
+              setToken={setToken}
+              setLoggedIn={setLoggedIn}
+              setIsAdmin={setIsAdmin}
+            />
+          }
+        ></Route>
 
-
-        <Route path="About" element={<About />}></Route>
-        <Route path="Cart" element={<Cart />}></Route>
-        <Route path="Checkout" element={<Checkout />}></Route>
+        <Route
+          path="Register"
+          element={
+            <Register
+              token={token}
+              setToken={setToken}
+              setLoggedIn={setLoggedIn}
+            />
+          }
+        ></Route>
 
         <Route
           path="Create"
@@ -135,21 +120,6 @@ function MadDog() {
         </Route>
 
         <Route
-          path="Deal"
-          element={<Deal
-            selectedPot={selectedPot}
-            setSelectedPot={setSelectedPot}
-          />}>
-        </Route>
-
-
-        <Route path="EditDelete" element={<EditDelete />}></Route>
-        <Route path="*" element={<Error />}></Route>
-        <Route path="Filters" element={<Filters />}></Route>
-        <Route path="Footer" element={<Footer />}></Route>
-        <Route path="Header" element={<Header />}></Route>
-
-        <Route
           path="SingleItem"
           element={<SingleItem
             isAdmin={isAdmin}
@@ -157,25 +127,26 @@ function MadDog() {
             setSelectedPot={setSelectedPot} />}>
         </Route>
 
-      </Routes>
+        <Route path="About" element={<About />}></Route>
+        <Route path="Contact" element={<Contact />}></Route>
+        <Route path="Cart" element={<Cart />}></Route>
+        <Route path="Checkout" element={<Checkout />}></Route>
+        <Route path="EditDelete" element={<EditDelete />}></Route>
+        <Route path="*" element={<Error />}></Route>
+        <Route path="Filters" element={<Filters />}></Route>
+        <Route path="Footer" element={<Footer />}></Route>
+        <Route path="Header" element={<Header />}></Route>
 
+      </Routes>
       <Footer />
     </>
   );
-
 }
 
-
-
 const root = reactdomclient.createRoot(document.getElementById("app"));
+
 root.render(
   <BrowserRouter>
-    <MadDog />
+    <PotterySite />
   </BrowserRouter>
 );
-
-//ReactDOM.render(<MadDog />, document.getElementById('root'));
-
-
-
-

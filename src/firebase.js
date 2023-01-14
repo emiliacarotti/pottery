@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
-   
-
 const firebaseConfig = {
   apiKey: "AIzaSyDfP1BI60vLUSWKo7MRqMur-bJVhopeQEk",
   authDomain: "emilia-pottery.firebaseapp.com",
@@ -13,5 +11,5 @@ const firebaseConfig = {
   measurementId: "G-7SBVLB5P98"
 };
 
-   const firebaseApp = initializeApp(firebaseConfig);
-   export const storage = getStorage(firebaseApp);
+const firebaseApp = initializeApp(firebaseConfig);
+export const storage = getStorage(firebaseApp);

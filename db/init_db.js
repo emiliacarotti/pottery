@@ -1,7 +1,7 @@
-//SEED DATA
-
-
 const client = require("./client");
+
+// Seed data to initialize DB
+
 const { user,
   address,
   pot,
@@ -9,8 +9,9 @@ const { user,
   cart
 } = require('./');
 
-// drop tables in correct order
+// Drop tables in correct order
 async function dropTables() {
+
   try {
     client.connect();
     console.log("Drop tables...");
@@ -26,18 +27,19 @@ async function dropTables() {
       `);
 
     console.log("Tables dropped successfully!");
+
   } catch (error) {
     console.error("Error dropping tables!");
   }
 }
 
-// build tables in correct order
+// Build tables in correct order
 async function createTables() {
+
   try {
     console.log("Starting to build tables...");
 
     await client.query(`
-
           CREATE TABLE address (
             addressid SERIAL PRIMARY KEY,
             firstname VARCHAR(255) NOT NULL,
@@ -87,14 +89,16 @@ async function createTables() {
       `);
 
     console.log("Tables created successfully!");
+
   } catch (error) {
     console.error("Error creating tables!" + error);
   }
 }
 
-//working
+// Create initial users
 async function createInitialUsers() {
   console.log("Starting to create users...")
+
   try {
     const usersToCreate = [
       { username: "admin", password: "admin", isAdmin: 1 },
@@ -102,19 +106,21 @@ async function createInitialUsers() {
       { username: "squanchie", password: "jerryisdumb", isAdmin: 0 },
       { username: "docbrown", password: "backtothefuture", isAdmin: 0 }
     ]
-    const users = await Promise.all(usersToCreate.map(user.createUser))
 
+    const users = await Promise.all(usersToCreate.map(user.createUser))
     console.log("Users created:")
     console.log(users)
     console.log("Finished creating inital users!")
+
   } catch (error) {
     console.error("Error creating initial users!" + error)
   }
 }
 
-
+// Create initial addresses
 async function createInitialAddress() {
   console.log("Creating address...");
+
   try {
     const addressToCreate = [
       {
@@ -148,97 +154,149 @@ async function createInitialAddress() {
         currency: "USD"
       }
     ]
-    const addresses = await Promise.all(addressToCreate.map(address.createAddresses))
 
+    const addresses = await Promise.all(addressToCreate.map(address.createAddresses))
     console.log("address created:")
     console.log(addresses)
     console.log("Finished creating address!");
+
   } catch (error) {
     console.error("Error creating address!");
     throw error;
   }
 }
 
+// Create initial pottery listings
 async function createInitialPottery() {
   console.log("Creating creatures...")
+
   try {
     const potteryToCreate = [
       {
-        name: "Quilted White Mug on Brown Clay",
+        name: "Quilted Speckled White Mug on Brown Clay", //1
         price: 40,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/1.jpg?alt=media&token=5467d121-98f2-4d18-96ab-d57cec6dafe4"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/1.jpg?alt=media&token=f97c289a-8cd8-46ed-a562-17f7fbe679a0"
       },
       {
-        name: "Ridged Speckled Aqua Mug",
+        name: "Ridged Speckled Aqua Mug", //2
         price: 26,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/2.jpg?alt=media&token=1476996c-9e08-41dc-a32a-566165f3966e"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/2.jpg?alt=media&token=fa15986c-0506-475c-b1ef-0588584a5cd8"
       },
       {
-        name: "Tall White and Emerald Striped Mug on Natural Clay",
-        price: 38,
-        stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/3.jpg?alt=media&token=d7672a92-9661-4b24-ba12-39dd5bdf7d2f"
-      },
-      {
-        name: "Blue Carved Mug on Brown Clay",
+        name: "Ying Yang Split Catch-All Dish", //12
         price: 35,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/4.jpg?alt=media&token=e9db48bb-b426-492f-9e57-4cbc94ab7f3d"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/12.jpg?alt=media&token=30f59570-80e0-4f41-bf99-7250be9eb8ac"
       },
       {
-        name: "Blue and Brown Blend Mug",
-        price: 24,
+        name: "Tall Speckled White and Emerald Striped Mug on Natural Clay", //3
+        price: 38,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/5.jpg?alt=media&token=b121ceb7-551d-44f4-9c70-783c1ac5ea3f"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/3.jpg?alt=media&token=087f1120-89fb-459c-9dec-1b6f398a5925"
       },
       {
-        name: "Short White and Emerald Striped Mug on Natural Clay",
-        price: 30,
-        stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/6.jpg?alt=media&token=cc6c9e10-0326-4ba4-810d-ce72ad6c3ae2"
-      },
-      {
-        name: "Gold and White Blend Carved Mug",
-        price: 30,
-        stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/7.jpg?alt=media&token=178b791f-eb74-4d0b-90f5-99d782be36ec"
-      },
-      {
-        name: "White and Violet Drip Mug",
-        price: 25,
-        stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/8.jpg?alt=media&token=2327f614-d445-409d-8f3b-7a3b2c1c81db"
-      },
-      {
-        name: "Quilted Blue Mug on Brown Clay",
+        name: "Hand Painted Leaf Mug on Natural Clay", //15
         price: 40,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/9.jpg?alt=media&token=cf07aa31-503e-48ab-941a-79f7cfe18b22"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/15.jpg?alt=media&token=c4dd90f2-5bc7-43a9-a28b-24ec34b5a27b"
       },
       {
-        name: "Moss Green Carved Mug",
+        name: "Speckled White Bubble Mug", //13
+        price: 27,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/13.jpg?alt=media&token=2fb6d0ee-2b2d-4509-9e1d-3d07f37d31bc"
+      },
+      {
+        name: "Bue and White Speckled Stripe Plates", //17
         price: 25,
         stock: 10,
-        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/10.jpg?alt=media&token=a47c0fba-0e25-4079-8dbb-b23fc6be3b82"
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/17.jpg?alt=media&token=9b09840e-fbd5-4ea1-9fe3-46248e26edfb"
       },
-
+      {
+        name: "Blue Carved Mug on Brown Clay", //4
+        price: 35,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/4.jpg?alt=media&token=3de7cf69-1bf0-4d09-b92f-03a858f88f3f"
+      },
+      {
+        name: "Brown Carved Catch-All Bowl", //16
+        price: 20,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/16.jpg?alt=media&token=63c3f754-3ac9-4685-ad02-7af528b5ff6b"
+      },
+      {
+        name: "Blue and Brown Blend Mug", //5
+        price: 24,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/5.jpg?alt=media&token=fc84288a-4e16-4491-9af1-912c00f72e98"
+      },
+      {
+        name: "Speckled White and Emerald Striped Mug on Brown Clay", //6
+        price: 30,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/6.jpg?alt=media&token=fd48f15d-39f2-4ca2-a86e-7567f0ccbf8f"
+      },
+      {
+        name: "Blue and Brown Fade Bubble Mug", //14
+        price: 27,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/14.jpg?alt=media&token=bf0a901f-de85-4909-839f-c79a106500d3"
+      },
+      {
+        name: "Speckled Gold and White Blend Carved Mug", //7
+        price: 30,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/7.jpg?alt=media&token=6fc82cd1-c0ca-4a83-b5f9-4f714d54c6b7"
+      },
+      {
+        name: "White and Violet Drip Mug", //8
+        price: 25,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/8.jpg?alt=media&token=afa3340f-35bc-4fdb-be91-3b9347931029"
+      },
+      {
+        name: "Quilted Blue Mug on Brown Clay", //9
+        price: 40,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/9.jpg?alt=media&token=b4689671-750b-4e46-bed1-748270f53b87"
+      },
+      {
+        name: "Speckled White Gold Rim Drip Tray", //11
+        price: 30,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/11.jpg?alt=media&token=6e59bbe6-8d90-4bfd-a4b9-b71b1df67766"
+      },
+      {
+        name: "Speckled White and Brown Brushed Mug", //18
+        price: 20,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/18.jpg?alt=media&token=557dd8df-f8e9-4263-aa8c-92cbe487324d"
+      },
+      {
+        name: "Moss Green Carved Mug", //10
+        price: 25,
+        stock: 10,
+        image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/10.jpg?alt=media&token=a6e3b6ae-e2eb-4efe-bd48-8240384d1f34"
+      },
     ]
-    const pottery = await Promise.all(potteryToCreate.map(pot.createPot))
 
+    const pottery = await Promise.all(potteryToCreate.map(pot.createPot))
     console.log("creatures created:")
     console.log(pottery)
-
     console.log("Finished creating creatures!")
+
   } catch (error) {
     console.error("Error creating creatures!")
     throw error
   }
 }
 
+// Create initial order history
 async function createInitialOrderHistory() {
   console.log("Loading Order History...")
+
   try {
     const orderHistoryToCreate = [
       {
@@ -263,22 +321,22 @@ async function createInitialOrderHistory() {
         date: "07/03/2022",
       },
     ]
-    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createHistory))
 
+    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createHistory))
     console.log("Order History created:")
     console.log(orderHistory)
-
     console.log("Finished creating order history!")
+
   } catch (error) {
     console.error("Error creating order history!")
     throw error
-
   }
 }
 
-
+// Create initial cart
 async function createInitialCart() {
   console.log("Starting to create initial cart...")
+
   try {
     const cartToCreate = [
       {
@@ -297,19 +355,21 @@ async function createInitialCart() {
         sessionid: 3
       }
     ]
-    const cartItems = await Promise.all(cartToCreate.map(cart.createCart))
 
+    const cartItems = await Promise.all(cartToCreate.map(cart.createCart))
     console.log("Cart created:")
     console.log(cartItems)
     console.log("Finished creating inital cart!")
+
   } catch (error) {
     console.error("Error creating initial cart!" + error)
-
   }
 }
 
+// Create initial cart items
 async function createInitialCartItems() {
   console.log("Starting to create initialcart items...")
+
   try {
     const cartItemsToCreate = [
       {
@@ -328,19 +388,20 @@ async function createInitialCartItems() {
         count: 2
       }
     ]
-    const cartItemsContent = await Promise.all(cartItemsToCreate.map(cart.createCartItems))
 
+    const cartItemsContent = await Promise.all(cartItemsToCreate.map(cart.createCartItems))
     console.log("Cart items created:")
     console.log(cartItemsContent)
     console.log("Finished creating inital cart items!")
+
   } catch (error) {
     console.error("Error creating initial cart items!" + error)
-
   }
 }
 
-//REBUILD
+// Rebuild database
 async function rebuildDB() {
+
   try {
     await dropTables()
     await createTables()
@@ -358,11 +419,10 @@ async function rebuildDB() {
 }
 
 rebuildDB()
-  //client.connect()
   .catch(console.error)
   .finally(() => client.end());
 
-
+// Export
 module.exports = {
   rebuildDB,
   dropTables,

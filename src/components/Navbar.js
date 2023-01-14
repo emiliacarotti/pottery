@@ -1,34 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import logo from "../images/critter.png";
-export default function Navbar({loggedIn, Logout, isAdmin, setIsAdmin}){
+
+export default function Navbar({ loggedIn, Logout, isAdmin, setIsAdmin }) {
     return (
-        <div className="navbar">
-            <a href="/"><img className="logo" src={logo} width= "230px"/>
-            </a>
-            
-        
+        <>
+            <Link to="/" className="title">
+                <div className='titletext' >p o t s</div><div className='titletext'>b y</div><div className='titletext'>e m i l i a</div>
+            </Link>
 
-  	    <input className="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
-  	    <label htmlFor="menu-icon"></label>
-
-  	    <nav className="nav"> 	
-            <>
-                <ul className="pt-5">
-                <li><a href="/"> Home </a></li>
-                {
-                isAdmin == "true" ?(<li><a href="./Create"> Create Creature </a></li>) : null
-                }
-                {
-                !loggedIn?<li><a href="./Login"> Login </a></li> : <li><a href onClick={Logout}> Logout </a></li>
-                }
-                <li><a href="./Deal"> Beast of the Month </a></li>
-                <li><a href="./About"> About Us </a></li>
-                <li><a href="./Cart"> My Cart </a></li>
-                </ul>
-            </>	
-
-  	    </nav>
-        </div>
+            <div className="navbarLinks">
+                <a href="./"> Home </a>
+                <a href="./About"> About </a>
+                {isAdmin == "true" ? (<a href="./Create"> Create a Listing </a>) : null}
+                {!loggedIn ? <a href="./Login"> Login </a> : <a href onClick={Logout}> Logout </a>}
+            </div>
+        </>
     )
 }

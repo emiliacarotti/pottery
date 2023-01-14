@@ -3,8 +3,10 @@ const { client } = require('../db');
 const supertest = require('supertest');
 const request = supertest(server);
 
+// Test API
 describe('/api/health endpoint', () => {
-  // close db connection and supertest server tcp connection
+
+  // Close DB connection and supertest server TCP connection
   afterAll(async () => {
     await client.end();
     handle.close();

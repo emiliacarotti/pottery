@@ -16,6 +16,7 @@ export default function SingleItem({
   setSelectedFile,
   isAdmin,
 }) {
+
   let imgURL = "/pot";
   const navigate = useNavigate();
 
@@ -27,8 +28,10 @@ export default function SingleItem({
   const [priceIsShown, setPriceIsShown] = useState(false);
   const [stockIsShown, setStockIsShown] = useState(false);
 
+  // Get pottery by id
   useEffect(() => {
     async function getPotById() {
+
       try {
         const response = await fetch(
           "http://localhost:4000/api/pottery/${potid}",
@@ -39,6 +42,7 @@ export default function SingleItem({
             },
           }
         );
+
         let data = await response.json();
         console.log("data******:", data.potid);
 
@@ -46,34 +50,39 @@ export default function SingleItem({
         console.log(err);
       }
     }
-
-    //getPotById()
   }, []);
 
+  // Add pottery listing to cart
   async function addToCart(event) {
     console.log(event);
+
     try {
-      const response = await fetch("INSERT ROUTE HERE, DUMMY", {
+      const response = await fetch("Insert Route here-in progress", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
       });
+
       let result = await response.json();
+
       if (result.success) {
         alert("Item Added to Cart!");
         navigate("/");
+
       } else {
         document.getElementById("createErrorMessage").innerHTML =
           result.error.message;
       }
+
     } catch (err) {
-      console.log("Could not add item to cart!" + err);
+      console.log("Could not add item to cart." + err);
     }
   }
 
-  // async function EDIT/PATCH creature
+  // Patch edit pottery listing
   async function EditPot(selectedPot) {
+
     try {
       const response = await fetch(
         `http://localhost:4000/api/pottery/edit/${selectedPot.potid}`,
@@ -81,8 +90,8 @@ export default function SingleItem({
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-
           },
+
           body: JSON.stringify({
             potid: selectedPot.potid,
             name: potName == "" ? selectedPot.name : potName,
@@ -93,13 +102,13 @@ export default function SingleItem({
         }
       );
       navigate("/");
+
     } catch (err) {
-      console.log("Could not edit creature! " + err);
+      console.log("Could not edit pottery." + err);
     }
   }
 
-
-  // DELETE A CREATURE
+  // Delete a pottery listing
   async function deletePot(potid) {
     try {
       const response = await fetch(
@@ -114,10 +123,11 @@ export default function SingleItem({
       );
       navigate("/");
     } catch (err) {
-      console.log("Could not delete creature! " + err);
+      console.log("Could not delete pottery." + err);
     }
   }
 
+  // Switch use effect states to trigger renders
   const handleNameClick = (event) => {
     setNameIsShown((current) => !current);
   };
@@ -130,23 +140,11 @@ export default function SingleItem({
     setStockIsShown((current) => !current);
   };
 
-  function Box() {
-    return (
-      <div>
-        <h2>Box</h2>
-      </div>
-    );
-  }
-
   return (
     <>
-      <center>
-        <p>Single Item Page</p>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div className="single">
-          <div key={selectedPot.potid}>
+      <div className="singlepage">
+        <div className="singlesquare">
+          <div className="singlepot" key={selectedPot.potid}>
             <img src={selectedPot.image} width="300" height="300"></img>
             <form id="editCreature" //PLEASE DO NOT change this ID for CSS purposes it mess up the form
               onSubmit={async (event) => {
@@ -154,21 +152,20 @@ export default function SingleItem({
                 EditPot();
               }}
             >
-              <div className="beastid">
+              <div>
                 {" "}
-                Name: {selectedPot.name}
-                {isAdmin == "true" ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={handleNameClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </>
-                ) : null}
+                <h1>{selectedPot.name}
+                  {isAdmin == "true" ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={handleNameClick} className="editbtn">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                    </>
+                  ) : null}</h1>
                 {nameIsShown == true ? (
                   <>
-                    <br></br>
                     <input
                       type="text"
                       value={potName}
@@ -179,21 +176,22 @@ export default function SingleItem({
                   </>
                 ) : null}
               </div>
-              <div className="beastid">
+
+              <div>
                 {" "}
-                Price: ${selectedPot.price}
-                {isAdmin == "true" ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={handlePriceClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </>
-                ) : null}
+                <h2>
+                  ${selectedPot.price}
+                  {isAdmin == "true" ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={handlePriceClick} className="editbtn">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                    </>
+                  ) : null}</h2>
                 {priceIsShown == true ? (
                   <>
-                    <br></br>
                     <input
                       type="text"
                       value={potPrice}
@@ -204,21 +202,22 @@ export default function SingleItem({
                   </>
                 ) : null}
               </div>
-              <div className="beastid">
+
+              <div>
                 {" "}
-                Quantity Available: {selectedPot.stock}
-                {isAdmin == "true" ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={handleStockClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </>
-                ) : null}
+                <h3>
+                  {selectedPot.stock} remaining in stock.
+                  {isAdmin == "true" ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={handleStockClick} className="editbtn">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                    </>
+                  ) : null}</h3>
                 {stockIsShown == true ? (
                   <>
-                    <br></br>
                     <input
                       type="text"
                       value={potStock}
@@ -229,10 +228,8 @@ export default function SingleItem({
                   </>
                 ) : null}
               </div>
-
             </form>
           </div>
-
 
           <form
             onSubmit={(event) => {
@@ -240,8 +237,8 @@ export default function SingleItem({
               addToCart(event);
             }}
           >
-            <div>
-              <div>
+            <div className="qtyandaddtocart">
+              <div className="qty">
                 {" "}
                 Qty:
                 <select name="quantity" id="quantity">
@@ -254,49 +251,47 @@ export default function SingleItem({
                 {" "}
                 <a href="./Cart">
                   {" "}
-                  Buy Now <i class="fa fa-cart-shopping"></i>
+                  Add to Cart <i class="fa fa-cart-shopping"></i>
                 </a>
               </button>
               <br></br>
               <div id="createErrorMessage" className="errors"></div>
-
-
-              <br></br>
             </div>
           </form>
 
+          <div className="editanddelete">
+            <div>
+              {isAdmin == "true" ? (
+                <button
+                  type="submit"
+                  form="editCreature" //DO NOT CHANGE THIS FORM TEXT EITHER
+                  onClick={(event) => {
+                    event.preventDefault();
+                    EditPot(selectedPot);
+                  }}
+                  className="deletebtn"
+                >
+                  Edit
+                </button>
+              ) : null}
+            </div>
 
-          <div>
-            {isAdmin == "true" ? (
-              <button
-                type="submit"
-                form="editCreature" //DO NOT CHANGE THIS FORM TEXT EITHER
-                onClick={(event) => {
-                  event.preventDefault();
-                  EditPot(selectedPot);
-                }}
-                className="deletebtn"
-              >
-                Edit
-              </button>
-            ) : null}
-          </div>
-          <div>
-            {isAdmin == "true" ? (
-              <button
-                onClick={(event) => {
-                  event.preventDefault();
-                  deletePot(selectedPot.potid);
-                }}
-                className="deletebtn"
-              >
-                Delete
-              </button>
-            ) : null}
+            <div>
+              {isAdmin == "true" ? (
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    deletePot(selectedPot.potid);
+                  }}
+                  className="deletebtn"
+                >
+                  Delete
+                </button>
+              ) : null}
+            </div>
           </div>
         </div>
-      </center>
+      </div>
     </>
   );
 }
-

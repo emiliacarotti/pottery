@@ -1,10 +1,8 @@
-// grab our db client connection to use with our adapters
 const client = require('./client');
 
-
-
-// TABLE CART DB USER FUNCTIONS BELOW ---------------
+// Get cart
 async function getUserCart() {
+
   try {
     const { rows } = await client.query(`
         SELECT cartid, sessionid, userid 
@@ -12,13 +10,16 @@ async function getUserCart() {
       `);
     console.log(rows)
     return rows;
+
   } catch (error) {
     console.error("Error getting cart!");
   }
 }
-//CREATE 
+
+// Create cart
 async function createCart({ cartid, sessionid, userid }) {
   console.log("create CART", cartid, sessionid, userid)
+
   try {
     const { rows } = await client.query(`
       INSERT INTO cart(cartid, sessionid, userid)
@@ -27,14 +28,16 @@ async function createCart({ cartid, sessionid, userid }) {
     `, [cartid, sessionid, userid]);
     console.log(rows)
     return rows;
+
   } catch (error) {
     console.error("Error creating cart!", error);
   }
 }
 
-//CREATE CART ITEMS
+// Create cart items
 async function createCartItems({ cartid, potid, count }) {
   console.log("create CART ITEMS", cartid, potid, count)
+
   try {
     const { rows } = await client.query(`
       INSERT INTO cart_items(cartid, potid, count)
@@ -43,13 +46,15 @@ async function createCartItems({ cartid, potid, count }) {
     `, [cartid, potid, count]);
     console.log(rows)
     return rows;
+
   } catch (error) {
     console.error("Error creating cart items!", error);
   }
 }
 
-// TABLE CART_ITEMS DB FUNCTIONS BELOW --------------
+// Get cart items
 async function getCartItems() {
+
   try {
     const { rows } = await client.query(`
       SELECT cartid, potid, count
@@ -57,28 +62,14 @@ async function getCartItems() {
     `);
     console.log(rows)
     return rows;
+
   } catch (error) {
     console.error("Error getting cart items !", error);
   }
 }
-//CREATE 
-async function createCartItems({ cartid, potid, count }) {
-  console.log("create CART", cartid, potid)
-  try {
-    const { rows } = await client.query(`
-    INSERT INTO cart_items(cartid, potid, count )
-    VALUES($1, $2, $3)
-    RETURNING *;
-  `, [cartid, potid, count]);
-    console.log(rows)
-    return rows;
-  } catch (error) {
-    console.error("Error creating cart items!", error);
-  }
-}
 
+// Export
 module.exports = {
-  // add database adapter functions here
   getUserCart,
   createCart,
   getCartItems,

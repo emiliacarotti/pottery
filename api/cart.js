@@ -2,33 +2,40 @@ const express = require('express');
 const cartRouter = express.Router();
 const { requireUser } = require('./utils');
 
-const { 
+const {
     getUserCart,
     createCart
-  } = require('../db/cart');
+} = require('../db/cart');
 
-  cartRouter.use((req, res, next) => {
+cartRouter.use((req, res, next) => {
     console.log(req.body);
-    
-    next();
-    });
 
-// GET /api/cart
-cartRouter.get("/", async (req, res, next)=>{
+    next();
+});
+
+// Get Cart
+cartRouter.get("/", async (req, res, next) => {
+
     try {
         const userCart = await getUserCart();
         res.send(userCart);
-    }catch(error){
+
+    } catch (error) {
         console.error(error)
     }
 });
 
-cartRouter.get("/", async (req, res, next)=>{
+// Create Cart
+cartRouter.get("/", async (req, res, next) => {
+
     try {
         const createACart = await createCart(cartid);
         res.send(createACart);
-    }catch(error){
+
+    } catch (error) {
         console.error(error)
     }
 });
+
+// Export Cart Router
 module.exports = cartRouter;

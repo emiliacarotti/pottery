@@ -10,9 +10,9 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
 
     useEffect(() => {
         async function getPottery() {
+
             try {
                 const response = await fetch('http://localhost:4000/api/pottery')
-
                 let data = await response.json()
                 console.log("data******:", data)
                 setPottery(data)
@@ -20,9 +20,7 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
             } catch (err) {
                 console.log(err)
             }
-
         }
-
         getPottery()
     }, [])
 
@@ -32,32 +30,22 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
         console.log(downloadURL)
 
     }
-    //squatch
 
     return (
         <>
-
-            {
-                pottery?.map((pot) => {
-                    return (
-                        <div key={pot.potid}>
-                            <br></br> <br></br> <br></br>
-                            <div className="creaturegallery">
-                                <div>
-
-                                    <img src={pot.image
-                                    } width="370" height="370"></img>
-                                    <div className="monsterbutton"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
-                                    <div className="cPrice"><h6> $ {pot.price}</h6></div>
-
-                                </div>
+            <div className="posts">
+                {
+                    pottery?.map((pot) => {
+                        return (
+                            <div key={pot.potid} className="post">
+                                <Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> <img src={pot.image} ></img> </Link>
+                                <div className="potName"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
+                                <div className="potPrice"><div>${pot.price}</div> <div>{pot.stock} left!</div></div>
                             </div>
-                        </div>
-                    )
-                })
-            }
+                        )
+                    })
+                }
+            </div>
         </>
     )
 }
-
-

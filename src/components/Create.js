@@ -4,7 +4,6 @@ import { token, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
-//import { createPot } from "../../db/pot";
 
 const server_url = `http://localhost:4000/api/pottery/create`;
 
@@ -19,28 +18,18 @@ export default function Create({ isAdmin }) {
   const metadata = { contentType: "image/jpeg" };
 
   async function uploadImage() {
+
     try {
       let imageName = uuidv4() + ".jpg";
       setImageURL(imageName)
       const storageRef = ref(storage, imageName);
       const uploadTask = uploadBytesResumable(storageRef, selectedFile[0], metadata);
-      // const downloadURL = await getDownloadURL(storageRef);
-      // console.log("downloadURL: ", downloadURL)
-      // if (downloadURL) setImageURL(downloadURL)
       uploadTask.on("state_changed", null, null, complete);
 
       async function complete() {
         console.log("upload complete!");
-
         let url = await getImageUrl(imageName)
         newPot(url)
-
-        // getImageUrl(imageName);
-        //saveImageName(imageName);
-        // const downloadURL = await getDownloadURL(storageRef);
-        // console.log("downloadURL: ", downloadURL)
-        // setImageURL(downloadURL)
-
       }
 
     } catch (err) {
@@ -48,13 +37,10 @@ export default function Create({ isAdmin }) {
     }
   }
 
-
-
   async function getImageUrl(fileName) {
     const storageRef = ref(storage, fileName);
     const downloadURL = await getDownloadURL(storageRef);
     return downloadURL
-
   }
 
   async function saveImageName(url) {
@@ -71,7 +57,6 @@ export default function Create({ isAdmin }) {
     const storageRef = ref(storage, fileName);
     const downloadURL = await getDownloadURL(storageRef);
     return downloadURL
-
   }
 
   async function saveImageName(url) {
@@ -84,16 +69,11 @@ export default function Create({ isAdmin }) {
     });
   }
 
-  // async function CREATE A NEW CREATURE
+  // Create pottery listing
   async function newPot(imageName) {
     try {
       console.log(localStorage.getItem("token"))
       console.log("selectedfile: ", selectedFile)
-
-      //if(selectedFile.length>0) {
-      //  await uploadImage();
-      //}
-
       console.log(
         name,
         price,
@@ -118,41 +98,40 @@ export default function Create({ isAdmin }) {
           })
         }
       );
+
       let result = await response.json();
       console.log(result);
+
       if (result) {
-        alert("Your creature has been successfully created!")  // please clap
+        alert("Your listing has been created. You will now be routed back to the home page.")
         navigate("/")
+
       } else {
         console.log("nope")
         document.getElementById("createErrorMessage").innerHTML =
           result.error.message;
       }
+
     } catch (err) {
       console.log("Couldn't create new creature!" + err);
     }
   }
 
-
-  return (<div className="move">
-    <div className="center1">
+  return (<div className="createpage">
+    <div className="createform">
       <>
-        <center><h2><i className="fa fa-dragon"></i></h2></center>
         {
           <form
+            className="createsquare"
             onSubmit={async (event) => {
               event.preventDefault();
               await uploadImage();
-
             }}>
-
-
-
-
             <div>
-
-              <label>Creature Name/Type:</label>
+              <h1>Create a Listing</h1>
               <br></br>
+              <h2>Listing Name:</h2>
+
               <input
                 type="text"
                 value={name}
@@ -161,10 +140,8 @@ export default function Create({ isAdmin }) {
                 }}
               ></input>
 
-
-              <br></br>
-              <label>Price: $</label>
-              <br></br>
+              <br></br><br></br>
+              <h2>Price:</h2>
               <input
                 type="text"
                 value={price}
@@ -173,10 +150,8 @@ export default function Create({ isAdmin }) {
                 }}
               ></input>
 
-
-              <br></br>
-              <label>Quantity Available:</label>
-              <br></br>
+              <br></br><br></br>
+              <h2>Quantity Available:</h2>
               <input
                 type="text"
                 value={stock}
@@ -185,7 +160,7 @@ export default function Create({ isAdmin }) {
                 }}
               ></input>
 
-              <br></br>
+              <br></br><br></br>
               <label>Image:</label>
               <br></br>
               <input
