@@ -512,6 +512,10 @@ hr {
   background-color: #353746;
 }
 
+.smalltext {
+  font-size: 15px;
+}
+
 /* ======================= MOTD page =======================*/
 
 .MOTMDEAL {

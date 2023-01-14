@@ -4,7 +4,6 @@ import { token, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
-//import { createPot } from "../../db/pot";
 
 const server_url = `http://localhost:4000/api/pottery/create`;
 

@@ -7,26 +7,25 @@ function About() {
     return <section id="aboutpage">
         <div className="abouttext">
             <h1>About</h1>
-            <hr />
-            <p>In 2021, I discovered I was really into pottery. Like, really into it.
-                Something about pouring hours and hours hunched over a pottery wheel
-                (this is really good for my back pain) playing with dirt just
-                really plays into my preferred ways to spend my time. But really,
-                there's something extremely rewarding about pulling a mug out of the
-                kiln weeks later and finally seeing how it's turned out. </p>
-
-            <p>And in 2022, I discovered my love for coding. It turns out the two are actually pretty
-                similar. The extreme attention to detail and precision, the creative outlet
-                they provide, the hours bent over a machine just twiddling away with your fingers...
-                At the very least they're both keeping my chiropractor in business.</p>
-
-            <p> From then on, it was really a no-brainer - why not combine the two? Now I make the pottery
-                AND the website I get to sell it on! And as if that wasn't exciting enough,
-                10% of all proceeds go to charity! Check out the Charity tab for a status on 
-                how much we've raised so far.Thanks for stopping by, it means a lot to me. And to my chiropractor.
+            <hr/>
+            <p>
+                Welcome to my full stack e-commerce website!
             </p>
-
-            <p> Thanks for stopping by. It means a lot to me. And to my chiropractor.
+            <p>
+                I put this personal project together to demonstrate my ability
+                to design a full stack web application. (My second hobby is pottery - I made these pots myself!)
+            </p>
+            <p>
+                This app is built from a Postgres database and uses APIs via AJAX,
+                Node and Express in Javascript. The front end is fully outfitted with React.
+            </p>
+            <p>
+                On this app, you can either login as a regular
+                user or as an Admin, which will give you additional permissions, such as editing or deleting
+                an existing listing, or creating a new listing. Feel free to create your own account (which
+                will be a regular user) or try out the Admin credentials below, to test out these additional features:
+                <p className = "smalltext" >&nbsp; &nbsp; &nbsp; &nbsp;  Username: admin</p>
+                <p className = "smalltext" >&nbsp; &nbsp; &nbsp; &nbsp;  Password: admin</p>
             </p>
         </div>
     </section>
