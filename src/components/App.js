@@ -3,7 +3,6 @@ import '../style/App.css';
 
 const App = () => {
 
-
   return (
     <div className="app-container">
       <h1>Hello, World ---- app.js</h1>

@@ -1,10 +1,12 @@
 const express = require("express");
 const apiRouter = express.Router();
 const { getUserById } = require('../db');
-//MIDDLEWARE
+
+// Middleware 
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
-//READ JWT 
+
+// Read JWT 
 apiRouter.use((req, res, next) => {
   if (req.user) {
     console.log("User is set:", req.user);
@@ -16,8 +18,10 @@ apiRouter.use((req, res, next) => {
 apiRouter.use(async (req, res, next) => {
   const prefix = 'Bearer ';
   const auth = req.header('Authorization');
+
   if (!auth) {
     next();
+
   } else if (auth.startsWith(prefix)) {
     const token = auth.slice(prefix.length);
 
@@ -28,9 +32,11 @@ apiRouter.use(async (req, res, next) => {
         req.user = await getUserById(id);
         next();
       }
+
     } catch ({ name, message }) {
       next({ name, message });
     }
+
   } else {
     next({
       name: 'AuthorizationHeaderError',
@@ -39,36 +45,35 @@ apiRouter.use(async (req, res, next) => {
   }
 });
 
-
-
 apiRouter.get('/', (req, res, next) => {
   res.send({
     message: 'API is under construction!',
   });
 });
 
-//SUBROUTERS
-// ROUTER: /api/users
+// Subrouters
+
+// Router: /api/users
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
 
-// // ROUTER: /api/address
+// Router: /api/address
 const addressesRouter = require('./addresses');
 apiRouter.use('/addresses', addressesRouter);
 
-// ROUTER: /api/creatures
+// Router: /api/creatures
 const potteryRouter = require('./pottery');
 apiRouter.use('/pottery', potteryRouter);
 
-// ROUTER: /api/cart
+// Router: /api/cart
 const cartRouter = require('./cart');
 apiRouter.use('/cart', cartRouter);
 
-// ROUTER: /api/history
+// Router: /api/history
 const historyRouter = require('./history');
 apiRouter.use('/history', historyRouter);
 
-//ROUTER: ERROR
+// Router: Error
 apiRouter.use((error, req, res, next) => {
   res.send({
     name: error.name,
@@ -76,6 +81,7 @@ apiRouter.use((error, req, res, next) => {
   });
 });
 
+// Router: Wildcard URL
 apiRouter.get('*', (req, res) => {
   res.status(404).send({
     name: "PageNotFoundError",
@@ -83,5 +89,5 @@ apiRouter.get('*', (req, res) => {
   });
 });
 
-
+// Export API Router
 module.exports = apiRouter;

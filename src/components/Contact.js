@@ -15,7 +15,7 @@ function Contact() {
                 <a href="https://www.linkedin.com/in/emiliacarotti/" target="_blank">Linkedin</a>
             </li></p>
             <p><li>
-            <a href="https://github.com/emiliacarotti" target="_blank">Github</a>
+                <a href="https://github.com/emiliacarotti" target="_blank">Github</a>
             </li></p>
             <p>
                 Thanks for checking out my website!

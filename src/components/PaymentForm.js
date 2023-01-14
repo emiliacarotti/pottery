@@ -2,8 +2,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react'
 
-//STYLE -- card payment screen
+// Style - card payment screen
 const CARD_OPTIONS = {
+
     iconStyle: "solid",
     style: {
         base: {
@@ -28,16 +29,16 @@ export default function PaymentForm() {
     const stripe = useStripe()
     const elements = useElements()
 
-
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement)
         })
 
-
         if (!error) {
+
             try {
                 const { id } = paymentMethod
                 const response = await axios.post("http://localhost:4000/payment", {
@@ -46,16 +47,21 @@ export default function PaymentForm() {
                 })
 
                 if (response.data.success) {
-                    console.log("Successful payment")
+                    console.log("Successful payment.")
                     setSuccess(true)
                 }
 
             } catch (error) {
                 console.log("Error", error)
             }
+
         } else {
             console.log(error.message)
         }
+    }
+
+    function showAlert() {
+        alert("Payment successful!!! ");
     }
 
     return (
@@ -63,24 +69,19 @@ export default function PaymentForm() {
             {!success ?
                 <form onSubmit={handleSubmit}>
                     <fieldset id="FormGroup">
-                        <div id ="FormRow">
+                        <div id="FormRow">
                             <CardElement options={CARD_OPTIONS} />
                         </div>
-                        </fieldset>
-                    
-                    <button onClick={() => { showAlert(); }} className ="purchase"><a href="./About">Pay</a></button>
+                    </fieldset>
+
+                    <button onClick={() => { showAlert(); }} className="purchase"><a href="./About">Pay</a></button>
                 </form>
                 :
                 <div>
-                    <h2>You just bought a Creature</h2>
+                    <h2>You just bought pottery!</h2>
                 </div>
             }
 
         </>
     )
 }
-function showAlert() {
-   
-        alert("PAYMENT SUCESSFUL!!! ")
-        alert("DISCLAIMER ALERT: Your Payment information may fund my next vacation, however, your creature order has been initiated and will arrive to your address soon");
-    }

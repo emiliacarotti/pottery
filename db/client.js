@@ -1,7 +1,6 @@
-// Connect to DB
 const { Client } = require('pg');
 
-// change the DB_NAME string to whatever your group decides on
+// Database name
 const DB_NAME = 'pottery';
 
 const DB_URL =
@@ -9,7 +8,7 @@ const DB_URL =
 
 let client;
 
-// github actions client config
+// Github actions client config
 if (process.env.CI) {
   client = new Client({
     host: 'localhost',
@@ -23,4 +22,5 @@ if (process.env.CI) {
   client = new Client(DB_URL);
 }
 
+// Export
 module.exports = client;

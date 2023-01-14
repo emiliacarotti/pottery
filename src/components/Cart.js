@@ -1,5 +1,5 @@
 import React from "react";
-import butterbot from "../images/butterbot.png";
+// import butterbot from "../images/butterbot.png";
 
 function Cart() {
     return (
@@ -9,28 +9,26 @@ function Cart() {
                     <div className="title">
                         Shopping Cart
                     </div>
+
                     <div className="item">
                         <div className="buttons">
                             <h2><i class="fa-solid fa-trash"></i></h2>
-
                         </div>
 
                         <div className="image">
-                            <img src={butterbot} alt="" width="230px" />
+                            {/* <img src={butterbot} alt="" width="230px" /> */}
                         </div>
 
                         <div className="quantity">
-
-                        <select name="quantity" id="quantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
+                            <select name="quantity" id="quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
                         </div>
 
                         <div className="total-price">$649.99</div>
                     </div>
-
                 </div>
                 <div className="cartpage">
                     <center><div className="checkout">Ready to checkout?</div></center>

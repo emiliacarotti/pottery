@@ -13,9 +13,9 @@ export default function EditdeletePot({
 
   const navigate = useNavigate();
 
-
-  // async function EDIT/PATCH creature  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
+  // Patch edit pottery listing
   async function EditPot(event) {
+
     try {
       const response = await fetch(`http://localhost:4000/api/pottery` + selectedPot.potid, {
         method: "PATCH",
@@ -23,6 +23,7 @@ export default function EditdeletePot({
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + localStorage.getItem("token")
         },
+
         body: JSON.stringify({
           pot: {
             potid: event.target[0].value,
@@ -32,9 +33,10 @@ export default function EditdeletePot({
             image: event.target[5].value,
           }
         })
-
       })
+
       let result = await response.json()
+
       if (result.success) {
         alert("Your creature has been updated!")
         navigate("/")
@@ -48,9 +50,9 @@ export default function EditdeletePot({
     }
   }
 
-
-  // async function DELETE A CREATURE  --  HARLEY/EMILIA, CAN YOU LOOK AT THIS?  NOT SURE THAT THIS IS CORRECT.
+  // Delete pottery listing
   async function deletePot(event) {
+
     try {
       const response = await fetch(`http://localhost:4000/api/pottery` + selectedPot.potid, {
         method: "DELETE",
@@ -58,9 +60,10 @@ export default function EditdeletePot({
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + localStorage.getItem("token")
         }
-
       })
+
       let result = await response.json()
+
       if (result.success) {
         alert("Your creature has been deleted!")
         navigate("/")
@@ -75,14 +78,7 @@ export default function EditdeletePot({
   }
   console.log(selectedPot)
 
-
   return (
-
-    <div>
-      <p>EditDelete Page</p>
-
-    </div>
-
-
+    <></>
   )
 }

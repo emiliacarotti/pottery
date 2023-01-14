@@ -30,7 +30,6 @@ function Footer() {
             </p>
         </section>
     </div>
-
 }
 
 export default Footer;

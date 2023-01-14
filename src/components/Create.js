@@ -18,6 +18,7 @@ export default function Create({ isAdmin }) {
   const metadata = { contentType: "image/jpeg" };
 
   async function uploadImage() {
+
     try {
       let imageName = uuidv4() + ".jpg";
       setImageURL(imageName)
@@ -27,10 +28,10 @@ export default function Create({ isAdmin }) {
 
       async function complete() {
         console.log("upload complete!");
-
         let url = await getImageUrl(imageName)
         newPot(url)
       }
+
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +41,6 @@ export default function Create({ isAdmin }) {
     const storageRef = ref(storage, fileName);
     const downloadURL = await getDownloadURL(storageRef);
     return downloadURL
-
   }
 
   async function saveImageName(url) {
@@ -57,7 +57,6 @@ export default function Create({ isAdmin }) {
     const storageRef = ref(storage, fileName);
     const downloadURL = await getDownloadURL(storageRef);
     return downloadURL
-
   }
 
   async function saveImageName(url) {
@@ -70,12 +69,11 @@ export default function Create({ isAdmin }) {
     });
   }
 
-  // async function CREATE A LISTING
+  // Create pottery listing
   async function newPot(imageName) {
     try {
       console.log(localStorage.getItem("token"))
       console.log("selectedfile: ", selectedFile)
-
       console.log(
         name,
         price,
@@ -100,16 +98,20 @@ export default function Create({ isAdmin }) {
           })
         }
       );
+
       let result = await response.json();
       console.log(result);
+
       if (result) {
         alert("Your listing has been created. You will now be routed back to the home page.")
         navigate("/")
+
       } else {
         console.log("nope")
         document.getElementById("createErrorMessage").innerHTML =
           result.error.message;
       }
+
     } catch (err) {
       console.log("Couldn't create new creature!" + err);
     }
@@ -124,15 +126,12 @@ export default function Create({ isAdmin }) {
             onSubmit={async (event) => {
               event.preventDefault();
               await uploadImage();
-
             }}>
             <div>
-
               <h1>Create a Listing</h1>
-
               <br></br>
-
               <h2>Listing Name:</h2>
+
               <input
                 type="text"
                 value={name}
@@ -140,7 +139,6 @@ export default function Create({ isAdmin }) {
                   setname(event.target.value);
                 }}
               ></input>
-
 
               <br></br><br></br>
               <h2>Price:</h2>
@@ -151,7 +149,6 @@ export default function Create({ isAdmin }) {
                   setprice(event.target.value);
                 }}
               ></input>
-
 
               <br></br><br></br>
               <h2>Quantity Available:</h2>

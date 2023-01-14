@@ -16,6 +16,7 @@ export default function SingleItem({
   setSelectedFile,
   isAdmin,
 }) {
+
   let imgURL = "/pot";
   const navigate = useNavigate();
 
@@ -27,8 +28,10 @@ export default function SingleItem({
   const [priceIsShown, setPriceIsShown] = useState(false);
   const [stockIsShown, setStockIsShown] = useState(false);
 
+  // Get pottery by id
   useEffect(() => {
     async function getPotById() {
+
       try {
         const response = await fetch(
           "http://localhost:4000/api/pottery/${potid}",
@@ -39,6 +42,7 @@ export default function SingleItem({
             },
           }
         );
+
         let data = await response.json();
         console.log("data******:", data.potid);
 
@@ -46,34 +50,39 @@ export default function SingleItem({
         console.log(err);
       }
     }
-
-    //getPotById()
   }, []);
 
+  // Add pottery listing to cart
   async function addToCart(event) {
     console.log(event);
+
     try {
-      const response = await fetch("INSERT ROUTE HERE, DUMMY", {
+      const response = await fetch("Insert Route here-in progress", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
       });
+
       let result = await response.json();
+
       if (result.success) {
         alert("Item Added to Cart!");
         navigate("/");
+
       } else {
         document.getElementById("createErrorMessage").innerHTML =
           result.error.message;
       }
+
     } catch (err) {
-      console.log("Could not add item to cart!" + err);
+      console.log("Could not add item to cart." + err);
     }
   }
 
-  // async function EDIT/PATCH creature
+  // Patch edit pottery listing
   async function EditPot(selectedPot) {
+
     try {
       const response = await fetch(
         `http://localhost:4000/api/pottery/edit/${selectedPot.potid}`,
@@ -81,8 +90,8 @@ export default function SingleItem({
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-
           },
+
           body: JSON.stringify({
             potid: selectedPot.potid,
             name: potName == "" ? selectedPot.name : potName,
@@ -93,13 +102,13 @@ export default function SingleItem({
         }
       );
       navigate("/");
+
     } catch (err) {
-      console.log("Could not edit creature! " + err);
+      console.log("Could not edit pottery." + err);
     }
   }
 
-
-  // DELETE A CREATURE
+  // Delete a pottery listing
   async function deletePot(potid) {
     try {
       const response = await fetch(
@@ -114,10 +123,11 @@ export default function SingleItem({
       );
       navigate("/");
     } catch (err) {
-      console.log("Could not delete creature! " + err);
+      console.log("Could not delete pottery." + err);
     }
   }
 
+  // Switch use effect states to trigger renders
   const handleNameClick = (event) => {
     setNameIsShown((current) => !current);
   };
@@ -129,14 +139,6 @@ export default function SingleItem({
   const handleStockClick = (event) => {
     setStockIsShown((current) => !current);
   };
-
-  function Box() {
-    return (
-      <div>
-        <h2>Box</h2>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -174,6 +176,7 @@ export default function SingleItem({
                   </>
                 ) : null}
               </div>
+
               <div>
                 {" "}
                 <h2>
@@ -199,6 +202,7 @@ export default function SingleItem({
                   </>
                 ) : null}
               </div>
+
               <div>
                 {" "}
                 <h3>
@@ -224,9 +228,9 @@ export default function SingleItem({
                   </>
                 ) : null}
               </div>
-
             </form>
           </div>
+
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -252,9 +256,6 @@ export default function SingleItem({
               </button>
               <br></br>
               <div id="createErrorMessage" className="errors"></div>
-
-
-
             </div>
           </form>
 
@@ -274,6 +275,7 @@ export default function SingleItem({
                 </button>
               ) : null}
             </div>
+
             <div>
               {isAdmin == "true" ? (
                 <button
@@ -293,4 +295,3 @@ export default function SingleItem({
     </>
   );
 }
-

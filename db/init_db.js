@@ -1,7 +1,7 @@
-//SEED DATA
-
-
 const client = require("./client");
+
+// Seed data to initialize DB
+
 const { user,
   address,
   pot,
@@ -9,8 +9,9 @@ const { user,
   cart
 } = require('./');
 
-// drop tables in correct order
+// Drop tables in correct order
 async function dropTables() {
+
   try {
     client.connect();
     console.log("Drop tables...");
@@ -26,18 +27,19 @@ async function dropTables() {
       `);
 
     console.log("Tables dropped successfully!");
+
   } catch (error) {
     console.error("Error dropping tables!");
   }
 }
 
-// build tables in correct order
+// Build tables in correct order
 async function createTables() {
+
   try {
     console.log("Starting to build tables...");
 
     await client.query(`
-
           CREATE TABLE address (
             addressid SERIAL PRIMARY KEY,
             firstname VARCHAR(255) NOT NULL,
@@ -87,14 +89,16 @@ async function createTables() {
       `);
 
     console.log("Tables created successfully!");
+
   } catch (error) {
     console.error("Error creating tables!" + error);
   }
 }
 
-//working
+// Create initial users
 async function createInitialUsers() {
   console.log("Starting to create users...")
+
   try {
     const usersToCreate = [
       { username: "admin", password: "admin", isAdmin: 1 },
@@ -102,19 +106,21 @@ async function createInitialUsers() {
       { username: "squanchie", password: "jerryisdumb", isAdmin: 0 },
       { username: "docbrown", password: "backtothefuture", isAdmin: 0 }
     ]
-    const users = await Promise.all(usersToCreate.map(user.createUser))
 
+    const users = await Promise.all(usersToCreate.map(user.createUser))
     console.log("Users created:")
     console.log(users)
     console.log("Finished creating inital users!")
+
   } catch (error) {
     console.error("Error creating initial users!" + error)
   }
 }
 
-
+// Create initial addresses
 async function createInitialAddress() {
   console.log("Creating address...");
+
   try {
     const addressToCreate = [
       {
@@ -148,19 +154,22 @@ async function createInitialAddress() {
         currency: "USD"
       }
     ]
-    const addresses = await Promise.all(addressToCreate.map(address.createAddresses))
 
+    const addresses = await Promise.all(addressToCreate.map(address.createAddresses))
     console.log("address created:")
     console.log(addresses)
     console.log("Finished creating address!");
+
   } catch (error) {
     console.error("Error creating address!");
     throw error;
   }
 }
 
+// Create initial pottery listings
 async function createInitialPottery() {
   console.log("Creating creatures...")
+
   try {
     const potteryToCreate = [
       {
@@ -271,22 +280,23 @@ async function createInitialPottery() {
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/10.jpg?alt=media&token=a6e3b6ae-e2eb-4efe-bd48-8240384d1f34"
       },
-
     ]
-    const pottery = await Promise.all(potteryToCreate.map(pot.createPot))
 
+    const pottery = await Promise.all(potteryToCreate.map(pot.createPot))
     console.log("creatures created:")
     console.log(pottery)
-
     console.log("Finished creating creatures!")
+
   } catch (error) {
     console.error("Error creating creatures!")
     throw error
   }
 }
 
+// Create initial order history
 async function createInitialOrderHistory() {
   console.log("Loading Order History...")
+
   try {
     const orderHistoryToCreate = [
       {
@@ -311,22 +321,22 @@ async function createInitialOrderHistory() {
         date: "07/03/2022",
       },
     ]
-    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createHistory))
 
+    const orderHistory = await Promise.all(orderHistoryToCreate.map(history.createHistory))
     console.log("Order History created:")
     console.log(orderHistory)
-
     console.log("Finished creating order history!")
+
   } catch (error) {
     console.error("Error creating order history!")
     throw error
-
   }
 }
 
-
+// Create initial cart
 async function createInitialCart() {
   console.log("Starting to create initial cart...")
+
   try {
     const cartToCreate = [
       {
@@ -345,19 +355,21 @@ async function createInitialCart() {
         sessionid: 3
       }
     ]
-    const cartItems = await Promise.all(cartToCreate.map(cart.createCart))
 
+    const cartItems = await Promise.all(cartToCreate.map(cart.createCart))
     console.log("Cart created:")
     console.log(cartItems)
     console.log("Finished creating inital cart!")
+
   } catch (error) {
     console.error("Error creating initial cart!" + error)
-
   }
 }
 
+// Create initial cart items
 async function createInitialCartItems() {
   console.log("Starting to create initialcart items...")
+
   try {
     const cartItemsToCreate = [
       {
@@ -376,19 +388,20 @@ async function createInitialCartItems() {
         count: 2
       }
     ]
-    const cartItemsContent = await Promise.all(cartItemsToCreate.map(cart.createCartItems))
 
+    const cartItemsContent = await Promise.all(cartItemsToCreate.map(cart.createCartItems))
     console.log("Cart items created:")
     console.log(cartItemsContent)
     console.log("Finished creating inital cart items!")
+
   } catch (error) {
     console.error("Error creating initial cart items!" + error)
-
   }
 }
 
-//REBUILD
+// Rebuild database
 async function rebuildDB() {
+
   try {
     await dropTables()
     await createTables()
@@ -406,11 +419,10 @@ async function rebuildDB() {
 }
 
 rebuildDB()
-  //client.connect()
   .catch(console.error)
   .finally(() => client.end());
 
-
+// Export
 module.exports = {
   rebuildDB,
   dropTables,

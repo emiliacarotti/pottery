@@ -1,4 +1,3 @@
-
 import ReactDOM from 'react-dom';
 import { App } from './components';
 
@@ -6,9 +5,6 @@ import React, { useState, useEffect } from "react";
 import reactdomclient from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 
-
-// css stylesheets can be created for each component
-// place them in the src/style directory, and import them like this:
 import './style/App.css';
 
 import {
@@ -17,7 +13,6 @@ import {
   Contact,
   Checkout,
   Create,
-  Deal,
   EditDelete,
   Error,
   Filters,
@@ -32,8 +27,7 @@ import {
 
 import { user } from 'pg/lib/defaults';
 
-
-function MadDog() {
+function PotterySite() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [token, setToken] = useState("");
   const [profile, setProfile] = useState([]);
@@ -106,6 +100,7 @@ function MadDog() {
             />
           }
         ></Route>
+
         <Route
           path="Register"
           element={
@@ -117,32 +112,12 @@ function MadDog() {
           }
         ></Route>
 
-        <Route path="About" element={<About />}></Route>
-        <Route path="Contact" element={<Contact />}></Route>
-        <Route path="Cart" element={<Cart />}></Route>
-        <Route path="Checkout" element={<Checkout />}></Route>
-
         <Route
           path="Create"
           element={<Create
             isAdmin={isAdmin}
           />}>
         </Route>
-
-        <Route
-          path="Deal"
-          element={<Deal
-            selectedPot={selectedPot}
-            setSelectedPot={setSelectedPot}
-          />}>
-        </Route>
-
-
-        <Route path="EditDelete" element={<EditDelete />}></Route>
-        <Route path="*" element={<Error />}></Route>
-        <Route path="Filters" element={<Filters />}></Route>
-        <Route path="Footer" element={<Footer />}></Route>
-        <Route path="Header" element={<Header />}></Route>
 
         <Route
           path="SingleItem"
@@ -152,25 +127,26 @@ function MadDog() {
             setSelectedPot={setSelectedPot} />}>
         </Route>
 
-      </Routes>
+        <Route path="About" element={<About />}></Route>
+        <Route path="Contact" element={<Contact />}></Route>
+        <Route path="Cart" element={<Cart />}></Route>
+        <Route path="Checkout" element={<Checkout />}></Route>
+        <Route path="EditDelete" element={<EditDelete />}></Route>
+        <Route path="*" element={<Error />}></Route>
+        <Route path="Filters" element={<Filters />}></Route>
+        <Route path="Footer" element={<Footer />}></Route>
+        <Route path="Header" element={<Header />}></Route>
 
+      </Routes>
       <Footer />
     </>
   );
-
 }
 
-
-
 const root = reactdomclient.createRoot(document.getElementById("app"));
+
 root.render(
   <BrowserRouter>
-    <MadDog />
+    <PotterySite />
   </BrowserRouter>
 );
-
-//ReactDOM.render(<MadDog />, document.getElementById('root'));
-
-
-
-

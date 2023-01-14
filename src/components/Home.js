@@ -10,9 +10,9 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
 
     useEffect(() => {
         async function getPottery() {
+
             try {
                 const response = await fetch('http://localhost:4000/api/pottery')
-
                 let data = await response.json()
                 console.log("data******:", data)
                 setPottery(data)
@@ -20,7 +20,6 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
             } catch (err) {
                 console.log(err)
             }
-
         }
         getPottery()
     }, [])
@@ -50,5 +49,3 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
         </>
     )
 }
-
-

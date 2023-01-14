@@ -4,45 +4,44 @@ require('dotenv').config();
 const express = require('express');
 const server = express();
 
-// enable cross-origin resource sharing to proxy api requests
-// from localhost:3000 to localhost:4000 in local dev env
+// Enable cross-origin resource sharing to proxy api requests
+// From localhost:3000 to localhost:4000 in local dev env
 const cors = require('cors');
 server.use(cors());
 
-// create logs for everything
+// Create logs for everything
 const morgan = require('morgan');
 server.use(morgan('dev'));
 
-// handle application/json requests
+// Handle application/json requests
 server.use(express.json());
 
-
-server.get("/",(req, res, next) => {
+server.get("/", (req, res, next) => {
   res.send(`
       <h1>Hello World root index</h1>
   `);
 });
 
-// here's our static files
+// Here's our static files
 const path = require('path');
 server.use(express.static(path.join(__dirname, 'build')));
 
-// here's our API
+// Here's our API
 const apiRouter = require('./api')
 server.use('/api', apiRouter);
 
-// by default serve up the react app if we don't recognize the route
+// By default serve up the react app if we don't recognize the route
 server.use((req, res, next) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-// bring in the DB connection
-const client  = require('./db/client');
+// Bring in the DB connection
+const client = require('./db/client');
 
-// connect to the server
+// Connect to the server
 const PORT = process.env.PORT || 4000;
 
-// define a server handle to close open tcp connection after unit tests have run
+// Define a server handle to close open tcp connection after unit tests have run
 const handle = server.listen(PORT, async () => {
   console.log(`Server is running on ${PORT}!`);
 
@@ -54,5 +53,5 @@ const handle = server.listen(PORT, async () => {
   }
 });
 
-// export server and handle for routes/*.test.js
+// Export server and handle for routes/*.test.js
 module.exports = { server, handle };

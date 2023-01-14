@@ -4,7 +4,6 @@ export { default as Cart } from './Cart';
 export { default as Contact } from './Contact';
 export { default as Checkout } from './Checkout';
 export { default as Create } from './Create';
-export { default as Deal } from './Deal';
 export { default as Error } from './Error';
 export { default as Filters } from './Filters';
 export { default as Footer } from './Footer';
@@ -17,4 +16,3 @@ export { default as Register } from './Register';
 export { default as SingleItem } from './SingleItem';
 export { default as PaymentForm } from './PaymentForm';
 export { default as StripeContainer } from './StripeContainer';
-
