@@ -3,6 +3,8 @@ const { Client } = require('pg');
 // Database name
 const DB_NAME = 'pottery';
 
+DATABASE_URL = 'postgres://pottery_user:6jvXbu98OQNsLgKBPgi3FLANnQAMpF1g@dpg-cg4dfafdvk4st73kaid0-a.ohio-postgres.render.com/pottery'
+
 const DB_URL =
   process.env.DATABASE_URL || `postgres://localhost:5432/${DB_NAME}`;
 
