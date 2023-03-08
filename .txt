@@ -1,0 +1,105 @@
+const { Client } = require('pg');
+
+// Database name
+const DB_NAME = 'pottery';
+
+DATABASE_URL = 'postgres://pottery_user:6jvXbu98OQNsLgKBPgi3FLANnQAMpF1g@dpg-cg4dfafdvk4st73kaid0-a.ohio-postgres.render.com/pottery'
+
+const DB_URL =
+  process.env.DATABASE_URL || `postgres://localhost:5432/${DB_NAME}`;
+
+let client;
+
+// Github actions client config
+if (process.env.CI) {
+  client = new Client({
+    host: 'localhost',
+    port: 5432,
+    user: 'postgres',
+    password: 'postgres',
+    database: 'postgres',
+  });
+} else {
+  // local / heroku client config
+  client = new Client(DB_URL);
+}
+
+// Export
+module.exports = client;
+
+
+
+__________________________________________________________________________________________________
+
+
+
+JWT_SECRET="POTS-ARE-MADE-BY-THROWING-THE-WHEEL"
+
+DATABASE_URL = postgres://pottery_user:6jvXbu98OQNsLgKBPgi3FLANnQAMpF1g@dpg-cg4dfafdvk4st73kaid0-a.ohio-postgres.render.com/pottery
+
+
+
+__________________________________________________________________________________________________
+
+
+
+{
+  "name": "starting_code",
+  "version": "1.0.0",
+  "description": "This full stack app boilerplate consists of:",
+  "main": "index.js",
+  "engines": {
+    "node": "16.14.2"
+  },
+  "scripts": {
+    "postinstall": "npm run client:build",
+    "client:dev": "react-scripts start",
+    "client:build": "react-scripts build",
+    "server:dev": "nodemon index.js",
+    "db:build": "node ./db/init_db",
+    "start:dev": "concurrently \"npm run client:build\" \"npm run client:dev\" \"npm run server:dev\"",
+    "start": "node index.js",
+    "test": "jest --runInBand"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@stripe/react-stripe-js": "^1.10.0",
+    "@stripe/stripe-js": "^1.35.0",
+    "axios": "^0.19.2",
+    "bcrypt": "^5.0.1",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
+    "db-seed": "^1.2.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase": "^9.14.0",
+    "jest": "^24.9.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^3.4.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "supertest": "^6.2.1"
+  },
+  "proxy": "http://localhost:4000",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
