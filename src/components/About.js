@@ -17,7 +17,9 @@ function About() {
             </p>
             <p>
                 This app is built from a Postgres database and uses APIs via AJAX,
-                Node and Express in Javascript. The front end is fully outfitted with React.
+                Node and Express in Javascript. The front end is fully outfitted in
+                React. Upcoming features will include adding to cart, checking out,
+                and viewing purchase history.
             </p>
             <p>
                 On this app, you can either login as a regular
