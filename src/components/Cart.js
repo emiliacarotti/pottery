@@ -4,30 +4,31 @@ import React from "react";
 function Cart() {
     return (
         <>
-            <div className="border">
+
                 <div className="shopping-cart">
-                    <div className="title">
+                    <div className="title2">
                         Shopping Cart
                     </div>
 
-                    <div className="item">
-                        <div className="buttons">
+                    <div className="temp">
+                        This page is under construction! Please check back soon.
+                        {/* <div className="buttons">
                             <h2><i class="fa-solid fa-trash"></i></h2>
-                        </div>
+                        </div> */}
 
-                        <div className="image">
+                        {/* <div className="image"> */}
                             {/* <img src={butterbot} alt="" width="230px" /> */}
-                        </div>
+                        {/* </div> */}
 
-                        <div className="quantity">
+                        {/* <div className="quantity">
                             <select name="quantity" id="quantity">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                             </select>
-                        </div>
+                        </div> */}
 
-                        <div className="total-price">$649.99</div>
+                        {/* <div className="total-price">$649.99</div> */}
                     </div>
                 </div>
                 <div className="cartpage">
@@ -36,7 +37,7 @@ function Cart() {
                     <center>Sign up for our newsletter to recieve a 15% off code!</center>
                     <center><input className="reminder" placeholder="Email"></input></center>
                     <center><button className="checkout-btn"><a href="./Error">Sign Up</a></button></center>
-                </div></div>
+                </div>
         </>
     )
 }

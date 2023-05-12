@@ -61,7 +61,7 @@ export default function PaymentForm() {
     }
 
     function showAlert() {
-        alert("Payment successful!!! ");
+        alert("Payment successful. ");
     }
 
     return (

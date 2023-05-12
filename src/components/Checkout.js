@@ -6,27 +6,26 @@ function Checkout() {
 	const [showItem, setShowItem] = useState(false);
 	return (<div className='spacer'>
 		<div className='App'>
-			<h3>The Beast Bazaar Store</h3>
-			<center><h1><i class="fa-solid fa-poo-storm"></i></h1></center>
+			<div className='title2'>Checkout</div>
 			{showItem ? (
 				<StripeContainer />
 			) : (
 				<>
 					<form>
-						<center><h3> Purchase Total</h3></center>
-						<h3>$1299.98</h3>
+						<center className="temp"> This page is under construction! Please check back soon.</center>
+						<h3>$</h3>
 						<div>
 							<label for="fname"><i class="fa fa-user"></i> Full Name </label>
 							<br />
-							<input type="text" id="fname" name="firstname" placeholder="Moby Bukhari" />
+							<input type="text" id="fname" name="firstname" placeholder="Name" />
 							<br />
 							<label for="email"><i class="fa fa-envelope"></i> Email </label>
 							<br />
-							<input type="text" id="email" name="email" placeholder="mobybukhari@beastbazzaar.com"></input>
+							<input type="text" id="email" name="email" placeholder="Email"></input>
 							<br />
 							<label for="adr"><i class="fa fa-address-card"></i> Address </label>
 							<br />
-							<input type="text" id="adr" name="address" placeholder="542 W. 15th Street" />
+							<input type="text" id="adr" name="address" placeholder="Street" />
 							<br />
 							<label for="city"><i class="fa fa-institution"></i> City </label>
 							<br />
@@ -34,11 +33,11 @@ function Checkout() {
 							<br />
 							<label for="state">State </label>
 							<br />
-							<input type="text" id="state" name="state" placeholder="DC" />
+							<input type="text" id="state" name="state" placeholder="State" />
 							<br />
 							<label for="zip">Zip </label>
 							<br />
-							<input type="text" id="zip" name="zip" placeholder="20016" />
+							<input type="text" id="zip" name="zip" placeholder="Zip Code" />
 							<div>
 								<input type="checkbox" id="scales" name="scales"
 									checked />
