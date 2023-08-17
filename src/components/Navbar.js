@@ -5,7 +5,7 @@ export default function Navbar({ loggedIn, Logout, isAdmin, setIsAdmin }) {
     return (
         <>
             <Link to="/" className="title">
-                <div className='titletext' >p o t s</div><div className='titletext'>b y</div><div className='titletext'>e m i l i a</div>
+                <div className='titletext' >urban</div><div className='titletext'>mud</div>
             </Link>
 
             <div className="navbarLinks">

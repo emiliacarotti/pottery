@@ -1,8 +1,8 @@
 /* ===================== CSS ===================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Slabo+27px&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
 
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
 
 /* ============= Body ============= */
 
@@ -23,7 +23,7 @@ body {
   justify-content: center;
   flex-wrap: nowrap;
   color: black;
-  font-family: Inter;
+  font-family: 'Preahvihear', sans-serif;
   font-weight: 400;
   font-size: 40px;
   text-decoration: none;
@@ -66,7 +66,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   flex: 1 1 auto;
-  font-family: 'Slabo 27px', serif;
+  font-family: Inter;
   font-size: 12px;
   margin-left: 15px;
   margin-right: 15px;
@@ -98,19 +98,18 @@ body {
 .potName a {
   /* OK */
   color: black;
-  font-family: 'Slabo 27px', serif;
-  font-weight: 200;
+  font-family: Inter;
   font-size: 15px;
   text-decoration: none;
   padding-bottom: 20px;
 }
 
-.potPrice{
-display: flex;
-flex-direction: row; 
-justify-content: space-between;
-margin-top: 3px;
-font-size: 12px;
+.potPrice {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 3px;
+  font-size: 12px;
 }
 
 /* ======================= Shopping Cart page =======================*/
@@ -156,7 +155,7 @@ font-size: 12px;
   border: 1px solid silver;
 }
 
-.title2{
+.title2 {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -385,7 +384,7 @@ font-size: 12px;
   justify-content: center;
 }
 
-.editanddelete div{
+.editanddelete div {
   padding-right: 5px;
   padding-left: 5px;
 }
