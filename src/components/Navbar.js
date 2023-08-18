@@ -11,6 +11,7 @@ export default function Navbar({ loggedIn, Logout, isAdmin, setIsAdmin }) {
             <div className="navbarLinks">
                 <a href="./"> Home </a>
                 <a href="./About"> About </a>
+                
                 {isAdmin == "true" ? (<a href="./Create"> Create a Listing </a>) : null}
                 {!loggedIn ? <a href="./Login"> Login </a> : <a href onClick={Logout}> Logout </a>}
             </div>
