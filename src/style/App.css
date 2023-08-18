@@ -1,46 +1,40 @@
 /* ===================== CSS ===================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Slabo+27px&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Preahvihear&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
 
 /* ============= Body ============= */
 
 body {
-  /* OK */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin: 0px;
 }
 
 /* ============= Header/Navbar ============= */
 
 .title {
-  /* OK */
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-wrap: nowrap;
   padding-left: 80px;
   padding-right: 80px;
-  height: 100px;
 }
 
-
-.logo_image {
+.title_image {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 380px;
-  height: 100px;
+  width: 400px;
+  height: 90px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-.logo_image img {
-  width: 430px;
-  height: 75px;
-  object-fit: cover;
-  object-position: 20% 53%; 
+.title_image img {
+  width: 400px;
+  height: 90px;
+  object-fit: contain;
 }
 
 .navbarLinks {
