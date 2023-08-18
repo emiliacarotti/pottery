@@ -33,18 +33,18 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
 
     return (
         <>
-            <div className="home_image"><img className="home_image" src="https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/home.JPG?alt=media&token=da298bab-28e6-47fb-b53c-2f77624d8db2"></img></div>
+            <div className="home_image"><img src="https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/home.JPG?alt=media&token=da298bab-28e6-47fb-b53c-2f77624d8db2"></img></div>
             <div className="posts">
                 {
                     pottery?.map((pot) => {
                         return (
                             <div key={pot.potid} className="post">
-                                <Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> <img src={pot.image} ></img> </Link>
                                 <div className="potInfo">
+                                    <Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> <img src={pot.image} ></img> </Link>
                                     <div className="potName"><Link to="./SingleItem" onClick={() => setSelectedPot(pot)}> {pot.name} </Link></div>
-                                    <div className="potPrice"><div>${pot.price}</div>
+                                </div>
+                                <div className="potPrice"><div>${pot.price}</div>
                                     {/* <div>{pot.stock} left!</div> */}
-                                    </div>
                                 </div>
                             </div>
                         )
