@@ -38,7 +38,7 @@ body {
   object-fit: contain;
 }
 
-.fa-solid{
+.fa-solid {
   margin-top: 50px;
   color: #2d4063;
 }
@@ -59,6 +59,10 @@ body {
   text-decoration: none;
   color: black;
   white-space: nowrap;
+}
+
+.navbarLinks a:hover {
+  opacity: 0.7;
 }
 
 /* ======================= Home Page/Posts =======================*/
@@ -158,7 +162,7 @@ body {
   height: 90px;
 }
 
-.potListingName{
+.potListingName {
   font-size: 30px;
   display: flex;
   text-align: left;
@@ -236,7 +240,7 @@ body {
   font-family: 'Preahvihear', sans-serif;
 }
 
-.addtocart a{
+.addtocart a {
   text-decoration: none;
   color: black;
 }
