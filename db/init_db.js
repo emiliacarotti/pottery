@@ -191,7 +191,7 @@ async function createInitialPottery() {
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/12.png?alt=media&token=2238a97f-18d5-4bc5-9a96-5b35370bfc4c"
       },
       {
-        name: "Tall Speckled White and Emerald Striped Mug on Natural Clay", //3
+        name: "Tall Speckled Striped Mug on Natural Clay", //3
         price: 38,
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/3.png?alt=media&token=04e03acf-0c83-4b24-ae19-1dc79cc609cd"
@@ -233,7 +233,7 @@ async function createInitialPottery() {
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/5.png?alt=media&token=c8d42ff1-8bb7-4279-a6c4-bbe769042f28"
       },
       {
-        name: "Speckled White and Emerald Striped Mug on Brown Clay", //6
+        name: "Speckled Emerald Striped Mug on Brown Clay", //6
         price: 30,
         stock: 10,
         image: "https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/6.png?alt=media&token=6140ec12-2744-4542-856e-2c7a488d96b3"
