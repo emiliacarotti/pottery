@@ -23,7 +23,7 @@ body {
   align-content: center;
   padding-left: 80px;
   padding-right: 80px;
-  
+
 }
 
 .title_image {
@@ -43,10 +43,12 @@ body {
 }
 
 .fa-solid {
-  margin-top: 50px;
-  padding-left: 13px;
-  padding-right: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: #2d4063;
+  align-items: center;
 }
 
 .navbarLinks {
@@ -69,6 +71,24 @@ body {
 
 .navbarLinks a:hover {
   opacity: 0.7;
+}
+
+.fa-cart-shopping{
+  margin-top: 50px;
+  width: 50px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  text-decoration:none;
+  border:0
+}
+
+.fa-cart-shopping:hover {
+  opacity: 0.6;
+}
+
+a{
+  text-decoration:none;
+  border:0
 }
 
 /* ============= Hamburger Menu ============= */
@@ -136,7 +156,7 @@ body {
   margin-top: 80px;
   margin-left: 20px;
   font-size: 20px;
-  
+
 }
 
 .links-menu a {
@@ -281,21 +301,42 @@ body {
 }
 
 .potListingName {
+  display: flex;
+  flex-direction: column;
   font-size: 30px;
   display: flex;
   text-align: left;
   padding-top: 0px;
-  height: 100px;
+  /* height: 100px; */
+  /* height: 100px; */
 }
 
 .potListingPrice {
+  display: flex;
+  flex-direction: column;
   font-size: 20px;
   text-align: left;
+  /* height: 60px; */
 }
 
 .potListingStock {
+  display: flex;
+  flex-direction: column;
   font-size: 15px;
   text-align: left;
+  /* height: 60px; */
+}
+
+.nameandedit{
+  display: flex;
+  flex-direction: row;
+
+}
+
+button.i{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .singlesquare {
@@ -367,7 +408,6 @@ body {
   opacity: 0.7;
 }
 
-/* not reviewed */
 .deletebtn {
   text-align: center;
   width: 100px;
@@ -381,42 +421,31 @@ body {
   margin-bottom: 5px;
 }
 
-/* not reviewed */
-.editbtn {
-  text-align: center;
-  border-radius: 50%;
-  float: right;
-  height: 23px;
-  height: 23px;
-  margin-right: 10px;
-}
 
-/* not reviewed */
 .editanddelete {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-left: 20px;
   padding-right: 20px;
-  justify-content: center;
+  padding-top: 70px;
 }
 
-/* not reviewed */
 .editanddelete div {
-  padding-right: 5px;
-  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+
 }
 
 /* not reviewed anything else in this file below this line */
 /* ======================= Shopping Cart page =======================*/
 .cartpage {
-  border: solid 1px silver;
+  font-family: 'Preahvihear', sans-serif;
   display: flex;
   flex-direction: column;
   width: 400px;
-  margin: 80px auto;
+  /* margin: 80px auto; */
   padding: 15px;
   border-radius: 6px;
-  background-color: silver;
 }
 
 .cartpage input {
@@ -438,16 +467,14 @@ body {
 }
 
 .shopping-cart {
-  margin-top: 200px;
-  width: 750px;
-  height: 250px;
-  margin: 40px auto;
+  font-family: 'Preahvihear', sans-serif;
+  margin-top: 50px;
+  margin-bottom: 50px;
   background: #ffffff;
-  /* box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10); */
-  border-radius: 6px;
   display: flex;
   flex-direction: column;
-  border: 1px solid silver;
+  justify-content: center;
+  align-items: center;
 }
 
 .title2 {
@@ -468,12 +495,6 @@ body {
   padding: 20px 30px;
   height: 120px;
   display: flex;
-}
-
-.buttons {
-  margin-right: 55px;
-  padding-top: 110px;
-  cursor: pointer;
 }
 
 .item h2 {
@@ -508,12 +529,6 @@ body {
     -webkit-transform: translateY(-10px);
     transform: translateY(-10px);
   }
-}
-
-.buttons h2 {
-  /* border: 1px solid red; */
-  padding: 5px;
-  /* border-radius: 50%; */
 }
 
 .quantity {
@@ -770,17 +785,53 @@ hr {
 
 /* ======================= Create page =======================*/
 .createpage {
+  font-family: 'Preahvihear', sans-serif;
   margin-top: 30px;
-  font-family: Inter;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
+input::file-selector-button {
+  color: black;
+  font-family: 'Preahvihear', sans-serif;
+  width: 40%;
+  height: 40px;
+  border: 1px solid;
+  background: #9AC19D;
+  border-radius: 5px;
+  font-size: 14px;
+  border-color: #DADAE7;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.4s ease;
+  color: black;
+}
+
+input::file-selector-button:hover {
+  opacity: 0.7;
+}
+
+input[type='file'] {
+  color: transparent;
+  width: 200px;
+}
+
+.editbtn {
+  background-color: transparent;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  border: 0px;
+  cursor: pointer;
+}
+
 .createsquare {
-  background-color: #c7d5e2;
-  width: 500px;
-  height: 400px;
+  font-family: 'Preahvihear', sans-serif;
+  background-color: #f5f5f5;
+  width: 550px;
+  /* height: 400px; */
   border-radius: 10px;
 }
 
@@ -798,10 +849,10 @@ hr {
 }
 
 .createform h1 {
+  font-family: 'Preahvihear', sans-serif;
   display: flex;
   flex-direction: row;
   font-size: 20px;
-  font-family: Inter;
   justify-content: left;
 }
 
@@ -809,6 +860,8 @@ hr {
   font-size: 15px;
   margin: 0px;
 }
+
+
 
 
 /* =================== end of Create page ====================*/
@@ -911,7 +964,7 @@ hr {
   line-height: 1.6;
   margin-bottom: 0;
   text-align: center;
-  
+
 }
 
 .footer ul li a {
@@ -976,4 +1029,8 @@ hr {
 
 .checkbox {
   margin-left: 40px;
+}
+
+.Error{
+  font-family: 'Preahvihear', sans-serif;
 }
