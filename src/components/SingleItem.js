@@ -155,16 +155,19 @@ export default function SingleItem({
           >
             <div className="potListingName">
               {" "}
-              {selectedPot.name}
+              <div className="nameandedit">
+                {selectedPot.name}
+
                 {isAdmin == "true" ? (
                   <>
                     <button
                       type="button"
                       onClick={handleNameClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <i class="fa-solid fa-pen-to-square fa-xl" aria-hidden="true"></i>
                     </button>
                   </>
                 ) : null}
+              </div>
               {nameIsShown == true ? (
                 <>
                   <input
@@ -178,19 +181,22 @@ export default function SingleItem({
               ) : null}
             </div>
 
+
             <div className="potListingPrice">
               {" "}
-              
+              <div className="nameandedit">
                 ${selectedPot.price}
+
                 {isAdmin == "true" ? (
                   <>
                     <button
                       type="button"
                       onClick={handlePriceClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <i class="fa-solid fa-pen-to-square fa-xl" aria-hidden="true"></i>
                     </button>
                   </>
                 ) : null}
+              </div>
               {priceIsShown == true ? (
                 <>
                   <input
@@ -204,19 +210,22 @@ export default function SingleItem({
               ) : null}
             </div>
 
+
             <div className="potListingStock">
               {" "}
-              
+              <div className="nameandedit">
                 {selectedPot.stock} remaining in stock.
+
                 {isAdmin == "true" ? (
                   <>
                     <button
                       type="button"
                       onClick={handleStockClick} className="editbtn">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <i class="fa-solid fa-pen-to-square fa-xl" aria-hidden="true"></i>
                     </button>
                   </>
                 ) : null}
+              </div>
               {stockIsShown == true ? (
                 <>
                   <input
@@ -239,27 +248,34 @@ export default function SingleItem({
             }}
           >
             <div className="qtyandaddtocart">
-              <div className="qty">
-                {" "}
-                Qty: <span></span>
-                <select name="quantity" id="quantity">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
-              </div>
-              <button className="addtocart">
-                {" "}
-                <a href="./Cart">
+
+              {isAdmin == "false" ? (
+                <div className="qty">
                   {" "}
-                  Add to Cart
-                </a>
-              </button>
+                  Qty: <span></span>
+                  <select name="quantity" id="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+              ) : null}
+
+              {isAdmin == "false" ? (
+                <button className="addtocart">
+                  {" "}
+                  <a href="./Cart">
+                    {" "}
+                    Add to Cart
+                  </a>
+                </button>
+              ) : null}
+
               <br></br>
               <div id="createErrorMessage" className="errors"></div>
             </div>
           </form>
-          
+
 
           <div className="editanddelete">
             <div>
@@ -271,9 +287,9 @@ export default function SingleItem({
                     event.preventDefault();
                     EditPot(selectedPot);
                   }}
-                  className="deletebtn"
+                  className="login_signup_button"
                 >
-                  Edit
+                  <li>Submit Edits</li>
                 </button>
               ) : null}
             </div>
@@ -285,9 +301,9 @@ export default function SingleItem({
                     event.preventDefault();
                     deletePot(selectedPot.potid);
                   }}
-                  className="deletebtn"
+                  className="login_signup_button"
                 >
-                  Delete
+                  <li>Delete Listing</li>
                 </button>
               ) : null}
             </div>
