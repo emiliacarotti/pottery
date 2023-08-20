@@ -73,6 +73,24 @@ body {
   opacity: 0.7;
 }
 
+.fa-cart-shopping{
+  margin-top: 50px;
+  width: 50px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  text-decoration:none;
+  border:0
+}
+
+.fa-cart-shopping:hover {
+  opacity: 0.6;
+}
+
+a{
+  text-decoration:none;
+  border:0
+}
+
 /* ============= Hamburger Menu ============= */
 
 /* burger background square */
@@ -421,14 +439,13 @@ button.i{
 /* not reviewed anything else in this file below this line */
 /* ======================= Shopping Cart page =======================*/
 .cartpage {
-  border: solid 1px silver;
+  font-family: 'Preahvihear', sans-serif;
   display: flex;
   flex-direction: column;
   width: 400px;
-  margin: 80px auto;
+  /* margin: 80px auto; */
   padding: 15px;
   border-radius: 6px;
-  background-color: silver;
 }
 
 .cartpage input {
@@ -450,16 +467,14 @@ button.i{
 }
 
 .shopping-cart {
-  margin-top: 200px;
-  width: 750px;
-  height: 250px;
-  margin: 40px auto;
+  font-family: 'Preahvihear', sans-serif;
+  margin-top: 50px;
+  margin-bottom: 50px;
   background: #ffffff;
-  /* box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10); */
-  border-radius: 6px;
   display: flex;
   flex-direction: column;
-  border: 1px solid silver;
+  justify-content: center;
+  align-items: center;
 }
 
 .title2 {
@@ -1014,4 +1029,8 @@ input[type='file'] {
 
 .checkbox {
   margin-left: 40px;
+}
+
+.Error{
+  font-family: 'Preahvihear', sans-serif;
 }

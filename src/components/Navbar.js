@@ -33,36 +33,39 @@ export default function Navbar({ loggedIn, Logout, isAdmin, setIsAdmin }) {
         if (isMenuClicked) {
             document.body.style.overflow = 'hidden';
         }
-     }, [isMenuClicked]);
+    }, [isMenuClicked]);
 
     return (
         <>
-                <div className="title">
-                    <div className="burger">
-                        <div className="burger-menu" onClick={updateMenu}>
-                            <div className={burgerClass}></div>
-                            <div className={burgerClass}></div>
-                            <div className={burgerClass}></div>
-                        </div>
+            <div className="title">
+                <div className="burger">
+                    <div className="burger-menu" onClick={updateMenu}>
+                        <div className={burgerClass}></div>
+                        <div className={burgerClass}></div>
+                        <div className={burgerClass}></div>
                     </div>
+                </div>
 
-                    <Link to="/" onClick={hideMenu}>
-                        <div className="title_image"><img className="home_image" src="https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/logo.png?alt=media&token=8db262b0-c873-4e36-8999-ce8f52c68120"></img></div>
-                    </Link>
-                    <div className="user_cart_images">
-                        {/* <i class="fa-solid fa-user fa-xl"></i> */}
+                <Link to="/" onClick={hideMenu}>
+                    <div className="title_image"><img className="home_image" src="https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/logo.png?alt=media&token=8db262b0-c873-4e36-8999-ce8f52c68120"></img></div>
+                </Link>
+                <div className="user_cart_images">
+                    {/* <i class="fa-solid fa-user fa-xl"></i> */}
+                    <a href="./Cart">
                         <i className="fa-solid fa-cart-shopping fa-xl" ></i>
-                    </div>
+                    </a>
 
                 </div>
-                <div className={menuClass}>
-                    <div className="links-menu">
-                        <a href="./"> Home </a>
-                        <a href="./About"> About </a>
-                        {isAdmin == "true" ? (<a href="./Create"> Create a Listing </a>) : null}
-                        {!loggedIn ? <a href="./Login"> Login </a> : <a href onClick={Logout}> Logout </a>}
-                    </div>
+
+            </div>
+            <div className={menuClass}>
+                <div className="links-menu">
+                    <a href="./"> Home </a>
+                    <a href="./About"> About </a>
+                    {isAdmin == "true" ? (<a href="./Create"> Create a Listing </a>) : null}
+                    {!loggedIn ? <a href="./Login"> Login </a> : <a href onClick={Logout}> Logout </a>}
                 </div>
+            </div>
         </>
     )
 }
