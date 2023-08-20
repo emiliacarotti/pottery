@@ -33,7 +33,7 @@ export default function Home({ pottery, setPottery, selectedPot, setSelectedPot,
 
     return (
         <>
-            <div className="home_image"><img src="https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/home.JPG?alt=media&token=da298bab-28e6-47fb-b53c-2f77624d8db2"></img></div>
+            <div className="home_image"><img src="https://firebasestorage.googleapis.com/v0/b/emilia-pottery.appspot.com/o/home.jpg?alt=media&token=c978ef60-d390-4334-b86d-967a4b9694ec"></img></div>
             <div className="posts">
                 {
                     pottery?.map((pot) => {
